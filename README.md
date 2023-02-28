@@ -1,2 +1,2 @@
 # stac
-ML AI for language detection in the browser
+ML AI for language detection and communication
