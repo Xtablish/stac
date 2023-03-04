@@ -1,2 +1,2 @@
 # stac
-ML AI for language detection and communication
+Android Application for language translation and communication
