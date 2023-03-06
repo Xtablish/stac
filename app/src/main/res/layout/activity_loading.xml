@@ -41,13 +41,23 @@
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/textLoadVersion"
+            android:id="@+id/textLoadTeam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_130sdp"
             android:text="@string/from_stac_it"
             android:textColor="@color/secondary_text"
             android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/textLoadStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_100sdp"
+            android:text="@string/status"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/_10ssp"
             android:textStyle="bold"/>
 
     </LinearLayout>
