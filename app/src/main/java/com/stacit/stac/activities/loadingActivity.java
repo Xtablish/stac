@@ -42,6 +42,9 @@ public class loadingActivity extends AppCompatActivity {
             return false;
         }
     }
+
+    //basic onClick listener function to change layouts or views
+    //and check the internet connection status during the app launch process
     private void SignInTab(){
         binding.textLoadStatus.setText(R.string.loading);
         //when using a physical device add the internetIsConnected to the if statement

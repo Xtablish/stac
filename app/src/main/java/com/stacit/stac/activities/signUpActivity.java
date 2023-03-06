@@ -20,6 +20,7 @@ public class signUpActivity extends AppCompatActivity {
         setListener();
     }
 
+    //basic onClick listener function to change layouts or views
     private void setListener(){
         binding.textSignIn.setOnClickListener(v ->
                 startActivity(new Intent(getApplicationContext(), signInActivity.class)));
