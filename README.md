@@ -20,7 +20,7 @@ Security without functionality is pointless, because you can't protect something
 ## Version
 Version 1.0.0 
 
-## [Team](docs/CONTRIBUTING.md)
+## [Team](https://github.com/Xtablish/stac/graphs/contributors)
 STAC-IT
 
 ## Access
