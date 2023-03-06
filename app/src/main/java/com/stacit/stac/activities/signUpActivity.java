@@ -2,15 +2,26 @@ package com.stacit.stac.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.stacit.stac.R;
+import com.stacit.stac.databinding.ActivitySignUpBinding;
 
 public class signUpActivity extends AppCompatActivity {
+
+    private ActivitySignUpBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        binding = ActivitySignUpBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        setListener();
+    }
+
+    private void setListener(){
+        binding.textSignIn.setOnClickListener(v ->
+                startActivity(new Intent(getApplicationContext(), signInActivity.class)));
     }
 }
