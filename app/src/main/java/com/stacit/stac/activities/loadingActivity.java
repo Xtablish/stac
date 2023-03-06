@@ -42,6 +42,8 @@ public class loadingActivity extends AppCompatActivity {
             return false;
         }
     }
+
+    //internet connection test function for view change and validation
     private void SignInTab(){
         binding.textLoadStatus.setText(R.string.loading);
         //when using a physical device add the internetIsConnected to the if statement

@@ -21,6 +21,7 @@ public class signInActivity extends AppCompatActivity {
         setListener();
     }
 
+    //onClick Listener for view change
     private void setListener(){
         binding.textCreateNewAccount.setOnClickListener(v ->
                 startActivity(new Intent(getApplicationContext(), signUpActivity.class)));

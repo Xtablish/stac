@@ -20,6 +20,7 @@ public class signUpActivity extends AppCompatActivity {
         setListener();
     }
 
+    //onClick Listener for view change
     private void setListener(){
         binding.textSignIn.setOnClickListener(v ->
                 startActivity(new Intent(getApplicationContext(), signInActivity.class)));
