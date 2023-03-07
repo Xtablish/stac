@@ -1,11 +1,10 @@
 package com.stacit.stac.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.stacit.stac.R;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.stacit.stac.databinding.ActivitySignInBinding;
 
 public class signInActivity extends AppCompatActivity {
