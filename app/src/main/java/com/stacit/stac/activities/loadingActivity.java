@@ -1,25 +1,23 @@
 package com.stacit.stac.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.os.Handler;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.stacit.stac.R;
 import com.stacit.stac.databinding.ActivityLoadingBinding;
 
-import org.w3c.dom.Text;
-
 public class loadingActivity extends AppCompatActivity {
 
+    //call to the activity locally created binding class for this layout
     private ActivityLoadingBinding binding;
+
+    //this is the default method that's called when this activity is created
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,12 +26,14 @@ public class loadingActivity extends AppCompatActivity {
        SignInTab();
     }
 
+    //this checks for network connectivity
     private boolean isNetworkConnected(){
         ConnectivityManager test = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkActiveInfo = test.getActiveNetworkInfo();
         return networkActiveInfo != null && networkActiveInfo.isConnected();
     }
 
+    //this checks for internet access
     public boolean internetIsConnected(){
         try{
             String pingCmd = "ping -c l google.com";

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "104850771448",
+    "project_id": "stac-6c67e",
+    "storage_bucket": "stac-6c67e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:104850771448:android:bd41280ca1734997a2da0d",
+        "android_client_info": {
+          "package_name": "com.stacit.stac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "104850771448-5meqj8sbpj9dpnspslsca6kusiekak2d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrCVCRe64i2jauy0DoDQrZrtPp-xJ_mUI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "104850771448-5meqj8sbpj9dpnspslsca6kusiekak2d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
