@@ -42,5 +42,10 @@ public class settingsActivity extends AppCompatActivity {
                 }
                 return true;
             });
-    }
+        }else
+        {
+            Intent intent = new Intent(getApplicationContext(), signInActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
 }}

@@ -2,10 +2,12 @@ package com.stacit.stac.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import com.stacit.stac.R;
 import com.stacit.stac.activities.utilities.Constants;
@@ -43,6 +45,18 @@ public class homeActivity extends AppCompatActivity {
                 }
                 return true;
             });
+
+            //adding image to the profile view
+            //decode base64 string to image
+            byte[] imageBytes = Base64.decode(preferenceManager.getString(Constants.KEY_IMAGE), Base64.DEFAULT);
+            Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+            binding.imageProfile.setImageBitmap(decodedImage);
+
+        }else
+        {
+            Intent intent = new Intent(getApplicationContext(), signInActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
         }
     }
 }

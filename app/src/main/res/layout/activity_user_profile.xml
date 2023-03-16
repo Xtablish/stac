@@ -32,7 +32,7 @@
         android:id="@+id/fabButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/light_navy_blue"
+        android:backgroundTint="@color/icon_blue"
         android:contentDescription="@string/text_fab_button"
         android:src="@drawable/btn_fab_mic"
         android:tint="@android:color/white"
