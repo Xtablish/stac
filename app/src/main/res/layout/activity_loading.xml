@@ -1,65 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipToPadding="false"
-    android:overScrollMode="never"
-    android:padding="@dimen/_24sdp"
-    android:scrollbars="none"
+    android:animateLayoutChanges="true"
     tools:context=".activities.loadingActivity">
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/imageIconFrame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="@dimen/_31sdp"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="178dp"
+            android:layout_height="132dp"
+            android:background="@drawable/stac_logo_small"
+            android:scaleType="centerCrop"
+            app:riv_oval="true"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/textLoadStac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_1ssp"
+        android:text="@string/stac"
+        android:textColor="@color/primary_text"
+        android:textSize="@dimen/_18ssp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/imageIconFrame"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/progressBar"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:layout_marginTop="@dimen/_60sdp"
+        android:layout_gravity="center"
+        android:visibility="invisible"
+        tools:ignore="InvalidId"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/error"
+        app:layout_constraintTop_toBottomOf="@id/textLoadStac"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_200sdp">
+    <TextView
+        android:id="@+id/textLoadTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_70sdp"
+        android:text="@string/from_stac_it"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progressBar"
+        app:layout_constraintVertical_bias="0.0" />
 
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:layout_width="178dp"
-                android:layout_height="132dp"
-                android:background="@drawable/stac_logo_small"
-                android:scaleType="centerCrop"
-                app:riv_oval="true"/>
-
-        </FrameLayout>
-
-        <TextView
-            android:id="@+id/textLoadStac"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_1ssp"
-            android:text="@string/stac"
-            android:textColor="@color/primary_text"
-            android:textSize="@dimen/_18ssp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/textLoadTeam"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_130sdp"
-            android:text="@string/from_stac_it"
-            android:textColor="@color/secondary_text"
-            android:textSize="@dimen/_13ssp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/textLoadStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_100sdp"
-            android:text="@string/status"
-            android:textColor="@color/secondary_text"
-            android:textSize="@dimen/_10ssp"
-            android:textStyle="bold"/>
-
-    </LinearLayout>
-
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

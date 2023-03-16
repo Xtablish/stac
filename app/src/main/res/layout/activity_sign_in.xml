@@ -5,38 +5,75 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipToPadding="false"
-    android:overScrollMode="never"
-    android:padding="@dimen/_24sdp"
-    android:scrollbars="none"
+    android:paddingLeft="@dimen/_24sdp"
+    android:paddingRight="@dimen/_24sdp"
+    android:fillViewport="true"
+    android:animateLayoutChanges="true"
     tools:context=".activities.signInActivity">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <TextView
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineVertical1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:text="@string/welcome_message"
-            android:textColor="@color/primary_text"
-            android:textSize="@dimen/_18sdp"
-            android:textStyle="bold"/>
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineVertical2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95"/>
+
+
+        <View
+            android:id="@+id/viewBackBoardSignIn"
+            android:layout_width="0dp"
+            android:layout_height="271dp"
+            android:background="@drawable/view_sunset_board"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
+            app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.1"/>
 
         <TextView
+            android:id="@+id/textGreeting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginTop="8dp"
+            android:text="@string/welcome_message"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
+            app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/viewBackBoardSignIn"/>
+
+        <TextView
+            android:id="@+id/textInstruction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             android:text="@string/face_id"
-            android:textColor="@color/secondary_text"
+            android:textColor="@color/white"
             android:textSize="@dimen/_12ssp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
+            app:layout_constraintTop_toBottomOf="@id/textGreeting" />
 
         <EditText
             android:id="@+id/inputEmail"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="@dimen/_45sdp"
             android:layout_marginTop="@dimen/_40sdp"
             android:background="@drawable/background_input"
@@ -46,11 +83,15 @@
             android:paddingStart="@dimen/_16sdp"
             android:paddingEnd="@dimen/_16sdp"
             android:textColor="@color/primary_text"
-            android:textSize="@dimen/_13sdp"/>
+            android:textSize="@dimen/_13ssp"
+            android:autofillHints="emailAddress"
+            app:layout_constraintTop_toBottomOf="@id/viewBackBoardSignIn"
+            app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
+            app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"/>
 
         <EditText
             android:id="@+id/inputPassword"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="@dimen/_45sdp"
             android:layout_marginTop="@dimen/_16sdp"
             android:background="@drawable/background_input"
@@ -61,18 +102,40 @@
             android:paddingEnd="@dimen/_16sdp"
             android:textColor="@color/primary_text"
             android:importantForAutofill="no"
-            android:textSize="@dimen/_13sdp"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSignIn"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_marginTop="@dimen/_24sdp"
-            android:text="@string/sign_in"
-            android:textColor="@color/white"
             android:textSize="@dimen/_13ssp"
-            android:textStyle="bold"
-            app:cornerRadius="@dimen/_8sdp"/>
+            app:layout_constraintTop_toBottomOf="@id/inputEmail"
+            app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
+            app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"/>
+
+        <FrameLayout
+            android:id="@+id/btnSignInFrame"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:animateLayoutChanges="true"
+            app:layout_constraintTop_toBottomOf="@id/inputPassword"
+            app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
+            app:layout_constraintEnd_toEndOf="@id/guidelineVertical2">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:text="@string/sign_in"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13ssp"
+                android:textStyle="bold"
+                app:cornerRadius="@dimen/_8sdp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_gravity="center"
+                android:visibility="invisible"
+                android:indeterminateTint="@color/error"/>
+
+        </FrameLayout>
 
         <TextView
             android:id="@+id/textCreateNewAccount"
@@ -82,8 +145,37 @@
             android:text="@string/create_new_account"
             android:textColor="@color/primary_text"
             android:textSize="@dimen/_13ssp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/btnSignInFrame"
+            app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
+            app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"/>
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/securityFaceID"
+            android:layout_width="68dp"
+            android:layout_height="54dp"
+            android:src="@drawable/face_id_icon"
+            android:contentDescription="@string/text_face_id_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
+            app:layout_constraintHorizontal_bias="0.195"
+            app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
+            app:layout_constraintTop_toBottomOf="@id/textCreateNewAccount"
+            app:layout_constraintVertical_bias="0.605" />
+
+        <ImageView
+            android:id="@+id/securityLockPin"
+            android:layout_width="66dp"
+            android:layout_height="54dp"
+            android:src="@drawable/pin_lock"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="@string/text_pin_lock_icon"
+            app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
+            app:layout_constraintHorizontal_bias="0.838"
+            app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
+            app:layout_constraintTop_toBottomOf="@id/textCreateNewAccount"
+            app:layout_constraintVertical_bias="0.605" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

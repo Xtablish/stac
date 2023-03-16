@@ -2,14 +2,14 @@ package com.stacit.stac.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
-
+import com.stacit.stac.BuildConfig;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.stacit.stac.R;
 import com.stacit.stac.databinding.ActivityLoadingBinding;
 
 public class loadingActivity extends AppCompatActivity {
@@ -23,7 +23,7 @@ public class loadingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityLoadingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-       SignInTab();
+        checkFirstRun();
     }
 
     //this checks for network connectivity
@@ -43,21 +43,71 @@ public class loadingActivity extends AppCompatActivity {
         }
     }
 
-    //internet connection test function for view change and validation
-    private void SignInTab(){
-        binding.textLoadStatus.setText(R.string.loading);
-        //when using a physical device add the internetIsConnected to the if statement
-        if (isNetworkConnected()){
-            binding.textLoadStatus.setText(R.string.loading);
-            startActivity(new Intent(getApplicationContext(), signInActivity.class));
-        }
-        else{
-            binding.textLoadStatus.setText(R.string.internet);
-            Context context = getApplicationContext();
-            CharSequence text = "No Internet Connection";
-            int duration = Toast.LENGTH_LONG;
+    //a function that makes calls to the Toast method
+    private void showToast(){
+        Toast.makeText(getApplicationContext(), "No internet", Toast.LENGTH_SHORT).show();
+    }
 
-            Toast.makeText(context, text, duration).show();
+    //this function makes calls to the view to change the progress bar visibility
+    private void loading(Boolean isLoading)
+    {
+        if (isLoading)
+        {
+            binding.progressBar.setVisibility(View.VISIBLE);
+        } else {
+            binding.progressBar.setVisibility(View.INVISIBLE);
         }
     }
-}
+
+    //internet connection test function for application startup
+    private void SignInTab(){
+        //when using a physical device add the internetIsConnected to the if statement
+        if (isNetworkConnected())
+        {
+            loading(true);
+            startActivity(new Intent(getApplicationContext(), signInActivity.class));
+        } else if (internetIsConnected())
+        {
+            loading(true);
+            startActivity(new Intent(getApplicationContext(), signInActivity.class));
+        } else
+        {
+            loading(false);
+            showToast();
+        }
+    }
+
+    //check if the application is on its first run after installation
+    private void checkFirstRun() {
+
+        final String PREFS_NAME = "MyPrefsFile";
+        final String PREF_VERSION_CODE_KEY = "version_code";
+        final int ABSENT = -1;
+
+        // Get current version code
+        int currentVersionCode = BuildConfig.VERSION_CODE;
+
+        // Get saved version code
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        int savedVersionCode = prefs.getInt(PREF_VERSION_CODE_KEY, ABSENT);
+
+        // Check for first run or upgrade
+        if (currentVersionCode == savedVersionCode) {
+
+            // This is just a normal run
+            SignInTab();
+
+        } else if (savedVersionCode == ABSENT) {
+
+            // This is a new install
+            startActivity(new Intent(getApplicationContext(), getStartedActivity.class));
+
+        } else if (currentVersionCode > savedVersionCode) {
+
+            //This is an upgrade
+            startActivity(new Intent(getApplicationContext(), getStartedActivity.class));
+        }
+
+        // Update the shared preferences with the current version code
+        prefs.edit().putInt(PREF_VERSION_CODE_KEY, currentVersionCode).apply();
+    }}

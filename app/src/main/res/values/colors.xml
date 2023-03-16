@@ -11,4 +11,7 @@
     <color name="received_message_bg">#090D16</color>
     <color name="empty_card">#808080</color>
     <color name="ic_launcher_background">#FFFFFF</color>
+    <color name="icon_blue">#3F87A2</color>
+    <color name="icon_red">#A11515</color>
+    <color name="light_navy_blue">#2E5A88</color>
 </resources>
