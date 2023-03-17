@@ -31,7 +31,7 @@ public class settingsActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), homeActivity.class));
                         break;
                     case R.id.chat:
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        startActivity(new Intent(getApplicationContext(), conversationChatActivity.class));
                         break;
                     case R.id.profile:
                         startActivity(new Intent(getApplicationContext(), userProfileActivity.class));

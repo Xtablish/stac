@@ -10,7 +10,7 @@ import com.stacit.stac.activities.utilities.Constants;
 import com.stacit.stac.activities.utilities.PreferenceManager;
 import com.stacit.stac.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class conversationChatActivity extends AppCompatActivity {
 
     @SuppressLint("NonConstantResourceId")
     @Override

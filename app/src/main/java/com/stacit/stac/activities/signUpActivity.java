@@ -100,7 +100,7 @@ public class signUpActivity extends AppCompatActivity {
                     preferenceManager.putString(Constants.KEY_LISTEN,"Active");
                     preferenceManager.putString(Constants.KEY_VOICE, "Alexa");
 
-                    //create an Intent to start the MainActivity (Conversation Page) if the account was created
+                    //create an Intent to start the conversationChatActivity (Conversation Page) if the account was created
                     Intent intent = new Intent(getApplicationContext(), homeActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);

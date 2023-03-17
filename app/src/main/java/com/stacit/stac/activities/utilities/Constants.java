@@ -15,4 +15,5 @@ public class Constants {
     public static final String KEY_VOICE = "voice";
     public static final String KEY_AI = "ai";
     public static final String KEY_COUNTRY = "country";
+    public static final String KEY_FCM_TOKEN = "tokenFCM";
 }
