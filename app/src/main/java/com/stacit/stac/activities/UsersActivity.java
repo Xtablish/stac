@@ -1,5 +1,6 @@
 package com.stacit.stac.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -8,15 +9,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.stacit.stac.activities.adapters.UsersAdapter;
+import com.stacit.stac.activities.listeners.UserListener;
 import com.stacit.stac.activities.models.User;
 import com.stacit.stac.activities.utilities.Constants;
 import com.stacit.stac.activities.utilities.PreferenceManager;
 import com.stacit.stac.databinding.ActivityUsersBinding;
+import com.stacit.stac.databinding.ConversationChatBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersActivity extends AppCompatActivity
+public class UsersActivity extends AppCompatActivity implements UserListener
 {
 
     //create an instance of the local activity binding class
@@ -75,7 +78,7 @@ public class UsersActivity extends AppCompatActivity
                         if (users.size() > 0)
                         {
                             //binding the users to the recycle view
-                            UsersAdapter usersAdapter = new UsersAdapter(users);
+                            UsersAdapter usersAdapter = new UsersAdapter(users, this);
                             binding.usersRecycleView.setAdapter(usersAdapter);
                             binding.usersRecycleView.setVisibility(View.VISIBLE);
                         }else
@@ -110,4 +113,11 @@ public class UsersActivity extends AppCompatActivity
         }
     }
 
+    @Override
+    public void onUserClicked(User user) {
+        Intent intent = new Intent(getApplicationContext(), conversationChatActivity.class);
+        intent.putExtra(Constants.KEY_USER, user);
+        startActivity(intent);
+        finish();
+    }
 }

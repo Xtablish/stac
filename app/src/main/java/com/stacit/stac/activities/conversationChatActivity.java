@@ -1,28 +1,36 @@
 package com.stacit.stac.activities;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.stacit.stac.activities.models.User;
 import com.stacit.stac.activities.utilities.Constants;
-import com.stacit.stac.activities.utilities.PreferenceManager;
 import com.stacit.stac.databinding.ConversationChatBinding;
 
-public class conversationChatActivity extends AppCompatActivity {
+public class conversationChatActivity extends AppCompatActivity
+{
 
-    @SuppressLint("NonConstantResourceId")
+    private ConversationChatBinding binding;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        com.stacit.stac.databinding.ConversationChatBinding binding = ConversationChatBinding.inflate(getLayoutInflater());
+        binding = ConversationChatBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        setListener();
+        loadReceiverDetails();
+    }
 
-        PreferenceManager preferenceManager = new PreferenceManager(getApplicationContext());
-        if (preferenceManager.getBoolean(Constants.KEY_IS_SIGNED_IN))
-        {
-            binding.imageBackBtn.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), homeActivity.class)));
-        }
+    private void loadReceiverDetails()
+    {
+        User receiverUser = (User) getIntent().getSerializableExtra(Constants.KEY_USER);
+        binding.textUsername.setText(receiverUser.name);
+    }
+
+    private void setListener()
+    {
+        binding.imageBackBtn.setOnClickListener(view -> onBackPressed());
     }
 }

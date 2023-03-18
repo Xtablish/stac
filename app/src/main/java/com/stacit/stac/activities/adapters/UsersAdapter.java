@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.stacit.stac.activities.listeners.UserListener;
 import com.stacit.stac.activities.models.User;
 import com.stacit.stac.databinding.UserItemContainerBinding;
 
@@ -18,12 +19,16 @@ import java.util.List;
 public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHolder>
 {
     //generated constructor for the UsersAdapter list
-    public UsersAdapter(List<User> users) {
+    public UsersAdapter(List<User> users, UserListener userListener) {
         this.users = users;
+        this.userListener = userListener;
     }
 
     //a call to the User list constructor
     private final List<User> users;
+
+    //an instantiation of the UserListener class
+    private final UserListener userListener;
 
     //creates a the view holder on the parent layout/view
     @NonNull
@@ -71,6 +76,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
             binding.textName.setText(user.name);
             binding.textEmail.setText(user.email);
             binding.imageProfile.setImageBitmap(getUserImage(user.image));
+            binding.getRoot().setOnClickListener(v -> userListener.onUserClicked(user));
         }
     }
 
