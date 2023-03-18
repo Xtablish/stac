@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.stacit.stac.activities.utilities.Constants;
 import com.stacit.stac.activities.utilities.PreferenceManager;
-import com.stacit.stac.databinding.ActivityMainBinding;
+import com.stacit.stac.databinding.ConversationChatBinding;
 
 public class conversationChatActivity extends AppCompatActivity {
 
@@ -16,7 +16,7 @@ public class conversationChatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        com.stacit.stac.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        com.stacit.stac.databinding.ConversationChatBinding binding = ConversationChatBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         PreferenceManager preferenceManager = new PreferenceManager(getApplicationContext());

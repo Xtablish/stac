@@ -15,21 +15,22 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.stacit.stac.activities.utilities.Constants;
 import com.stacit.stac.activities.utilities.PreferenceManager;
-import com.stacit.stac.databinding.ActivitySignOutBinding;
+import com.stacit.stac.databinding.ConversationMainBinding;
 
 import java.util.HashMap;
 
 public class conversationMainActivity extends AppCompatActivity
 {
 
-    private ActivitySignOutBinding binding;
+
+    private ConversationMainBinding binding;
     private PreferenceManager preferenceManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        binding = ActivitySignOutBinding.inflate(getLayoutInflater());
+         binding = ConversationMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         //creating an instance of the preferenceManager class
@@ -46,6 +47,7 @@ public class conversationMainActivity extends AppCompatActivity
     {
         //listens for an onClick event, if there is, a call will be made to the userSignOut function
         binding.imageSignOut.setOnClickListener(view -> userSignOut());
+        binding.fabNewContact.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), UsersActivity.class)));
     }
 
     private void getUserInfo()
@@ -90,7 +92,6 @@ public class conversationMainActivity extends AppCompatActivity
                 );
         //updating that userID
         documentReference.update(Constants.KEY_FCM_TOKEN, userToken)
-                .addOnSuccessListener(unused -> showToast("Token update success"))
                 .addOnFailureListener(e -> showToast("Token update failed"));
 
     }

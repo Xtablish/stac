@@ -23,17 +23,20 @@
         android:theme="@style/Theme.STAC"
         tools:targetApi="31">
         <activity
-            android:name=".signOutActivity"
+            android:name=".activities.UsersActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.conversationMainActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activities.settingsActivity"
-            android:exported="false" />
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activities.userProfileActivity"
-            android:exported="false" />
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activities.getStartedActivity"
-            android:exported="false" />
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activities.homeActivity"
             android:windowSoftInputMode="adjustResize" />
