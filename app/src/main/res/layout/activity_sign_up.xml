@@ -5,8 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipToPadding="false"
-    android:paddingLeft="@dimen/_24sdp"
-    android:paddingRight="@dimen/_24sdp"
     android:fillViewport="true"
     android:animateLayoutChanges="true"
     tools:context=".activities.signUpActivity">
@@ -22,60 +20,72 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.05"/>
+            app:layout_constraintGuide_percent="0.15"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidelineVertical2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.95"/>
+            app:layout_constraintGuide_percent="0.85"/>
 
         <View
-            android:id="@+id/viewBackBoardSignIn"
-            android:layout_width="0dp"
-            android:layout_height="271dp"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:background="@drawable/view_sunset_board"
+            android:id="@+id/headerBackground"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/primary"
             app:layout_constraintBottom_toTopOf="@id/inputName"
-            app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
 
         <TextView
             android:id="@+id/textCreateNewAccount"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="40dp"
             android:gravity="center"
             android:text="@string/signUp_create_account"
             android:textColor="@color/white"
             android:textSize="@dimen/_18ssp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
-            app:layout_constraintTop_toTopOf="@id/viewBackBoardSignIn"
-            app:layout_constraintVertical_bias="0.025" />
+            app:layout_constraintEnd_toStartOf="@id/layoutImage"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/viewBackBoardSignIn"
+            android:layout_width="196dp"
+            android:layout_height="144dp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:background="@drawable/stac_logo_small"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/headerBackground"
+            app:layout_constraintBottom_toTopOf="@id/inputName"
+            app:riv_corner_radius="@dimen/_14sdp" />
 
         <FrameLayout
             android:id="@+id/layoutImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/viewBackBoardSignIn"
-            app:layout_constraintStart_toStartOf="@id/viewBackBoardSignIn"
-            app:layout_constraintEnd_toEndOf="@id/viewBackBoardSignIn"
-            app:layout_constraintBottom_toBottomOf="@id/viewBackBoardSignIn">
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            app:layout_constraintTop_toTopOf="@id/headerBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/headerBackground">
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/imageProfile"
-                android:layout_width="@dimen/_80sdp"
-                android:layout_height="@dimen/_80sdp"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
                 android:background="@drawable/background_image"
                 android:scaleType="centerCrop"
-                app:riv_oval="true"/>
+                app:riv_corner_radius="@dimen/_12sdp"/>
 
             <TextView
                 android:id="@+id/textAddImage"
@@ -93,7 +103,7 @@
             android:layout_width="0dp"
             android:maxWidth="@dimen/_488sdp"
             android:layout_height="@dimen/_45sdp"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_150sdp"
             android:background="@drawable/background_input"
             android:hint="@string/name"
             android:imeOptions="actionNext"
@@ -103,7 +113,7 @@
             android:textColor="@color/primary_text"
             android:textSize="@dimen/_13ssp"
             android:autofillHints=""
-            app:layout_constraintTop_toBottomOf="@id/viewBackBoardSignIn"
+            app:layout_constraintTop_toBottomOf="@id/headerBackground"
             app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
             app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
             app:layout_constraintBottom_toTopOf="@id/inputEmail"

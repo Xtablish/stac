@@ -26,8 +26,8 @@
 
       <com.makeramen.roundedimageview.RoundedImageView
           android:id="@+id/imageProfile"
-          android:layout_width="@dimen/_25sdp"
-          android:layout_height="@dimen/_25sdp"
+          android:layout_width="@dimen/_30sdp"
+          android:layout_height="@dimen/_30sdp"
           android:layout_marginTop="@dimen/_16sdp"
           android:background="@drawable/background_image"
           android:scaleType="centerCrop"
@@ -35,7 +35,7 @@
           app:layout_constraintHorizontal_bias="0.905"
           app:layout_constraintStart_toEndOf="@id/imageInfoBtn"
           app:layout_constraintTop_toTopOf="parent"
-          app:riv_oval="true" />
+          app:riv_corner_radius="@dimen/_8sdp"/>
 
       <TextView
           android:id="@+id/textFeedBrief"
@@ -225,6 +225,7 @@
        android:contentDescription="@string/text_fab_button"
        android:src="@drawable/btn_fab_mic"
        app:borderWidth="0dp"
+       android:tint="@android:color/white"
        app:layout_anchor="@id/bottomAppBar"
        tools:ignore="RedundantDescriptionCheck" />
 

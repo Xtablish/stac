@@ -35,7 +35,7 @@
         android:backgroundTint="@color/icon_blue"
         android:contentDescription="@string/text_fab_button"
         android:src="@drawable/btn_fab_mic"
-        android:tint="@android:color/white"
+        android:tint="@color/white"
         app:borderWidth="0dp"
         app:layout_anchor="@id/bottomAppBar"
         tools:ignore="RedundantDescriptionCheck" />
@@ -55,15 +55,15 @@
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/imageProfile"
-                android:layout_width="@dimen/_80sdp"
-                android:layout_height="@dimen/_80sdp"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="@dimen/_31sdp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="@dimen/_25sdp"
                 android:background="@drawable/background_image"
                 android:scaleType="centerCrop"
-                app:riv_oval="true"
+                app:riv_corner_radius="@dimen/_14sdp"
                 tools:ignore="ImageContrastCheck" />
 
             <TextView
@@ -73,7 +73,7 @@
                 android:text="@string/text_good_morning"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="50dp"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_20ssp"
                 android:textStyle="normal"
@@ -86,7 +86,7 @@
                 android:text="@string/text_username"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="118dp"
+                android:layout_marginTop="90dp"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_16ssp"
                 android:textStyle="normal"

@@ -65,7 +65,7 @@
             android:textSize="@dimen/_14ssp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/imageBackBtn"
-            app:layout_constraintEnd_toEndOf="@id/imageInfo"
+            app:layout_constraintEnd_toStartOf="@id/imageInfo"
             app:layout_constraintStart_toEndOf="@id/imageBackBtn"
             app:layout_constraintTop_toTopOf="@id/imageBackBtn"/>
 
@@ -73,6 +73,7 @@
         android:id="@+id/viewSupport"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:background="@color/primary"
         android:layout_marginTop="@dimen/_12sdp"
         app:layout_constraintTop_toBottomOf="@id/imageBackBtn"/>
 
@@ -82,6 +83,7 @@
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:orientation="vertical"
+        app:stackFromEnd="true"
         android:overScrollMode="never"
         android:padding="@dimen/_20sdp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -97,7 +99,7 @@
         app:layout_constraintEnd_toEndOf="@id/viewBackground"
         app:layout_constraintStart_toStartOf="@id/viewBackground"
         app:layout_constraintTop_toTopOf="@id/viewBackground"
-        android:backgroundTint="@color/error"
+        android:indeterminateTint="@color/primary"
         android:visibility="invisible"/>
 
     <FrameLayout

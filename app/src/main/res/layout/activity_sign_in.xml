@@ -32,16 +32,17 @@
             app:layout_constraintGuide_percent="0.95"/>
 
 
-        <View
+        <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/viewBackBoardSignIn"
-            android:layout_width="0dp"
-            android:layout_height="271dp"
-            android:background="@drawable/view_sunset_board"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
-            app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
+            android:layout_width="196dp"
+            android:layout_height="144dp"
+            android:layout_marginTop="@dimen/_90sdp"
+            android:background="@drawable/stac_logo_small"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.1"/>
+            app:riv_corner_radius="@dimen/_14sdp" />
 
         <TextView
             android:id="@+id/textGreeting"
@@ -49,21 +50,21 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/welcome_message"
-            android:textColor="@color/white"
+            android:textColor="@color/primary_text"
             android:textSize="@dimen/_18ssp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
             app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/viewBackBoardSignIn"/>
+            app:layout_constraintBottom_toTopOf="@id/viewBackBoardSignIn"/>
 
         <TextView
             android:id="@+id/textInstruction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="3dp"
             android:text="@string/face_id"
-            android:textColor="@color/white"
+            android:textColor="@color/secondary_text"
             android:textSize="@dimen/_12ssp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
@@ -75,7 +76,7 @@
             android:id="@+id/inputEmail"
             android:layout_width="0dp"
             android:layout_height="@dimen/_45sdp"
-            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_35sdp"
             android:background="@drawable/background_input"
             android:hint="@string/email"
             android:imeOptions="actionNext"
