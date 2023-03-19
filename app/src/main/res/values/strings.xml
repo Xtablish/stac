@@ -48,4 +48,6 @@
     <string name="cont_des_country_image">image view for country card</string>
     <string name="text_type_a_message_hint">Type a message</string>
     <string name="text_select_user">Select Contact</string>
+    <string name="text_recent">Recent</string>
+    <string name="text_discover">Discover</string>
 </resources>

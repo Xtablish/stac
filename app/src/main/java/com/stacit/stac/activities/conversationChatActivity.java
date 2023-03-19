@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.view.View;
 
@@ -85,6 +87,7 @@ public class conversationChatActivity extends AppCompatActivity
                 .whereEqualTo(Constants.KEY_SENDER_ID, receiverUser.id)
                 .whereEqualTo(Constants.KEY_RECEIVER_ID, preferenceManager.getString(Constants.KEY_USER_ID))
                 .addSnapshotListener(eventListener);
+
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -134,6 +137,7 @@ public class conversationChatActivity extends AppCompatActivity
     {
         receiverUser = (User) getIntent().getSerializableExtra(Constants.KEY_USER);
         binding.textUsername.setText(receiverUser.name);
+        binding.imageProfile.setImageBitmap(getBitmapFromEncodedString(receiverUser.image));
     }
 
     private String getReadableDateTime(Date date)
@@ -141,9 +145,28 @@ public class conversationChatActivity extends AppCompatActivity
         return new SimpleDateFormat("MMMM dd, yyyy - hh:mm a", Locale.getDefault()).format(date);
     }
 
-    private void setListener()
-    {
+    private void setListener() {
         binding.imageBackBtn.setOnClickListener(view -> onBackPressed());
         binding.layoutSend.setOnClickListener(v -> sendMessage());
+
+        binding.inputMessage.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable)
+            {
+
+            }
+        });
+
     }
 }

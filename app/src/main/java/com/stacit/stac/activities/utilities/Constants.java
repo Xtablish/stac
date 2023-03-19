@@ -22,4 +22,5 @@ public class Constants {
     public static final String KEY_RECEIVER_ID = "receiverID";
     public static final String KEY_MESSAGE = "message";
     public static final String KEY_TIMESTAMP = "timestamp";
+    public static final String KEY_TYPING = "typing";
 }

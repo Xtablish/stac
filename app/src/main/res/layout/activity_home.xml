@@ -1,232 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
+    android:background="@color/black"
     tools:context=".activities.homeActivity">
 
-   <androidx.constraintlayout.widget.ConstraintLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:animateLayoutChanges="true">
+   <View
+       android:layout_width="0dp"
+       android:layout_height="0dp"
+       app:layout_constraintBottom_toTopOf="@id/bottomNavMenu"
+       app:layout_constraintEnd_toEndOf="parent"
+       android:background="@drawable/home_main_view_bg"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent">
 
-      <androidx.appcompat.widget.AppCompatImageView
-          android:id="@+id/imageInfoBtn"
-          android:layout_width="@dimen/_30sdp"
-          android:layout_height="@dimen/_30sdp"
-          android:layout_marginStart="@dimen/_16sdp"
-          android:layout_marginLeft="@dimen/_16sdp"
-          android:layout_marginTop="@dimen/_16sdp"
-          android:padding="@dimen/_5sdp"
-          android:src="@drawable/ic_info"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"/>
+   </View>
 
-      <com.makeramen.roundedimageview.RoundedImageView
-          android:id="@+id/imageProfile"
-          android:layout_width="@dimen/_30sdp"
-          android:layout_height="@dimen/_30sdp"
-          android:layout_marginTop="@dimen/_16sdp"
-          android:background="@drawable/background_image"
-          android:scaleType="centerCrop"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.905"
-          app:layout_constraintStart_toEndOf="@id/imageInfoBtn"
-          app:layout_constraintTop_toTopOf="parent"
-          app:riv_corner_radius="@dimen/_8sdp"/>
+   <androidx.appcompat.widget.AppCompatImageView
+       android:id="@+id/imageInfoBtn"
+       android:layout_width="@dimen/_30sdp"
+       android:layout_height="@dimen/_30sdp"
+       android:layout_marginStart="@dimen/_16sdp"
+       android:layout_marginTop="20dp"
+       android:padding="@dimen/_5sdp"
+       android:src="@drawable/ic_info"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.94"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintStart_toEndOf="@id/imageProfile"/>
 
-      <TextView
-          android:id="@+id/textFeedBrief"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="72dp"
-          android:text="Discover"
-          android:textColor="@color/primary_text"
-          android:textSize="@dimen/_20ssp"
-          android:textStyle="bold"
-          app:layout_constraintEnd_toStartOf="@id/imageProfile"
-          app:layout_constraintHorizontal_bias="1.0"
-          app:layout_constraintStart_toStartOf="@id/imageInfoBtn"
-          app:layout_constraintTop_toTopOf="parent" />
+   <com.makeramen.roundedimageview.RoundedImageView
+       android:id="@+id/imageProfile"
+       android:layout_width="@dimen/_30sdp"
+       android:layout_height="@dimen/_30sdp"
+       android:layout_marginStart="18dp"
+       android:layout_marginTop="20dp"
+       android:background="@drawable/background_image"
+       android:scaleType="centerCrop"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:riv_oval="true"
+       tools:ignore="ImageContrastCheck" />
 
-      <GridLayout
-          android:id="@+id/viewDiscover"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:columnCount="4"
-          android:rowCount="1"
-          android:layout_marginLeft="@dimen/_24sdp"
-          android:layout_marginRight="@dimen/_24sdp"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          android:layout_marginTop="@dimen/_10sdp"
-          app:layout_constraintTop_toBottomOf="@id/textFeedBrief">
+   <TextView
+       android:id="@+id/textFeedBrief"
+       android:layout_width="0dp"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="72dp"
+       android:text="@string/text_discover"
+       android:textColor="@color/primary_text"
+       android:textSize="@dimen/_20ssp"
+       android:textStyle="bold"
+       app:layout_constraintEnd_toStartOf="@id/imageInfoBtn"
+       app:layout_constraintHorizontal_bias="1.0"
+       app:layout_constraintStart_toStartOf="@id/imageProfile"
+       app:layout_constraintTop_toTopOf="parent" />
 
-         <androidx.cardview.widget.CardView
-             android:layout_width="80dp"
-             android:layout_height="150dp"
-             app:cardCornerRadius="@dimen/_8sdp"
-             android:layout_row="0"
-             android:layout_column="0"
-             android:layout_rowWeight="1"
-             android:layout_margin="@dimen/_10sdp"
-             android:layout_columnWeight="1"
-             app:cardElevation="4dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:orientation="vertical">
-
-               <ImageView
-                   android:id="@+id/prefLanguageImage"
-                   android:layout_width="60dp"
-                   android:layout_height="60dp"
-                   android:layout_gravity="center"
-                   android:contentDescription="@string/cont_des_language_image"
-                   android:src="@drawable/ic_profile_ai" />
-
-               <TextView
-                   android:id="@+id/prefLanguage"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:text="@string/text_english"
-                   android:textColor="@color/primary_text"
-                   android:textSize="18sp"
-                   android:textStyle="bold" />
-
-            </LinearLayout>
-
-         </androidx.cardview.widget.CardView>
-         <androidx.cardview.widget.CardView
-             android:layout_width="80dp"
-             android:layout_height="150dp"
-             app:cardCornerRadius="@dimen/_8sdp"
-             android:layout_row="0"
-             android:layout_column="1"
-             android:layout_rowWeight="1"
-             android:layout_margin="@dimen/_10sdp"
-             android:layout_columnWeight="1"
-             app:cardElevation="4dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:orientation="vertical">
-
-               <ImageView
-                   android:id="@+id/prefLanguageImager"
-                   android:layout_width="60dp"
-                   android:layout_height="60dp"
-                   android:layout_gravity="center"
-                   android:contentDescription="@string/cont_des_language_image"
-                   android:src="@drawable/ic_profile_listening" />
-
-               <TextView
-                   android:id="@+id/prefCardLanguage"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:text="@string/text_english"
-                   android:textColor="@color/primary_text"
-                   android:textSize="18sp"
-                   android:textStyle="bold" />
-
-            </LinearLayout>
-
-         </androidx.cardview.widget.CardView>
-         <androidx.cardview.widget.CardView
-             android:layout_width="80dp"
-             android:layout_height="150dp"
-             app:cardCornerRadius="@dimen/_8sdp"
-             android:layout_row="0"
-             android:layout_column="2"
-             android:layout_rowWeight="1"
-             android:layout_margin="@dimen/_10sdp"
-             android:layout_columnWeight="1"
-             app:cardElevation="4dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:orientation="vertical">
-
-               <ImageView
-                   android:id="@+id/prefLanguageImager1"
-                   android:layout_width="60dp"
-                   android:layout_height="60dp"
-                   android:layout_gravity="center"
-                   android:contentDescription="@string/cont_des_language_image"
-                   android:src="@drawable/ic_profile_face_id" />
-
-               <TextView
-                   android:id="@+id/prefCardLanguage1"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:text="@string/text_english"
-                   android:textColor="@color/primary_text"
-                   android:textSize="18sp"
-                   android:textStyle="bold" />
-
-            </LinearLayout>
-
-         </androidx.cardview.widget.CardView>
-
-      </GridLayout>
-
-      <TextView
-          android:id="@+id/textFeedSuggestion"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="25dp"
-          android:text="Recent"
-          android:textColor="@color/primary_text"
-          android:textSize="@dimen/_16ssp"
-          android:textStyle="bold"
-          app:layout_constraintEnd_toStartOf="@id/imageProfile"
-          app:layout_constraintHorizontal_bias="1.0"
-          app:layout_constraintStart_toStartOf="@id/imageInfoBtn"
-          app:layout_constraintTop_toBottomOf="@id/viewDiscover" />
-
-   </androidx.constraintlayout.widget.ConstraintLayout>
-
-   <com.google.android.material.bottomappbar.BottomAppBar
-       android:id="@+id/bottomAppBar"
+   <GridLayout
+       android:id="@+id/viewDiscover"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:layout_gravity="bottom"
-       app:fabCradleMargin="20dp"
-       app:fabCradleRoundedCornerRadius="20dp"
-       app:addElevationShadow="false"
-       app:fabCradleVerticalOffset="10dp">
+       android:overScrollMode="ifContentScrolls"
+       android:scrollbarAlwaysDrawHorizontalTrack="false"
+       android:scrollbarFadeDuration="@integer/material_motion_duration_long_1"
+       android:columnCount="4"
+       android:rowCount="1"
+       android:layout_marginLeft="@dimen/_24sdp"
+       android:layout_marginRight="@dimen/_24sdp"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       android:layout_marginTop="@dimen/_10sdp"
+       app:layout_constraintTop_toBottomOf="@id/textFeedBrief">
 
-      <com.google.android.material.bottomnavigation.BottomNavigationView
-          android:id="@+id/bottomNavMenu"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginEnd="16dp"
-          app:menu="@menu/navbar_buttons"
-          android:background="@drawable/transparent_background"/>
+      <androidx.cardview.widget.CardView
+          android:layout_width="80dp"
+          android:layout_height="150dp"
+          app:cardCornerRadius="@dimen/_8sdp"
+          android:layout_row="0"
+          android:layout_column="0"
+          android:layout_rowWeight="1"
+          android:layout_margin="@dimen/_10sdp"
+          android:layout_columnWeight="1"
+          app:cardElevation="4dp">
 
-   </com.google.android.material.bottomappbar.BottomAppBar>
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_marginTop="@dimen/_30sdp"
+             android:orientation="vertical"
+             tools:ignore="UseCompoundDrawables">
 
-   <com.google.android.material.floatingactionbutton.FloatingActionButton
-       android:id="@+id/fabButton"
-       android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/prefLanguageImage"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/cont_des_language_image"
+                android:src="@drawable/ic_profile_ai"
+                tools:ignore="VisualLintBounds" />
+
+            <TextView
+                android:id="@+id/prefLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/text_english"
+                android:textColor="@color/primary_text"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="VisualLintBounds" />
+
+         </LinearLayout>
+
+      </androidx.cardview.widget.CardView>
+      <androidx.cardview.widget.CardView
+          android:layout_width="80dp"
+          android:layout_height="150dp"
+          app:cardCornerRadius="@dimen/_8sdp"
+          android:layout_row="0"
+          android:layout_column="1"
+          android:layout_rowWeight="1"
+          android:layout_margin="@dimen/_10sdp"
+          android:layout_columnWeight="1"
+          app:cardElevation="4dp">
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_marginTop="@dimen/_30sdp"
+             android:orientation="vertical"
+             tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/prefLanguageImager"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/cont_des_language_image"
+                android:src="@drawable/ic_profile_listening"
+                tools:ignore="VisualLintBounds" />
+
+            <TextView
+                android:id="@+id/prefCardLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/text_english"
+                android:textColor="@color/primary_text"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="VisualLintBounds" />
+
+         </LinearLayout>
+
+      </androidx.cardview.widget.CardView>
+      <androidx.cardview.widget.CardView
+          android:layout_width="80dp"
+          android:layout_height="150dp"
+          app:cardCornerRadius="@dimen/_8sdp"
+          android:layout_row="0"
+          android:layout_column="2"
+          android:layout_rowWeight="1"
+          android:layout_margin="@dimen/_10sdp"
+          android:layout_columnWeight="1"
+          app:cardElevation="4dp">
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_marginTop="@dimen/_30sdp"
+             android:orientation="vertical"
+             tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/prefLanguageImager1"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/cont_des_language_image"
+                android:src="@drawable/ic_profile_face_id"
+                tools:ignore="VisualLintBounds" />
+
+            <TextView
+                android:id="@+id/prefCardLanguage1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/text_english"
+                android:textColor="@color/primary_text"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="VisualLintBounds" />
+
+         </LinearLayout>
+
+      </androidx.cardview.widget.CardView>
+
+   </GridLayout>
+
+   <TextView
+       android:id="@+id/textFeedSuggestion"
+       android:layout_width="0dp"
        android:layout_height="wrap_content"
-       android:backgroundTint="@color/icon_blue"
-       android:contentDescription="@string/text_fab_button"
-       android:src="@drawable/btn_fab_mic"
-       app:borderWidth="0dp"
-       android:tint="@android:color/white"
-       app:layout_anchor="@id/bottomAppBar"
-       tools:ignore="RedundantDescriptionCheck" />
+       android:layout_marginTop="25dp"
+       android:text="@string/text_recent"
+       android:textColor="@color/primary_text"
+       android:textSize="@dimen/_16ssp"
+       android:textStyle="bold"
+       app:layout_constraintEnd_toStartOf="@id/imageInfoBtn"
+       app:layout_constraintHorizontal_bias="1.0"
+       app:layout_constraintStart_toStartOf="@id/imageProfile"
+       app:layout_constraintTop_toBottomOf="@id/viewDiscover" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/chatRecycle"
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:clipToPadding="false"
+       android:orientation="vertical"
+       app:stackFromEnd="false"
+       android:overScrollMode="never"
+       android:padding="@dimen/_16sdp"
+       app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+       app:layout_constraintBottom_toTopOf="@id/bottomNavMenu"
+       app:layout_constraintTop_toBottomOf="@id/textFeedSuggestion"
+       android:visibility="gone"/>
+
+
+   <com.google.android.material.bottomnavigation.BottomNavigationView
+       android:id="@+id/bottomNavMenu"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:itemIconTint="@color/white"
+       app:itemTextColor="@color/white"
+       app:menu="@menu/navbar_buttons"
+       android:background="@drawable/transparent_background"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       tools:ignore="VisualLintBottomNav" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
