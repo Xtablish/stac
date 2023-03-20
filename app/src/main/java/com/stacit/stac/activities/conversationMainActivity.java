@@ -1,5 +1,6 @@
 package com.stacit.stac.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,6 +18,7 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.stacit.stac.R;
 import com.stacit.stac.activities.adapters.RecentConversationsAdapter;
 import com.stacit.stac.activities.listeners.ConversionListener;
 import com.stacit.stac.activities.models.ChatMessage;
@@ -26,7 +28,6 @@ import com.stacit.stac.activities.utilities.PreferenceManager;
 import com.stacit.stac.databinding.ConversationMainBinding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -40,12 +41,34 @@ public class conversationMainActivity extends AppCompatActivity implements Conve
     private RecentConversationsAdapter conversationsAdapter;
     private FirebaseFirestore database;
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
          binding = ConversationMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        //on click listener for the navigation bar
+        binding.bottomNavMenu.setOnItemSelectedListener(item -> {
+            switch (item.getItemId())
+            {
+                case R.id.home:
+                    startActivity(new Intent(getApplicationContext(), homeActivity.class));
+                    break;
+                case R.id.chat:
+                    startActivity(new Intent(getApplicationContext(), conversationMainActivity.class));
+                    break;
+                case R.id.profile:
+                    startActivity(new Intent(getApplicationContext(), userProfileActivity.class));
+                    break;
+                case R.id.settings:
+                    startActivity(new Intent(getApplicationContext(), settingsActivity.class));
+                    break;
+            }
+            return true;
+        });
+
         //call the initialization function
         init();
         //creating an instance of the preferenceManager class
@@ -72,7 +95,7 @@ public class conversationMainActivity extends AppCompatActivity implements Conve
     {
         //listens for an onClick event, if there is, a call will be made to the userSignOut function
         binding.imageSignOut.setOnClickListener(view -> userSignOut());
-        binding.fabNewContact.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), UsersActivity.class)));
+        binding.imageAddContact.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), UsersActivity.class)));
     }
 
     private void getUserInfo()
@@ -97,6 +120,7 @@ public class conversationMainActivity extends AppCompatActivity implements Conve
                 .addSnapshotListener(eventListener);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private final EventListener<QuerySnapshot> eventListener = (value, error) ->
     {
         //this function updates the chatMessage properties for each message
@@ -149,7 +173,7 @@ public class conversationMainActivity extends AppCompatActivity implements Conve
                     }
                 }
             }
-            Collections.sort(conversations, (obj1, obj2) -> obj2.dateObject.compareTo(obj1.dateObject));
+            conversations.sort((obj1, obj2) -> obj2.dateObject.compareTo(obj1.dateObject));
             conversationsAdapter.notifyDataSetChanged();
             binding.conversationRecycleView.smoothScrollToPosition(0);
             binding.conversationRecycleView.setVisibility(View.VISIBLE);

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="@color/black"
+    android:background="@color/send_message_bg"
     tools:context=".activities.homeActivity">
 
    <View
@@ -100,6 +100,7 @@
                 android:layout_gravity="center"
                 android:contentDescription="@string/cont_des_language_image"
                 android:src="@drawable/ic_profile_ai"
+                app:tint="@color/error"
                 tools:ignore="VisualLintBounds" />
 
             <TextView
@@ -141,6 +142,7 @@
                 android:layout_gravity="center"
                 android:contentDescription="@string/cont_des_language_image"
                 android:src="@drawable/ic_profile_listening"
+                app:tint="@color/send_message_bg"
                 tools:ignore="VisualLintBounds" />
 
             <TextView
@@ -227,6 +229,8 @@
        android:padding="@dimen/_16sdp"
        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
        app:layout_constraintBottom_toTopOf="@id/bottomNavMenu"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintTop_toBottomOf="@id/textFeedSuggestion"
        android:visibility="gone"/>
 
