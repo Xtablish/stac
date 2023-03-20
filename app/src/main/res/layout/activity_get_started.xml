@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="@drawable/stac_getting_started"
+    android:background="@color/white"
     tools:context=".activities.getStartedActivity">
 
     <androidx.constraintlayout.widget.Guideline
@@ -21,26 +21,24 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.8"/>
 
-
-    <TextView
-        android:id="@+id/textIntro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="232dp"
-        android:text="@string/text_dare_to_defy"
-        android:textColor="@color/primary_text"
-        android:textSize="@dimen/_20ssp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_gravity="center"
+        android:visibility="invisible"
+        android:indeterminateTint="@color/primary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
+        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"/>
 
     <FrameLayout
         android:id="@+id/imageIconFrame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_100sdp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="@dimen/_31sdp"
         app:layout_constraintEnd_toEndOf="parent">
@@ -50,38 +48,75 @@
             android:layout_height="132dp"
             android:background="@drawable/stac_logo_small"
             android:scaleType="centerCrop"
-            app:riv_oval="true"/>
+            app:riv_oval="true" />
 
     </FrameLayout>
+
+    <TextView
+        android:id="@+id/textAboutMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_stac_about_message"
+        android:textStyle="normal"
+        android:textSize="@dimen/_14ssp"
+        android:maxLines="2"
+        android:gravity="center"
+        android:textColor="@color/primary_text"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:layout_constraintTop_toBottomOf="@id/textAppStac"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <FrameLayout
         android:id="@+id/btnSignInFrame"
         android:layout_width="0dp"
         android:maxWidth="@dimen/_488sdp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_90sdp"
+        android:layout_marginTop="@dimen/_50sdp"
         android:animateLayoutChanges="true"
-        app:layout_constraintTop_toBottomOf="@id/imageIconFrame"
+        app:layout_constraintTop_toBottomOf="@id/textAboutMessage"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
-        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2">
+        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
+        tools:ignore="VisualLintBounds">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnGetStarted"
+            android:id="@+id/btnSignIn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
-            android:text="@string/text_get_started"
+            android:text="@string/sign_in"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/send_message_bg"
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"
+            android:maxWidth="@dimen/_320sdp"
+            app:cornerRadius="@dimen/_6sdp"
+            tools:ignore="VisualLintButtonSize" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/btnSignUpFrame"
+        android:layout_width="0dp"
+        android:maxWidth="@dimen/_488sdp"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        app:layout_constraintTop_toBottomOf="@id/btnSignInFrame"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
+        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
+        tools:ignore="VisualLintBounds">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:text="@string/sign_up"
             android:textColor="@color/white"
             android:textSize="@dimen/_13ssp"
             android:textStyle="bold"
             android:maxWidth="@dimen/_320sdp"
-            app:cornerRadius="@dimen/_10sdp"/>
+            app:cornerRadius="@dimen/_6sdp"
+            tools:ignore="VisualLintButtonSize" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="@dimen/_25sdp"
-            android:layout_gravity="center"
-            android:visibility="invisible"/>
 
     </FrameLayout>
 
