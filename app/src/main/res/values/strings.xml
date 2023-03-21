@@ -51,5 +51,6 @@
     <string name="text_recent">Recent</string>
     <string name="text_discover">Discover</string>
     <string name="text_stac_about_message">Simultaneous Translation \n And Communication</string>
-    <string name="messages">Messages</string>
+    <string name="messages">Chats</string>
+    <string name="text_new_chat">New Chat</string>
 </resources>

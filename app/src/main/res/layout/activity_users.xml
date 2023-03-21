@@ -5,36 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="@color/white"
+    android:background="@color/primary"
     tools:context=".activities.UsersActivity">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/home_main_view_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <View
         android:id="@+id/headerBackground"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/primary"
+        android:layout_height="0.9dp"
+        android:background="@color/input_background"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_marginTop="@dimen/_30sdp"
+        app:layout_constraintTop_toBottomOf="@id/imageBackBtn"/>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageBackBtn"
-        android:layout_width="@dimen/_30sdp"
-        android:layout_height="@dimen/_30sdp"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
         android:padding="@dimen/_6sdp"
-        android:background="@color/primary"
-        android:layout_marginStart="@dimen/_16sdp"
-        android:layout_marginLeft="@dimen/_16sdp"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:src="@drawable/ic_back"
-        android:tint="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/white"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:src="@drawable/ic_cancel"
+        android:tint="@color/primary"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
+        android:id="@+id/textNewChat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_select_user"
-        android:textColor="@color/white"
+        android:text="@string/text_new_chat"
+        android:textColor="@color/primary"
         android:textSize="@dimen/_14ssp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/imageBackBtn"
@@ -42,13 +52,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/imageBackBtn"/>
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/contactSearchView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/_6sdp"
+        android:background="@drawable/search_view_background"
+        app:queryHint="Search"
+        app:iconifiedByDefault="false"
+        app:queryBackground="@null"
+        app:layout_constraintTop_toBottomOf="@id/textNewChat"
+        app:layout_constraintBottom_toBottomOf="@id/headerBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/imageBackBtn" />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_16sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageBackBtn"
-        android:background="@drawable/content_background_bottom">
+        app:layout_constraintBottom_toTopOf="@id/bottomNavMenu"
+        app:layout_constraintTop_toBottomOf="@id/headerBackground"
+        android:background="@drawable/home_main_view_bg">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/usersRecycleView"
@@ -81,5 +104,18 @@
             android:visibility="gone"/>
 
     </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/navbar_buttons"
+        android:background="@drawable/transparent_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="VisualLintBottomNav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

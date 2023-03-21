@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="@color/send_message_bg"
+    android:background="@color/primary"
     tools:context=".activities.conversationMainActivity">
 
     <View
@@ -15,9 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/home_main_view_bg"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </View>
+        app:layout_constraintTop_toTopOf="parent"/>
 
 
     <com.makeramen.roundedimageview.RoundedImageView
@@ -48,9 +46,9 @@
         android:layout_marginStart="@dimen/_8sdp"
         android:layout_marginEnd="@dimen/_8sdp"
         android:ellipsize="end"
-        android:gravity="center"
+        android:gravity="start"
         android:maxLines="1"
-        android:textColor="@color/primary_text"
+        android:textColor="@color/secondary_text"
         android:textStyle="bold"
         android:text="@string/messages"
         android:textSize="@dimen/_14ssp"
@@ -65,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_8sdp"
         android:layout_marginEnd="@dimen/_8sdp"
-        android:ellipsize="end"
+        android:ellipsize="start"
         android:gravity="center"
         android:maxLines="1"
         android:textColor="@color/primary_text"
