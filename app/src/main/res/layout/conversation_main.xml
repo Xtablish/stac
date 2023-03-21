@@ -64,7 +64,7 @@
         android:layout_marginStart="@dimen/_8sdp"
         android:layout_marginEnd="@dimen/_8sdp"
         android:ellipsize="start"
-        android:gravity="center"
+        android:gravity="start"
         android:maxLines="1"
         android:textColor="@color/primary_text"
         android:textStyle="bold"
