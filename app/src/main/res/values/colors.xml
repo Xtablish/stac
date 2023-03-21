@@ -17,4 +17,5 @@
     <color name="light_navy_blue">#2E5A88</color>
     <color name="light_grey">#D3D3D3</color>
     <color name="black">#000000</color>
+    <color name="online_green">#008000</color>
 </resources>

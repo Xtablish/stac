@@ -121,7 +121,7 @@
                 android:layout_gravity="center"
                 android:visibility="invisible"
                 android:backgroundTint="@color/primary"
-                android:indeterminateTint="@color/error"/>
+                android:indeterminateTint="@color/primary"/>
 
         </FrameLayout>
 

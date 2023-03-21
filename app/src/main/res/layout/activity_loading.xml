@@ -50,7 +50,7 @@
         tools:ignore="InvalidId"
         android:indeterminate="true"
         android:indeterminateTintMode="src_atop"
-        android:indeterminateTint="@color/error"
+        android:indeterminateTint="@color/primary"
         app:layout_constraintTop_toBottomOf="@id/textLoadStac"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

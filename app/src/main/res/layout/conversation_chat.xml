@@ -15,6 +15,8 @@
         app:layout_constraintBottom_toTopOf="@id/viewSupportBottom"
         app:layout_constraintTop_toTopOf="parent"/>
 
+
+
     <View
         android:id="@+id/headerBackground"
         android:layout_width="match_parent"
@@ -34,6 +36,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:riv_oval="true"
+        tools:ignore="ImageContrastCheck" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/imageOnlineStatus"
+        android:layout_width="@dimen/_7sdp"
+        android:layout_height="@dimen/_7sdp"
+        android:background="@drawable/online_circle_background"
+        android:scaleType="centerCrop"
+        android:layout_marginStart="@dimen/_22sdp"
+        android:layout_marginTop="@dimen/_33sdp"
+        app:layout_constraintStart_toStartOf="@id/imageProfile"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_oval="true"
+        android:visibility="invisible"
         tools:ignore="ImageContrastCheck" />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -97,7 +113,7 @@
             app:layout_constraintTop_toTopOf="@id/imageProfile"/>
 
     <TextView
-        android:id="@+id/textTypingStatus"
+        android:id="@+id/textAvailabilityStatus"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:maxLines="1"

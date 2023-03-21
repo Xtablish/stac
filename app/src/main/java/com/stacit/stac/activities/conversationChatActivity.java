@@ -3,14 +3,11 @@ package com.stacit.stac.activities;
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
 import android.view.View;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.DocumentChange;
@@ -33,8 +30,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
-public class conversationChatActivity extends AppCompatActivity
+public class conversationChatActivity extends BaseActivity
 {
 
     private ConversationChatBinding binding;
@@ -43,6 +41,7 @@ public class conversationChatActivity extends AppCompatActivity
     private ChatAdapter chatAdapter;
     private PreferenceManager preferenceManager;
     private FirebaseFirestore database;
+    private Boolean isReceiverAvailable = false;
     private String conversationId = null;
 
     @Override
@@ -57,6 +56,7 @@ public class conversationChatActivity extends AppCompatActivity
         listenMessages();
     }
 
+    //initializes key components for other functions
     private void init()
     {
         preferenceManager = new PreferenceManager(getApplicationContext());
@@ -70,6 +70,7 @@ public class conversationChatActivity extends AppCompatActivity
         database = FirebaseFirestore.getInstance();
     }
 
+    //takes the text from the EditText input and pushes it to the database
     private void sendMessage()
     {
         HashMap<String, Object> message = new HashMap<>();
@@ -99,6 +100,41 @@ public class conversationChatActivity extends AppCompatActivity
         binding.inputMessage.setText(null);
     }
 
+    //checks if the receiver is online or not
+    @SuppressLint("SetTextI18n")
+    private void listenAvailabilityOfReceiver()
+    {
+        database.collection(Constants.KEY_COLLECTION_USERS).document(
+                receiverUser.id
+        ).addSnapshotListener(conversationChatActivity.this, (value, error) -> {
+            if (error != null)
+            {
+                return;
+            }
+            if (value != null)
+            {
+                if (value.getLong(Constants.KEY_AVAILABILITY) != null)
+                {
+                    int availability = Objects.requireNonNull(
+                            value.getLong(Constants.KEY_AVAILABILITY)
+                    ).intValue();
+                    isReceiverAvailable = availability == 1;
+                }
+            }
+            if (isReceiverAvailable)
+            {
+                binding.textAvailabilityStatus.setText("Online");
+                binding.imageOnlineStatus.setVisibility(View.VISIBLE);
+            }
+            else
+            {
+                binding.textAvailabilityStatus.setText("Offline");
+                binding.imageOnlineStatus.setVisibility(View.INVISIBLE);
+            }
+        });
+    }
+
+    //this function uses the eventListener to query data associate with the current sender and receiver
     private void listenMessages()
     {
         database.collection(Constants.KEY_COLLECTION_CHAT)
@@ -113,6 +149,7 @@ public class conversationChatActivity extends AppCompatActivity
 
     }
 
+    //this is an eventListener for the database query changes
     @SuppressLint("NotifyDataSetChanged")
     private final EventListener<QuerySnapshot> eventListener = (value, error) ->
     {
@@ -135,7 +172,6 @@ public class conversationChatActivity extends AppCompatActivity
                     chatMessage.dateObject = documentChange.getDocument().getDate(Constants.KEY_TIMESTAMP);
                     chatMessages.add(chatMessage);
                 }
-
             }
             chatMessages.sort(Comparator.comparing(obj -> obj.dateObject));
             if (count == 0)
@@ -155,12 +191,15 @@ public class conversationChatActivity extends AppCompatActivity
             checkForConversion();
         }
     };
+
+    //converts the encoded string data into a bitmap image using Base64 algorithm
     private Bitmap getBitmapFromEncodedString(String encodedImage)
     {
         byte [] bytes = Base64.decode(encodedImage, Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
     }
 
+    //updates the view with the receiver information
     private void loadReceiverDetails()
     {
         receiverUser = (User) getIntent().getSerializableExtra(Constants.KEY_USER);
@@ -168,11 +207,13 @@ public class conversationChatActivity extends AppCompatActivity
         binding.imageProfile.setImageBitmap(getBitmapFromEncodedString(receiverUser.image));
     }
 
+    //converts the date and time into a readable format
     private String getReadableDateTime(Date date)
     {
         return new SimpleDateFormat("MMMM dd, yyyy - hh:mm a", Locale.getDefault()).format(date);
     }
 
+    //binding listeners for onClick events from the view
     private void setListener() {
         binding.imageBackBtn.setOnClickListener(view -> onBackPressed());
         binding.layoutSend.setOnClickListener(v -> sendMessage());
@@ -198,6 +239,7 @@ public class conversationChatActivity extends AppCompatActivity
 
     }
 
+    //adds the conversion of the conversation data into the database conversations collection
     private void addConversion(HashMap<String, Object> conversion)
     {
         database.collection(Constants.KEY_COLLECTION_CONVERSATIONS)
@@ -205,6 +247,7 @@ public class conversationChatActivity extends AppCompatActivity
                 .addOnSuccessListener(documentReference -> conversationId = documentReference.getId());
     }
 
+    //updates the conversation to the last sent or received message
     private void updateConversation(String message)
     {
         DocumentReference documentReference =
@@ -215,6 +258,7 @@ public class conversationChatActivity extends AppCompatActivity
         );
     }
 
+    //checks the database to see if any new message is for the sender or receiver
     private void checkForConversion()
     {
         if (chatMessages.size() != 0)
@@ -230,6 +274,7 @@ public class conversationChatActivity extends AppCompatActivity
         }
     }
 
+    //checks the database for new conversations
     private void checkForConversionRemotely(String senderId, String receiverId)
     {
         database.collection(Constants.KEY_COLLECTION_CONVERSATIONS)
@@ -239,6 +284,7 @@ public class conversationChatActivity extends AppCompatActivity
                 .addOnCompleteListener(conversationOnCompleteListener);
     }
 
+    //OnComplete Listener to check if the query from the database isn't empty
     private final OnCompleteListener<QuerySnapshot> conversationOnCompleteListener = task ->
     {
         if (task.isSuccessful() && task.getResult() != null && task.getResult().getDocuments().size() > 0)
@@ -247,4 +293,12 @@ public class conversationChatActivity extends AppCompatActivity
             conversationId = documentSnapshot.getId();
         }
     };
+
+
+    //overriding and  updating the onResume function from the BaseActivity
+    @Override
+    protected void onResume() {
+        super.onResume();
+        listenAvailabilityOfReceiver();
+    }
 }

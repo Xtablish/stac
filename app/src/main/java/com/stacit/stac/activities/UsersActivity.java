@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.stacit.stac.activities.adapters.UsersAdapter;
@@ -14,12 +12,11 @@ import com.stacit.stac.activities.models.User;
 import com.stacit.stac.activities.utilities.Constants;
 import com.stacit.stac.activities.utilities.PreferenceManager;
 import com.stacit.stac.databinding.ActivityUsersBinding;
-import com.stacit.stac.databinding.ConversationChatBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersActivity extends AppCompatActivity implements UserListener
+public class UsersActivity extends BaseActivity implements UserListener
 {
 
     //create an instance of the local activity binding class
