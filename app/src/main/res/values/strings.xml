@@ -53,4 +53,7 @@
     <string name="text_stac_about_message">Simultaneous Translation \n And Communication</string>
     <string name="messages">Chats</string>
     <string name="text_new_chat">New Chat</string>
+    <string name="text_results">Results</string>
+    <string name="text_accounts">Accounts</string>
+    <string name="text_online">Online</string>
 </resources>

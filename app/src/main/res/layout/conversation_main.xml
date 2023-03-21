@@ -106,11 +106,85 @@
         tools:ignore="RtlHardcoded,VisualLintBounds" />
 
     <FrameLayout
+        android:id="@+id/usersActiveView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/viewSupport"
+        android:background="@color/white"
+        android:visibility="invisible">
+
+        <TextView
+            android:id="@+id/textUsersActive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_online"
+            android:layout_margin="@dimen/_8sdp"
+            android:textStyle="bold"
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/secondary_text"
+            tools:ignore="VisualLintBounds" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/usersActiveRecycleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            android:layout_marginTop="@dimen/_28sdp"
+            android:paddingTop="@dimen/_8sdp"
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingBottom="@dimen/_8sdp"
+            android:paddingEnd="@dimen/_20sdp"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+        <ProgressBar
+            android:id="@+id/progressBarActiveUsers"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:indeterminateTint="@color/primary"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/textErrorMessageActiveUsers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/_24sdp"
+            android:layout_marginEnd="@dimen/_24sdp"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/_12ssp"
+            android:visibility="gone"/>
+
+    </FrameLayout>
+
+    <View
+        android:id="@+id/activeUsersBottomLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/input_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/usersActiveView"
+        android:visibility="gone"/>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/home_main_view_bg"
         app:layout_constraintBottom_toTopOf="@id/bottomNavMenu"
-        app:layout_constraintTop_toBottomOf="@id/viewSupport">
+        app:layout_constraintTop_toBottomOf="@id/activeUsersBottomLine">
+
+        <TextView
+            android:id="@+id/textRecentChat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_recent"
+            android:layout_margin="@dimen/_8sdp"
+            android:textStyle="bold"
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/secondary_text"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/conversationRecycleView"
@@ -119,7 +193,11 @@
             android:clipToPadding="false"
             android:orientation="vertical"
             android:overScrollMode="never"
-            android:padding="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_28sdp"
+            android:paddingTop="@dimen/_8sdp"
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingBottom="@dimen/_8sdp"
+            android:paddingEnd="@dimen/_20sdp"
             android:visibility="gone"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
