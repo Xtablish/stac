@@ -3,15 +3,15 @@ package com.stacit.stac.activities.utilities;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class PreferenceManager {
-
+public class StacManager
+{
     //an instance of the built in SharedPreferences class
     private final SharedPreferences sharedPreferences;
 
     //default method to this class
-    public PreferenceManager(Context context)
+    public StacManager(Context context)
     {
-        sharedPreferences = context.getSharedPreferences(Constants.KEY_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences(STAC.KEY_PREFERENCE_NAME, Context.MODE_PRIVATE);
     }
 
     //modifies a string

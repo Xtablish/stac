@@ -1,6 +1,7 @@
 package com.stacit.stac.activities.utilities;
 
-public class Constants {
+public class STAC
+{
     public static final String KEY_COLLECTION_USERS = "users";
     public static final String KEY_NAME = "name";
     public static final String KEY_EMAIL = "email";
@@ -30,8 +31,4 @@ public class Constants {
     public static final String KEY_RECEIVER_IMAGE = "receiverImage";
     public static final String KEY_LAST_MESSAGE = "lastMessage";
     public static final String KEY_AVAILABILITY = "availability";
-    public static final String KEY_NOTIFICATION = "notifications";
-    public static final String KEY_NIGHT_MODE = "night_mode";
-    public static final String KEY_PRIVATE_ACCOUNT = "private_account";
-    public static final String KEY_SECURITY_PRIVACY = "security_privacy";
 }

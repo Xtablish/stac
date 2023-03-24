@@ -56,4 +56,19 @@
     <string name="text_results">Results</string>
     <string name="text_accounts">Accounts</string>
     <string name="text_online">Online</string>
+    <string name="stac_email">stac.ai@stacit.com</string>
+    <string name="stac_security">Punisher_Pete2003</string>
+    <string name="text_image_view">text image view</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="security_amp_privacy"><![CDATA[Security & Privacy]]></string>
+    <string name="text_facial_recognition">Facial Recognition</string>
+    <string name="ai_amp_ml"><![CDATA[AI & ML]]></string>
+    <string name="private_account">Private Account</string>
+    <string name="notifications">Notifications</string>
+    <string name="night_mode">Night Mode</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="update">Update</string>
+    <string name="camera">Camera</string>
+    <string name="new_password">New Password</string>
+    <string name="current_password">Current Password</string>
 </resources>

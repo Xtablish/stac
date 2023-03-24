@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/home"
-        android:icon="@drawable/ic_home_icon"
-        android:title="@string/text_home" />
 
     <item
         android:id="@+id/chat"
@@ -12,14 +8,10 @@
         android:title="@string/text_chat" />
 
     <item
-        android:id="@+id/placeholder"
+        android:id="@+id/camera"
         android:icon="@drawable/ic_camera"
-        android:title="Camera" />
+        android:title="@string/camera" />
 
-    <item
-        android:id="@+id/profile"
-        android:icon="@drawable/ic_profile_icon"
-        android:title="@string/text_profile" />
 
     <item
         android:id="@+id/settings"

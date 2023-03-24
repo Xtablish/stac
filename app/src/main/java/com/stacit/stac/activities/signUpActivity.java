@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.stacit.stac.activities.utilities.Constants;
@@ -25,27 +24,24 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.HashMap;
 
-public class signUpActivity extends AppCompatActivity {
-
+public class signUpActivity extends BaseActivity
+{
     //creates an instance of the local binding class for this activity
     private ActivitySignUpBinding binding;
-
     //creates an instance of the Preference Manager class
     private PreferenceManager preferenceManager;
-
     //holds the encoded value for the user's profile image
     private String encodedImage;
-
     //default method that's called on creation of the activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         preferenceManager = new PreferenceManager(getApplicationContext());
         setListener();
     }
-
     //listens to see if a user clicks a button
     private void setListener(){
         binding.textSignIn.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), signInActivity.class)));
@@ -61,13 +57,11 @@ public class signUpActivity extends AppCompatActivity {
             pickImage.launch(intent);
         });
     }
-
     //function used to make a call to the Toast method
     private void showToast(String msg)
     {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
     }
-
     //a call to this function will collect data from the user and post them in the database
     private void signUp(){
         loading(true);
@@ -78,11 +72,15 @@ public class signUpActivity extends AppCompatActivity {
         user.put(Constants.KEY_PASSWORD, binding.inputPassword.getText().toString());
         user.put(Constants.KEY_IMAGE, encodedImage);
         user.put(Constants.KEY_FACE_ID, "Enabled");
-        user.put(Constants.KEY_AI, "Active");
+        user.put(Constants.KEY_AI, "Enabled");
         user.put(Constants.KEY_COUNTRY, "USA");
-        user.put(Constants.KEY_LANGUAGE, "English");
-        user.put(Constants.KEY_LISTEN,"Active");
+        user.put(Constants.KEY_LANGUAGE, "Enabled");
+        user.put(Constants.KEY_LISTEN,"Enabled");
         user.put(Constants.KEY_VOICE, "Alexa");
+        user.put(Constants.KEY_NIGHT_MODE, "Enabled");
+        user.put(Constants.KEY_SECURITY_PRIVACY, "Enabled");
+        user.put(Constants.KEY_PRIVATE_ACCOUNT, "Enabled");
+        user.put(Constants.KEY_NOTIFICATION, "Enabled");
 
         db.collection(Constants.KEY_COLLECTION_USERS)
                 .add(user)
@@ -94,12 +92,15 @@ public class signUpActivity extends AppCompatActivity {
                     preferenceManager.putString(Constants.KEY_NAME, binding.inputName.getText().toString());
                     preferenceManager.putString(Constants.KEY_IMAGE, encodedImage);
                     preferenceManager.putString(Constants.KEY_FACE_ID, "Enabled");
-                    preferenceManager.putString(Constants.KEY_AI, "Active");
+                    preferenceManager.putString(Constants.KEY_AI, "Enabled");
                     preferenceManager.putString(Constants.KEY_COUNTRY, "USA");
                     preferenceManager.putString(Constants.KEY_LANGUAGE, "English");
-                    preferenceManager.putString(Constants.KEY_LISTEN,"Active");
-                    preferenceManager.putString(Constants.KEY_VOICE, "Alexa");
-
+                    preferenceManager.putString(Constants.KEY_LISTEN,"Enabled");
+                    preferenceManager.putString(Constants.KEY_VOICE, "Enabled");
+                    preferenceManager.putString(Constants.KEY_NIGHT_MODE, "Enabled");
+                    preferenceManager.putString(Constants.KEY_SECURITY_PRIVACY, "Enabled");
+                    preferenceManager.putString(Constants.KEY_PRIVATE_ACCOUNT, "Enabled");
+                    preferenceManager.putString(Constants.KEY_NOTIFICATION, "Enabled");
                     //create an Intent to start the conversationChatActivity (Conversation Page) if the account was created
                     Intent intent = new Intent(getApplicationContext(), homeActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -110,10 +111,7 @@ public class signUpActivity extends AppCompatActivity {
                     loading(false);
                     showToast(exception.getMessage());
                 });
-
     }
-
-
     //used to encode the profile image into a string to be stored in the database
     private String encodeImage(Bitmap bitmap){
         int previewWidth = 150;
@@ -126,7 +124,6 @@ public class signUpActivity extends AppCompatActivity {
         byte[] bytes = byteArrayOutputStream.toByteArray();
         return Base64.encodeToString(bytes, Base64.DEFAULT);
     }
-
     //allows the user to pick a profile image for their account
     private final ActivityResultLauncher<Intent> pickImage = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -147,7 +144,6 @@ public class signUpActivity extends AppCompatActivity {
                 }
             }
     );
-
     //input validation for the sign-up page
     private Boolean isValidSignUpDetails(){
         if(encodedImage == null){
@@ -174,9 +170,7 @@ public class signUpActivity extends AppCompatActivity {
         } else {
             return true;
         }
-
     }
-
     //controls the view for the progress bar
     private void loading(Boolean isLoading){
         if(isLoading){
@@ -188,5 +182,4 @@ public class signUpActivity extends AppCompatActivity {
             binding.btnSignUp.setVisibility(View.VISIBLE);
         }
     }
-
 }

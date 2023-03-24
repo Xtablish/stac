@@ -12,11 +12,10 @@ import android.widget.Toast;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.stacit.stac.R;
+import com.stacit.stac.activities.adapters.OnlineUsersAdapter;
 import com.stacit.stac.activities.adapters.RecentConversationsAdapter;
 import com.stacit.stac.activities.listeners.ConversionListener;
 import com.stacit.stac.activities.models.ChatMessage;
@@ -26,7 +25,6 @@ import com.stacit.stac.activities.utilities.PreferenceManager;
 import com.stacit.stac.databinding.ConversationMainBinding;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class conversationMainActivity extends BaseActivity implements ConversionListener
@@ -37,6 +35,7 @@ public class conversationMainActivity extends BaseActivity implements Conversion
     private PreferenceManager preferenceManager;
     private List<ChatMessage> conversations;
     private RecentConversationsAdapter conversationsAdapter;
+    private OnlineUsersAdapter statusAdapter;
     private FirebaseFirestore database;
 
     @SuppressLint("NonConstantResourceId")
@@ -46,26 +45,6 @@ public class conversationMainActivity extends BaseActivity implements Conversion
         super.onCreate(savedInstanceState);
          binding = ConversationMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        //on click listener for the navigation bar
-        binding.bottomNavMenu.setOnItemSelectedListener(item -> {
-            switch (item.getItemId())
-            {
-                case R.id.home:
-                    startActivity(new Intent(getApplicationContext(), homeActivity.class));
-                    break;
-                case R.id.chat:
-                    startActivity(new Intent(getApplicationContext(), conversationMainActivity.class));
-                    break;
-                case R.id.profile:
-                    startActivity(new Intent(getApplicationContext(), userProfileActivity.class));
-                    break;
-                case R.id.settings:
-                    startActivity(new Intent(getApplicationContext(), settingsActivity.class));
-                    break;
-            }
-            return true;
-        });
 
         //call the initialization function
         init();
@@ -85,6 +64,7 @@ public class conversationMainActivity extends BaseActivity implements Conversion
     {
         conversations = new ArrayList<>();
         conversationsAdapter = new RecentConversationsAdapter(conversations, this);
+        statusAdapter = new OnlineUsersAdapter(conversations, this);
         binding.conversationRecycleView.setAdapter(conversationsAdapter);
         database = FirebaseFirestore.getInstance();
     }
@@ -92,7 +72,7 @@ public class conversationMainActivity extends BaseActivity implements Conversion
     private void signOutListener()
     {
         //listens for an onClick event, if there is, a call will be made to the userSignOut function
-        binding.imageSignOut.setOnClickListener(view -> userSignOut());
+        binding.imageBackBtnt.setOnClickListener(view -> onBackPressed());
         binding.imageAddContact.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), UsersActivity.class)));
     }
 
@@ -176,30 +156,14 @@ public class conversationMainActivity extends BaseActivity implements Conversion
             binding.conversationRecycleView.smoothScrollToPosition(0);
             binding.conversationRecycleView.setVisibility(View.VISIBLE);
             binding.progressBar.setVisibility(View.GONE);
+            //for the online view
+            conversations.sort((obj1, obj2) -> obj2.dateObject.compareTo(obj1.dateObject));
+            statusAdapter.notifyDataSetChanged();
+            binding.usersActiveRecycleView.smoothScrollToPosition(0);
+            binding.usersActiveRecycleView.setVisibility(View.VISIBLE);
+            binding.progressBarActiveUsers.setVisibility(View.GONE);
         }
     };
-
-    private void userSignOut()
-    {
-        //create an instance of the database and the find the userID, then delete their current FCM token
-        showToast("Signing you out " + preferenceManager.getString(Constants.KEY_NAME));
-        FirebaseFirestore fire_store = FirebaseFirestore.getInstance();
-        DocumentReference documentReference =
-                fire_store.collection(Constants.KEY_COLLECTION_USERS).document(
-                        preferenceManager.getString(Constants.KEY_USER_ID)
-                );
-
-        HashMap<String, Object> updateUserStatus = new HashMap<>();
-        updateUserStatus.put(Constants.KEY_FCM_TOKEN, FieldValue.delete());
-        documentReference.update(updateUserStatus)
-                .addOnSuccessListener(unused ->
-                {
-                    preferenceManager.clear();
-                    startActivity(new Intent(getApplicationContext(), signInActivity.class));
-                    finish();
-                })
-                .addOnFailureListener(e -> showToast("Something went wrong"));
-    }
 
     private void updateUserToken(String userToken)
     {

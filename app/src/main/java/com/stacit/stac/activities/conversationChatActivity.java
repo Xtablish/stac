@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class conversationChatActivity extends BaseActivity
 {
-
+    //private members initialization
     private ConversationChatBinding binding;
     private User receiverUser;
     private List<ChatMessage> chatMessages;
@@ -44,12 +44,15 @@ public class conversationChatActivity extends BaseActivity
     private Boolean isReceiverAvailable = false;
     private String conversationId = null;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         binding = ConversationChatBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        //call to private functions
         setListener();
         loadReceiverDetails();
         init();
@@ -218,25 +221,22 @@ public class conversationChatActivity extends BaseActivity
         binding.imageBackBtn.setOnClickListener(view -> onBackPressed());
         binding.layoutSend.setOnClickListener(v -> sendMessage());
 
+        //implementation for isUserTyping feature
         binding.inputMessage.addTextChangedListener(new TextWatcher()
         {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
             {
             }
-
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
             {
             }
-
             @Override
             public void afterTextChanged(Editable editable)
             {
-
             }
         });
-
     }
 
     //adds the conversion of the conversation data into the database conversations collection
@@ -291,9 +291,9 @@ public class conversationChatActivity extends BaseActivity
         {
             DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
             conversationId = documentSnapshot.getId();
+
         }
     };
-
 
     //overriding and  updating the onResume function from the BaseActivity
     @Override

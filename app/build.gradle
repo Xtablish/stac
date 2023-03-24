@@ -60,4 +60,9 @@ dependencies {
 
     //MultiDex
     implementation 'androidx.multidex:multidex:2.0.1'
+
+    //ML Kit
+    //implementation 'com.google.firebase:firebase-ml-natural-language:22.0.1'
+    //implementation 'com.google.firebase:firebase-ml-natural-language-language-id-model:20.0.8'
+
 }
