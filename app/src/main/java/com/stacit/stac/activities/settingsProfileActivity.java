@@ -44,9 +44,9 @@ public class settingsProfileActivity extends AppCompatActivity {
         binding.profileImage.setImageBitmap(decodedImage);
 
         //calling functions
-        pushPreferences();
         editProfileListener();
         pullPreferences();
+        pushPreferences();
         pushUserPreferences();
     }
     //this is the control apparatus onClick listener for the settings page
@@ -78,68 +78,82 @@ public class settingsProfileActivity extends AppCompatActivity {
     private void pushPreferences()
     {
         //update the Facial Recognition object value
-        if (binding.securityModeToggle.isChecked())
-        {
-            preferenceManager.putString(Constants.KEY_SECURITY_PRIVACY, "Enabled");
-        }
-        else
-        {
-            preferenceManager.putString(Constants.KEY_SECURITY_PRIVACY, "Disabled");
-        }
+        binding.securityModeToggle.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b)
+            {
+                preferenceManager.putString(Constants.KEY_SECURITY_PRIVACY, "Enabled");
+            }
+            else
+            {
+                preferenceManager.putString(Constants.KEY_SECURITY_PRIVACY, "Disabled");
+            }
+        });
         //update the Notification object value
-        if (binding.notificationsToggle.isChecked())
-        {
-            preferenceManager.putString(Constants.KEY_NOTIFICATION, "Enabled");
-        }
-        else
-        {
-            preferenceManager.putString(Constants.KEY_NOTIFICATION, "Disabled");
-        }
+        binding.notificationsToggle.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b)
+            {
+                preferenceManager.putString(Constants.KEY_NOTIFICATION, "Enabled");
+            }
+            else
+            {
+                preferenceManager.putString(Constants.KEY_NOTIFICATION, "Disabled");
+            }
+        });
         //update the Night Mode object value
-        if (binding.nightModeToggle.isChecked())
-        {
-            preferenceManager.putString(Constants.KEY_NIGHT_MODE, "Enabled");
-        }
-        else
-        {
-            preferenceManager.putString(Constants.KEY_NIGHT_MODE, "Disabled");
-        }
+        binding.nightModeToggle.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b)
+            {
+                preferenceManager.putString(Constants.KEY_NIGHT_MODE, "Enabled");
+            }
+            else
+            {
+                preferenceManager.putString(Constants.KEY_NIGHT_MODE, "Disabled");
+            }
+        });
         //update the Private Account object value
-        if (binding.privateAccountToggle.isChecked())
-        {
-            preferenceManager.putString(Constants.KEY_PRIVATE_ACCOUNT, "Enabled");
-        }
-        else
-        {
-            preferenceManager.putString(Constants.KEY_PRIVATE_ACCOUNT, "Disabled");
-        }
-        //update the Security and Privacy object value
-        if (binding.faceIdToggle.isChecked())
-        {
-            preferenceManager.putString(Constants.KEY_FACE_ID, "Enabled");
-        }
-        else
-        {
-            preferenceManager.putString(Constants.KEY_FACE_ID, "Disabled");
-        }
+        binding.privateAccountToggle.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b)
+            {
+                preferenceManager.putString(Constants.KEY_PRIVATE_ACCOUNT, "Enabled");
+            }
+            else
+            {
+                preferenceManager.putString(Constants.KEY_PRIVATE_ACCOUNT, "Disabled");
+            }
+        });
+        //update the Facial Recognition object value
+        binding.faceIdToggle.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b)
+            {
+                preferenceManager.putString(Constants.KEY_FACE_ID, "Enabled");
+            }
+            else
+            {
+                preferenceManager.putString(Constants.KEY_FACE_ID, "Disabled");
+            }
+        });
         //update the AI & ML object value
-        if (binding.AIModeToggle.isChecked())
-        {
-            preferenceManager.putString(Constants.KEY_AI, "Enabled");
-        }
-        else
-        {
-            preferenceManager.putString(Constants.KEY_AI, "Disabled");
-        }
+        binding.AIModeToggle.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b)
+            {
+                preferenceManager.putString(Constants.KEY_AI, "Enabled");
+            }
+            else
+            {
+                preferenceManager.putString(Constants.KEY_AI, "Disabled");
+            }
+        });
         //update the Listening object value
-        if (binding.listeningToggle.isChecked())
-        {
-            preferenceManager.putString(Constants.KEY_LISTEN, "Enabled");
-        }
-        else
-        {
-            preferenceManager.putString(Constants.KEY_LISTEN, "Disabled");
-        }
+        binding.listeningToggle.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b)
+            {
+                preferenceManager.putString(Constants.KEY_LISTEN, "Enabled");
+            }
+            else
+            {
+                preferenceManager.putString(Constants.KEY_LISTEN, "Disabled");
+            }
+        });
     }
     //update the changes from made from the toggle switches in the database
     private void pushUserPreferences()

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.stacit.stac.activities.utilities.Constants;
@@ -24,7 +25,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.HashMap;
 
-public class signUpActivity extends BaseActivity
+public class signUpActivity extends AppCompatActivity
 {
     //creates an instance of the local binding class for this activity
     private ActivitySignUpBinding binding;
@@ -50,7 +51,7 @@ public class signUpActivity extends BaseActivity
                 signUp();
             }
         });
-        //call to the pickImage method fo the user to select their profile picture
+        //call to the pickImage method for the user to select their profile picture
         binding.layoutImage.setOnClickListener(view -> {
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
