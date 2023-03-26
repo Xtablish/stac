@@ -50,9 +50,11 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
     //Import Firebase into the app
-    implementation platform('com.google.firebase:firebase-bom:31.2.3')
+    implementation 'com.google.firebase:firebase-core:21.1.1'
     implementation 'com.google.firebase:firebase-messaging:23.1.2'
     implementation 'com.google.firebase:firebase-firestore:24.4.4'
+    implementation 'com.google.mlkit:translate:17.0.1'
+    implementation 'com.google.mlkit:language-id:17.0.4'
 
     //Retrofit
     implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
@@ -60,9 +62,5 @@ dependencies {
 
     //MultiDex
     implementation 'androidx.multidex:multidex:2.0.1'
-
-    //ML Kit
-    //implementation 'com.google.firebase:firebase-ml-natural-language:22.0.1'
-    //implementation 'com.google.firebase:firebase-ml-natural-language-language-id-model:20.0.8'
 
 }

@@ -113,6 +113,7 @@ public class signInActivity extends AppCompatActivity
                         preferenceManager.putString(Constants.KEY_LISTEN, documentSnapshot.getString(Constants.KEY_LISTEN));
                         preferenceManager.putString(Constants.KEY_VOICE, documentSnapshot.getString(Constants.KEY_VOICE));
                         preferenceManager.putString(Constants.KEY_AI, documentSnapshot.getString(Constants.KEY_AI));
+                        preferenceManager.putString(Constants.KEY_EMAIL, documentSnapshot.getString(Constants.KEY_EMAIL));
                         preferenceManager.putString(Constants.KEY_PASSWORD, documentSnapshot.getString(Constants.KEY_PASSWORD));
                         preferenceManager.putString(Constants.KEY_COUNTRY, documentSnapshot.getString(Constants.KEY_COUNTRY));
                         preferenceManager.putString(Constants.KEY_NIGHT_MODE, documentSnapshot.getString(Constants.KEY_NIGHT_MODE));

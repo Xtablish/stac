@@ -71,4 +71,7 @@
     <string name="camera">Camera</string>
     <string name="new_password">New Password</string>
     <string name="current_password">Current Password</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="language">Language</string>
+    <string name="delete_account">Delete Account</string>
 </resources>

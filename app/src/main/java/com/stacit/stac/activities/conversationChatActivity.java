@@ -16,6 +16,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.stacit.stac.activities.StacAI.Translation;
 import com.stacit.stac.activities.adapters.ChatAdapter;
 import com.stacit.stac.activities.models.ChatMessage;
 import com.stacit.stac.activities.models.User;
@@ -43,6 +44,9 @@ public class conversationChatActivity extends BaseActivity
     private FirebaseFirestore database;
     private Boolean isReceiverAvailable = false;
     private String conversationId = null;
+    private Translation translation;
+    private String translatedText;
+
 
 
     @Override
@@ -58,11 +62,11 @@ public class conversationChatActivity extends BaseActivity
         init();
         listenMessages();
     }
-
     //initializes key components for other functions
     private void init()
     {
         preferenceManager = new PreferenceManager(getApplicationContext());
+        translation = new Translation();
         chatMessages = new ArrayList<>();
         chatAdapter = new ChatAdapter(
                 chatMessages,
@@ -72,14 +76,14 @@ public class conversationChatActivity extends BaseActivity
         binding.chatRecycle.setAdapter(chatAdapter);
         database = FirebaseFirestore.getInstance();
     }
-
     //takes the text from the EditText input and pushes it to the database
     private void sendMessage()
     {
+        activeTranslate();
         HashMap<String, Object> message = new HashMap<>();
         message.put(Constants.KEY_SENDER_ID, preferenceManager.getString(Constants.KEY_USER_ID));
         message.put(Constants.KEY_RECEIVER_ID, receiverUser.id);
-        message.put(Constants.KEY_MESSAGE, binding.inputMessage.getText().toString());
+        message.put(Constants.KEY_MESSAGE, translatedText);
         message.put(Constants.KEY_TIMESTAMP, new Date());
         database.collection(Constants.KEY_COLLECTION_CHAT).add(message);
 
@@ -95,14 +99,13 @@ public class conversationChatActivity extends BaseActivity
             conversion.put(Constants.KEY_RECEIVER_ID, receiverUser.id);
             conversion.put(Constants.KEY_RECEIVER_NAME, receiverUser.name);
             conversion.put(Constants.KEY_RECEIVER_IMAGE, receiverUser.image);
-            conversion.put(Constants.KEY_LAST_MESSAGE, binding.inputMessage.getText().toString());
+            conversion.put(Constants.KEY_LAST_MESSAGE, translatedText);
             conversion.put(Constants.KEY_TIMESTAMP, new Date());
             addConversion(conversion);
         }
 
         binding.inputMessage.setText(null);
     }
-
     //checks if the receiver is online or not
     @SuppressLint("SetTextI18n")
     private void listenAvailabilityOfReceiver()
@@ -136,7 +139,6 @@ public class conversationChatActivity extends BaseActivity
             }
         });
     }
-
     //this function uses the eventListener to query data associate with the current sender and receiver
     private void listenMessages()
     {
@@ -151,7 +153,6 @@ public class conversationChatActivity extends BaseActivity
                 .addSnapshotListener(eventListener);
 
     }
-
     //this is an eventListener for the database query changes
     @SuppressLint("NotifyDataSetChanged")
     private final EventListener<QuerySnapshot> eventListener = (value, error) ->
@@ -194,14 +195,24 @@ public class conversationChatActivity extends BaseActivity
             checkForConversion();
         }
     };
-
+    //takes the input string does the language translation and returns a string
+    private void activeTranslate()
+    {
+        if (Objects.equals(preferenceManager.getString(Constants.KEY_AI), "Enabled"))
+        {
+            translatedText = translation.stacTranslate(binding.inputMessage.getText().toString());
+        }
+        else
+        {
+            translatedText = binding.inputMessage.getText().toString();
+        }
+    }
     //converts the encoded string data into a bitmap image using Base64 algorithm
     private Bitmap getBitmapFromEncodedString(String encodedImage)
     {
         byte [] bytes = Base64.decode(encodedImage, Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
     }
-
     //updates the view with the receiver information
     private void loadReceiverDetails()
     {
@@ -209,13 +220,11 @@ public class conversationChatActivity extends BaseActivity
         binding.textUsername.setText(receiverUser.name);
         binding.imageProfile.setImageBitmap(getBitmapFromEncodedString(receiverUser.image));
     }
-
     //converts the date and time into a readable format
     private String getReadableDateTime(Date date)
     {
         return new SimpleDateFormat("MMMM dd, yyyy - hh:mm a", Locale.getDefault()).format(date);
     }
-
     //binding listeners for onClick events from the view
     private void setListener() {
         binding.imageBackBtn.setOnClickListener(view -> onBackPressed());
@@ -238,7 +247,6 @@ public class conversationChatActivity extends BaseActivity
             }
         });
     }
-
     //adds the conversion of the conversation data into the database conversations collection
     private void addConversion(HashMap<String, Object> conversion)
     {
@@ -257,7 +265,6 @@ public class conversationChatActivity extends BaseActivity
                 Constants.KEY_TIMESTAMP, new Date()
         );
     }
-
     //checks the database to see if any new message is for the sender or receiver
     private void checkForConversion()
     {
@@ -273,7 +280,6 @@ public class conversationChatActivity extends BaseActivity
             );
         }
     }
-
     //checks the database for new conversations
     private void checkForConversionRemotely(String senderId, String receiverId)
     {
@@ -283,7 +289,6 @@ public class conversationChatActivity extends BaseActivity
                 .get()
                 .addOnCompleteListener(conversationOnCompleteListener);
     }
-
     //OnComplete Listener to check if the query from the database isn't empty
     private final OnCompleteListener<QuerySnapshot> conversationOnCompleteListener = task ->
     {
@@ -294,7 +299,6 @@ public class conversationChatActivity extends BaseActivity
 
         }
     };
-
     //overriding and  updating the onResume function from the BaseActivity
     @Override
     protected void onResume() {
