@@ -2,18 +2,14 @@ package com.stacit.stac.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Patterns;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.AggregateQuery;
@@ -23,7 +19,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.SetOptions;
-import com.stacit.stac.R;
 import com.stacit.stac.activities.utilities.Constants;
 import com.stacit.stac.activities.utilities.PreferenceManager;
 import com.stacit.stac.databinding.ActivitySignInBinding;
@@ -48,60 +43,15 @@ public class signInActivity extends AppCompatActivity
         preferenceManager = new PreferenceManager(getApplicationContext());
         if (preferenceManager.getBoolean(Constants.KEY_IS_SIGNED_IN))
         {
-            Intent intent = new Intent(getApplicationContext(), homeActivity.class);
+            Intent intent = new Intent(getApplicationContext(), conversationMainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
         binding = ActivitySignInBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setListener();
-
-        faceIDDialogBox();
-        pinIDDialogBox();
-
     }
 
-    private void pinIDDialogBox()
-    {
-
-        //pin id alertCustomDialog
-        View alertPinDialog = LayoutInflater.from(signInActivity.this).inflate(R.layout.custom_dialog_pin, null);
-        AlertDialog.Builder alertDialogBox = new AlertDialog.Builder(signInActivity.this);
-        alertDialogBox.setView(alertPinDialog);
-
-        cancelButton = (ImageButton) alertPinDialog.findViewById(R.id.cancel_button_image);
-
-        final AlertDialog alertDialogOne = alertDialogBox.create();
-
-        binding.securityLockPin.setOnClickListener(view -> {
-            alertDialogOne.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            alertDialogOne.show();
-        });
-        cancelButton.setOnClickListener(view -> alertDialogOne.cancel());
-    }
-
-    private void faceIDDialogBox()
-    {
-        //face id alertCustomDialog
-        View alertCustomDialog = LayoutInflater.from(signInActivity.this).inflate(R.layout.custom_dialog_box, null);
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(signInActivity.this);
-        alertDialog.setView(alertCustomDialog);
-
-        cancelButton = (ImageButton) alertCustomDialog.findViewById(R.id.cancel_button_image);
-        progressBar = (ProgressBar) alertCustomDialog.findViewById(R.id.progressBar);
-        stateCheck = (ImageView) alertCustomDialog.findViewById(R.id.processCompleteState);
-
-
-        final AlertDialog dialog = alertDialog.create();
-
-        binding.securityFaceID.setOnClickListener(view -> {
-            progressBar.setVisibility(View.VISIBLE);
-            stateCheck.setVisibility(View.INVISIBLE);
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            dialog.show();
-        });
-        cancelButton.setOnClickListener(view -> dialog.cancel());
-    }
     //onClick Listener for what to happen after the signIn btn is clicked
     private void setListener()
     {
@@ -182,7 +132,7 @@ public class signInActivity extends AppCompatActivity
                         preferenceManager.putString(Constants.KEY_NOTIFICATION, documentSnapshot.getString(Constants.KEY_NOTIFICATION));
 
                         //starting a new intent for the conversation tab if the user has an account
-                        Intent intent = new Intent(getApplicationContext(), homeActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), conversationMainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                     } else

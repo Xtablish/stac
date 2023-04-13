@@ -10,11 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
@@ -92,29 +89,24 @@ public class conversationMainActivity extends BaseActivity implements Conversion
                 .whereEqualTo(Constants.KEY_RECEIVER_ID, true)
                 .whereEqualTo(Constants.KEY_SENDER_ID, true)
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>()
-                {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful())
                     {
-                        if (task.isSuccessful())
+                        for (QueryDocumentSnapshot documentSnapshot : task.getResult())
                         {
-                            for (QueryDocumentSnapshot documentSnapshot : task.getResult())
+                            receiverUserID = documentSnapshot.getString(Constants.KEY_RECEIVER_ID);
+                            listenAvailabilityOfReceiver();
+                            if(isReceiverAvailable)
                             {
-                                receiverUserID = documentSnapshot.getString(Constants.KEY_RECEIVER_ID);
-                                listenAvailabilityOfReceiver();
-                                if(isReceiverAvailable)
-                                {
-                                    chatMessage.conversionName = documentSnapshot.getString(Constants.KEY_RECEIVER_NAME);
-                                    chatMessage.conversionImage = documentSnapshot.getString(Constants.KEY_RECEIVER_IMAGE);
-                                    chatMessageList.add(chatMessage);
-                                }
+                                chatMessage.conversionName = documentSnapshot.getString(Constants.KEY_RECEIVER_NAME);
+                                chatMessage.conversionImage = documentSnapshot.getString(Constants.KEY_RECEIVER_IMAGE);
+                                chatMessageList.add(chatMessage);
                             }
                         }
-                        else
-                        {
-                            Log.d("TAG", "Error getting documents: ", task.getException());
-                        }
+                    }
+                    else
+                    {
+                        Log.d("TAG", "Error getting documents: ", task.getException());
                     }
                 });
         return chatMessageList;
@@ -124,14 +116,14 @@ public class conversationMainActivity extends BaseActivity implements Conversion
     private void signOutListener()
     {
         //listens for an onClick event, if there is, a call will be made to the userSignOut function
-        binding.imageBackBtnt.setOnClickListener(view -> onBackPressed());
-        binding.imageAddContact.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), UsersActivity.class)));
+        binding.imageOpenCamera.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), OCRActivity.class)));
+        binding.imageAddNewAccounts.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), UsersActivity.class)));
     }
 
     private void getUserInfo()
     {
         //binding the username from the local Constants class to the textView
-        binding.textName.setText(preferenceManager.getString(Constants.KEY_NAME));
+        binding.textName.setText("Chats");
         //binding the user profileImage to the imageView
         byte [] bytes = Base64.decode(preferenceManager.getString(Constants.KEY_IMAGE), Base64.DEFAULT);
         Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);

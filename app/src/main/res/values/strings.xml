@@ -80,4 +80,5 @@
     <string name="text_log_in">Log In</string>
     <string name="text_enter_pin">Enter Pin</string>
     <string name="image_preview_text">Image Preview</string>
+    <string name="full_name">Full Name</string>
 </resources>

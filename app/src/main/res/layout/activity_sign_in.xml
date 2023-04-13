@@ -75,7 +75,8 @@
             android:autofillHints="emailAddress"
             app:layout_constraintTop_toBottomOf="@id/textAppStac"
             app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
-            app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"/>
+            app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
+            tools:ignore="VisualLintTextFieldSize" />
 
         <EditText
             android:id="@+id/inputPassword"
@@ -94,7 +95,8 @@
             android:textSize="@dimen/_13ssp"
             app:layout_constraintTop_toBottomOf="@id/inputEmail"
             app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
-            app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"/>
+            app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
+            tools:ignore="VisualLintTextFieldSize" />
 
         <FrameLayout
             android:id="@+id/btnSignInFrame"
@@ -114,7 +116,8 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13ssp"
                 android:textStyle="bold"
-                app:cornerRadius="@dimen/_6sdp" />
+                app:cornerRadius="@dimen/_6sdp"
+                tools:ignore="VisualLintButtonSize" />
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -139,32 +142,6 @@
             app:layout_constraintTop_toBottomOf="@id/btnSignInFrame"
             app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
             app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"/>
-
-        <ImageView
-            android:id="@+id/securityFaceID"
-            android:layout_width="68dp"
-            android:layout_height="54dp"
-            android:src="@drawable/face_id_icon"
-            android:contentDescription="@string/text_face_id_icon"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
-            app:layout_constraintHorizontal_bias="0.195"
-            app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
-            app:layout_constraintTop_toBottomOf="@id/textCreateNewAccount"
-            app:layout_constraintVertical_bias="0.605" />
-
-        <ImageView
-            android:id="@+id/securityLockPin"
-            android:layout_width="66dp"
-            android:layout_height="54dp"
-            android:src="@drawable/pin_lock"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:contentDescription="@string/text_pin_lock_icon"
-            app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
-            app:layout_constraintHorizontal_bias="0.838"
-            app:layout_constraintStart_toStartOf="@id/guidelineVertical1"
-            app:layout_constraintTop_toBottomOf="@id/textCreateNewAccount"
-            app:layout_constraintVertical_bias="0.605" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

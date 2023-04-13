@@ -112,28 +112,12 @@
             app:layout_constraintStart_toEndOf="@id/imageProfile"
             app:layout_constraintTop_toTopOf="@id/imageProfile"/>
 
-    <TextView
-        android:id="@+id/textAvailabilityStatus"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:layout_marginStart="@dimen/_8sdp"
-        android:layout_marginEnd="@dimen/_8sdp"
-        android:ellipsize="end"
-        android:textSize="@dimen/_10ssp"
-        android:textColor="@color/secondary_text"
-        android:textStyle="italic"
-        android:gravity="start"
-        app:layout_constraintStart_toEndOf="@id/imageProfile"
-        app:layout_constraintTop_toBottomOf="@id/textUsername"
-        app:layout_constraintEnd_toStartOf="@id/imagePhoneCall"
-        app:layout_constraintBottom_toTopOf="@id/viewSupport"/>
 
     <View
         android:id="@+id/viewSupport"
         android:layout_width="match_parent"
         android:layout_height="0.8dp"
-        android:background="@color/input_background"
+        android:background="@color/white"
         android:layout_marginTop="@dimen/_12sdp"
         app:layout_constraintTop_toBottomOf="@id/imageBackBtn"/>
 
@@ -166,7 +150,7 @@
         android:id="@+id/viewSupportBottom"
         android:layout_width="match_parent"
         android:layout_height="0.8dp"
-        android:background="@color/input_background"
+        android:background="@color/white"
         android:layout_marginBottom="@dimen/_8sdp"
         app:layout_constraintBottom_toTopOf="@id/layoutSend"/>
 
@@ -178,7 +162,7 @@
         android:layout_marginEnd="@dimen/_16sdp"
         android:layout_marginRight="@dimen/_16sdp"
         android:layout_marginBottom="@dimen/_12sdp"
-        android:background="@drawable/background_chat_input"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="RtlHardcoded">
@@ -187,34 +171,58 @@
             android:id="@+id/cameraRecognitionBtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/_10sdp"
+            android:padding="@dimen/_5sdp"
             android:src="@drawable/ic_camera"
             android:tint="@color/send_message_bg"/>
 
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/layoutSend"
+        android:id="@+id/layoutGallery"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_4sdp"
         android:layout_marginEnd="@dimen/_16sdp"
         android:layout_marginRight="@dimen/_16sdp"
         android:layout_marginBottom="@dimen/_12sdp"
-        android:background="@drawable/background_chat_input"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/layoutCamera"
         tools:ignore="RtlHardcoded">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/galleryPhotoSelection"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/_4sdp"
-            android:layout_marginLeft="@dimen/_4sdp"
-            android:padding="@dimen/_8sdp"
-            android:src="@drawable/ic_send"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ic_image_gallery"
             android:tint="@color/send_message_bg"/>
 
     </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/layoutMic"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginRight="@dimen/_16sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/layoutGallery"
+        tools:ignore="RtlHardcoded">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/speechRecognitionBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ic_profile_mic"
+            android:tint="@color/send_message_bg"/>
+
+    </FrameLayout>
+
 
     <EditText
         android:id="@+id/inputMessage"
@@ -228,16 +236,13 @@
         android:imeOptions="actionDone"
         android:importantForAutofill="no"
         android:inputType="text"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:clickable="true"
         android:paddingStart="@dimen/_16sdp"
         android:paddingEnd="@dimen/_16sdp"
         android:textColor="@color/primary_text"
         android:textColorHint="@color/secondary_text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/layoutSend"
-        app:layout_constraintStart_toEndOf="@id/layoutCamera"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/layoutMic"
         tools:ignore="RtlHardcoded,VisualLintTextFieldSize,TextContrastCheck" />
 
     <ProgressBar
@@ -253,19 +258,18 @@
 
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageMic"
+        android:id="@+id/layoutSend"
         android:layout_width="@dimen/_30sdp"
         android:layout_height="@dimen/_30sdp"
         android:paddingStart="@dimen/_4sdp"
         android:layout_marginEnd="@dimen/_5sdp"
         android:padding="@dimen/_4sdp"
-        android:src="@drawable/ic_profile_mic"
+        android:background="@drawable/background_image"
+        android:src="@drawable/ic_up_arrow_send"
         app:tint="@color/send_message_bg"
-        android:tint="@color/primary"
         app:layout_constraintEnd_toEndOf="@id/inputMessage"
         app:layout_constraintTop_toTopOf="@id/inputMessage"
         app:layout_constraintBottom_toBottomOf="@id/inputMessage"
         tools:ignore="RtlHardcoded,RtlSymmetry" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -93,37 +93,13 @@
         app:layout_constraintBottom_toTopOf="@id/navigationCardView"
         app:layout_constraintTop_toBottomOf="@id/resultCardView">
 
-        <TextView
-            android:text="@string/image_preview_text"
-            android:textColor="@color/primary_text"
-            android:textSize="20sp"
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:textStyle="bold"
-            android:layout_height="wrap_content"/>
-
-        <ScrollView
+        <ImageView
+            android:id="@+id/imageIVPreview"
+            android:scaleType="centerCrop"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="38dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="5dp"
-                tools:ignore="UseCompoundDrawables">
-
-                <ImageView
-                    android:id="@+id/imageIVPreview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxHeight="250dp"
-                    android:contentDescription="@string/cont_des_language_image" />
-
-            </LinearLayout>
-
-        </ScrollView>
+            android:layout_height="match_parent"
+            android:layout_above="@+id/textView"
+            android:layout_alignParentTop="true"/>
 
     </androidx.cardview.widget.CardView>
 

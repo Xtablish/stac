@@ -1,14 +1,19 @@
 package com.stacit.stac.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.DocumentChange;
@@ -17,6 +22,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.stacit.stac.R;
 import com.stacit.stac.activities.adapters.ChatAdapter;
 import com.stacit.stac.activities.models.ChatMessage;
 import com.stacit.stac.activities.models.User;
@@ -123,12 +129,10 @@ public class conversationChatActivity extends BaseActivity
             }
             if (isReceiverAvailable)
             {
-                binding.textAvailabilityStatus.setText("Online");
                 binding.imageOnlineStatus.setVisibility(View.VISIBLE);
             }
             else
             {
-                binding.textAvailabilityStatus.setText("Offline");
                 binding.imageOnlineStatus.setVisibility(View.INVISIBLE);
             }
         });
@@ -213,6 +217,33 @@ public class conversationChatActivity extends BaseActivity
         binding.imageBackBtn.setOnClickListener(view -> onBackPressed());
         binding.layoutSend.setOnClickListener(v -> sendMessage());
         binding.cameraRecognitionBtn.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), OCRActivity.class)));
+        binding.imageProfile.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), settingsProfileActivity.class)));
+
+        //change the board radius of the send button
+        if (binding.inputMessage.getText().toString() != null)
+        {
+            binding.layoutSend.setBackgroundResource(R.drawable.send_button_ready_state);
+        }
+        else
+        {
+            binding.layoutSend.setBackgroundResource(R.drawable.background_image);
+        }
+
+        //check to editText for focus
+        binding.inputMessage.setOnFocusChangeListener((view, hasFocus) -> {
+            if (hasFocus)
+            {
+                binding.layoutMic.setVisibility(View.GONE);
+                binding.layoutCamera.setVisibility(View.GONE);
+                binding.layoutGallery.setVisibility(View.GONE);
+            }
+            else
+            {
+                binding.layoutGallery.setVisibility(View.VISIBLE);
+                binding.layoutCamera.setVisibility(View.VISIBLE);
+                binding.layoutMic.setVisibility(View.VISIBLE);
+            }
+        });
 
         //implementation for isUserTyping feature
         binding.inputMessage.addTextChangedListener(new TextWatcher()
@@ -230,6 +261,7 @@ public class conversationChatActivity extends BaseActivity
             {
             }
         });
+
     }
     //adds the conversion of the conversation data into the database conversations collection
     private void addConversion(HashMap<String, Object> conversion)
@@ -288,5 +320,26 @@ public class conversationChatActivity extends BaseActivity
     protected void onResume() {
         super.onResume();
         listenAvailabilityOfReceiver();
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event)
+    {
+        if(event.getAction() == MotionEvent.ACTION_DOWN)
+        {
+            View view = getCurrentFocus();
+            if (view instanceof EditText)
+            {
+                Rect outRect = new Rect();
+                view.getGlobalVisibleRect(outRect);
+                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY()))
+                {
+                    view.clearFocus();
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                }
+            }
+        }
+        return super.dispatchTouchEvent(event);
     }
 }
