@@ -51,6 +51,7 @@ public class homeActivity extends BaseActivity implements ConversionListener
                     startActivity(new Intent(getApplicationContext(), conversationMainActivity.class));
                     break;
                 case R.id.camera:
+                    startActivity(new Intent(getApplicationContext(), mainCameraActivity.class));
                     break;
                 case R.id.settings:
                     startActivity(new Intent(getApplicationContext(), settingsProfileActivity.class));

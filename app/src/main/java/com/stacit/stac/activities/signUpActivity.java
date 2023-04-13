@@ -82,6 +82,7 @@ public class signUpActivity extends AppCompatActivity
         user.put(Constants.KEY_SECURITY_PRIVACY, "Enabled");
         user.put(Constants.KEY_PRIVATE_ACCOUNT, "Enabled");
         user.put(Constants.KEY_NOTIFICATION, "Enabled");
+        user.put(Constants.KEY_LANGUAGE_CODE, "EN");
 
         db.collection(Constants.KEY_COLLECTION_USERS)
                 .add(user)
@@ -102,6 +103,7 @@ public class signUpActivity extends AppCompatActivity
                     preferenceManager.putString(Constants.KEY_SECURITY_PRIVACY, "Enabled");
                     preferenceManager.putString(Constants.KEY_PRIVATE_ACCOUNT, "Enabled");
                     preferenceManager.putString(Constants.KEY_NOTIFICATION, "Enabled");
+                    preferenceManager.putString(Constants.KEY_LANGUAGE_CODE, "EN");
                     //create an Intent to start the conversationChatActivity (Conversation Page) if the account was created
                     Intent intent = new Intent(getApplicationContext(), homeActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

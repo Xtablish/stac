@@ -94,7 +94,7 @@
             android:overScrollMode="never"
             android:layout_marginTop="@dimen/_28sdp"
             android:paddingTop="@dimen/_8sdp"
-            android:paddingStart="@dimen/_20sdp"
+            android:paddingStart="@dimen/_8sdp"
             android:paddingBottom="@dimen/_8sdp"
             android:paddingEnd="@dimen/_20sdp"
             android:visibility="gone"

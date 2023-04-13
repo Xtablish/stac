@@ -2,6 +2,7 @@ package com.stacit.stac.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -10,9 +11,12 @@ import android.view.View;
 import android.widget.Toast;
 import com.stacit.stac.BuildConfig;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.stacit.stac.activities.StacAI.ConnectionReceiver;
 import com.stacit.stac.databinding.ActivityLoadingBinding;
 
-public class loadingActivity extends AppCompatActivity {
+public class loadingActivity extends AppCompatActivity implements ConnectionReceiver.ReceiverListener
+{
 
     //call to the activity locally created binding class for this layout
     private ActivityLoadingBinding binding;
@@ -26,26 +30,37 @@ public class loadingActivity extends AppCompatActivity {
         checkFirstRun();
     }
 
-    //this checks for network connectivity
-    private boolean isNetworkConnected(){
-        ConnectivityManager test = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkActiveInfo = test.getActiveNetworkInfo();
-        return networkActiveInfo != null && networkActiveInfo.isConnected();
-    }
+    private void checkConnection()
+    {
 
-    //this checks for internet access
-    public boolean internetIsConnected(){
-        try{
-            String pingCmd = "ping -c l google.com";
-            return (Runtime.getRuntime().exec(pingCmd).waitFor() == 0);
-        } catch (Exception e){
-            return false;
-        }
+        // initialize intent filter
+        IntentFilter intentFilter = new IntentFilter();
+
+        // add action
+        intentFilter.addAction("android.new.conn.CONNECTIVITY_CHANGE");
+
+        // register receiver
+        registerReceiver(new ConnectionReceiver(), intentFilter);
+
+        // Initialize listener
+        ConnectionReceiver.Listener = this;
+
+        // Initialize connectivity manager
+        ConnectivityManager manager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        // Initialize network info
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+
+        // get connection status
+        boolean isConnected = networkInfo != null && networkInfo.isConnectedOrConnecting();
+
+        // go to the sign in page
+        SignInTab(isConnected);
     }
 
     //a function that makes calls to the Toast method
     private void showToast(){
-        Toast.makeText(getApplicationContext(), "No internet", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Internet connection error", Toast.LENGTH_SHORT).show();
     }
 
     //this function makes calls to the view to change the progress bar visibility
@@ -60,13 +75,8 @@ public class loadingActivity extends AppCompatActivity {
     }
 
     //internet connection test function for application startup
-    private void SignInTab(){
-        //when using a physical device add the internetIsConnected to the if statement
-        if (isNetworkConnected())
-        {
-            loading(true);
-            startActivity(new Intent(getApplicationContext(), signInActivity.class));
-        } else if (internetIsConnected())
+    private void SignInTab(Boolean isConnected){
+         if (isConnected)
         {
             loading(true);
             startActivity(new Intent(getApplicationContext(), signInActivity.class));
@@ -78,7 +88,8 @@ public class loadingActivity extends AppCompatActivity {
     }
 
     //check if the application is on its first run after installation
-    private void checkFirstRun() {
+    private void checkFirstRun()
+    {
 
         final String PREFS_NAME = "MyPrefsFile";
         final String PREF_VERSION_CODE_KEY = "version_code";
@@ -95,7 +106,7 @@ public class loadingActivity extends AppCompatActivity {
         if (currentVersionCode == savedVersionCode) {
 
             // This is just a normal run
-            SignInTab();
+            checkConnection();
 
         } else if (savedVersionCode == ABSENT) {
 
@@ -110,4 +121,25 @@ public class loadingActivity extends AppCompatActivity {
 
         // Update the shared preferences with the current version code
         prefs.edit().putInt(PREF_VERSION_CODE_KEY, currentVersionCode).apply();
-    }}
+    }
+
+    @Override
+    public void onNetworkChange(boolean isConnected) {
+        //call the SignInTab function
+        SignInTab(isConnected);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // call method
+        checkConnection();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // call method
+        checkConnection();
+    }
+}

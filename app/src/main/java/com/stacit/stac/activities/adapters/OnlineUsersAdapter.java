@@ -10,9 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.stacit.stac.activities.listeners.ConversionListener;
 import com.stacit.stac.activities.models.ChatMessage;
-import com.stacit.stac.activities.models.User;
 import com.stacit.stac.databinding.ItemOnlineContainerBinding;
 
 import java.util.List;
@@ -20,17 +18,15 @@ import java.util.List;
 public class OnlineUsersAdapter extends RecyclerView.Adapter<OnlineUsersAdapter.ConversionViewHolder>
 {
     private final List<ChatMessage> chatMessages;
-    private final ConversionListener conversionListener;
 
-    public OnlineUsersAdapter(List<ChatMessage> chatMessages, ConversionListener conversionListener)
+    public OnlineUsersAdapter(List<ChatMessage> chatMessages)
     {
         this.chatMessages = chatMessages;
-        this.conversionListener = conversionListener;
     }
 
     @NonNull
     @Override
-    public ConversionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public OnlineUsersAdapter.ConversionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         return new OnlineUsersAdapter.ConversionViewHolder(
                 ItemOnlineContainerBinding.inflate(
@@ -45,7 +41,6 @@ public class OnlineUsersAdapter extends RecyclerView.Adapter<OnlineUsersAdapter.
     public void onBindViewHolder(@NonNull OnlineUsersAdapter.ConversionViewHolder holder, int position)
     {
         holder.SetData(chatMessages.get(position));
-
     }
 
     @Override
@@ -65,15 +60,9 @@ public class OnlineUsersAdapter extends RecyclerView.Adapter<OnlineUsersAdapter.
 
         void SetData(ChatMessage chatMessage)
         {
-            binding.imageProfile.setImageBitmap(getConversionImage(chatMessage.conversionImage));
             binding.imageOnlineStatus.setVisibility(View.VISIBLE);
-            binding.getRoot().setOnClickListener(view -> {
-                User user = new User();
-                user.id = chatMessage.conversionId;
-                user.name = chatMessage.conversionName;
-                user.image = chatMessage.conversionImage;
-                conversionListener.onConversionClicked(user);
-            });
+            binding.imageProfile.setImageBitmap(getConversionImage(chatMessage.conversionImage));
+            binding.textUsername.setText(chatMessage.conversionName);
         }
     }
 
@@ -82,4 +71,5 @@ public class OnlineUsersAdapter extends RecyclerView.Adapter<OnlineUsersAdapter.
         byte [] bytes = Base64.decode(encodedImage, Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
     }
+
 }

@@ -32,6 +32,7 @@ public class Constants {
     public static final String KEY_AVAILABILITY = "availability";
     public static final String KEY_NOTIFICATION = "notifications";
     public static final String KEY_NIGHT_MODE = "night_mode";
+    public static final String KEY_LANGUAGE_CODE = "language_code";
     public static final String KEY_PRIVATE_ACCOUNT = "private_account";
     public static final String KEY_SECURITY_PRIVACY = "security_privacy";
 }

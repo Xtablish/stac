@@ -6,13 +6,20 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.stacit.stac.activities.adapters.OnlineUsersAdapter;
@@ -26,6 +33,7 @@ import com.stacit.stac.databinding.ConversationMainBinding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class conversationMainActivity extends BaseActivity implements ConversionListener
 {
@@ -34,6 +42,8 @@ public class conversationMainActivity extends BaseActivity implements Conversion
     private ConversationMainBinding binding;
     private PreferenceManager preferenceManager;
     private List<ChatMessage> conversations;
+    private Boolean isReceiverAvailable;
+    private String receiverUserID;
     private RecentConversationsAdapter conversationsAdapter;
     private OnlineUsersAdapter statusAdapter;
     private FirebaseFirestore database;
@@ -45,7 +55,10 @@ public class conversationMainActivity extends BaseActivity implements Conversion
         super.onCreate(savedInstanceState);
          binding = ConversationMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        //setting the recycleView spacing
+        LinearLayoutManager linearLayoutManager =new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        binding.usersActiveRecycleView.setLayoutManager(linearLayoutManager);
         //call the initialization function
         init();
         //creating an instance of the preferenceManager class
@@ -64,10 +77,49 @@ public class conversationMainActivity extends BaseActivity implements Conversion
     {
         conversations = new ArrayList<>();
         conversationsAdapter = new RecentConversationsAdapter(conversations, this);
-        statusAdapter = new OnlineUsersAdapter(conversations, this);
+        statusAdapter = new OnlineUsersAdapter(conversations);
         binding.conversationRecycleView.setAdapter(conversationsAdapter);
+        binding.usersActiveRecycleView.setAdapter(statusAdapter);
         database = FirebaseFirestore.getInstance();
     }
+
+    private List<ChatMessage> getActiveUsers()
+    {
+        List<ChatMessage> chatMessageList = new ArrayList<>();
+        ChatMessage chatMessage = new ChatMessage();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection(Constants.KEY_COLLECTION_CONVERSATIONS)
+                .whereEqualTo(Constants.KEY_RECEIVER_ID, true)
+                .whereEqualTo(Constants.KEY_SENDER_ID, true)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>()
+                {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task)
+                    {
+                        if (task.isSuccessful())
+                        {
+                            for (QueryDocumentSnapshot documentSnapshot : task.getResult())
+                            {
+                                receiverUserID = documentSnapshot.getString(Constants.KEY_RECEIVER_ID);
+                                listenAvailabilityOfReceiver();
+                                if(isReceiverAvailable)
+                                {
+                                    chatMessage.conversionName = documentSnapshot.getString(Constants.KEY_RECEIVER_NAME);
+                                    chatMessage.conversionImage = documentSnapshot.getString(Constants.KEY_RECEIVER_IMAGE);
+                                    chatMessageList.add(chatMessage);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Log.d("TAG", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        return chatMessageList;
+    }
+
 
     private void signOutListener()
     {
@@ -156,8 +208,7 @@ public class conversationMainActivity extends BaseActivity implements Conversion
             binding.conversationRecycleView.smoothScrollToPosition(0);
             binding.conversationRecycleView.setVisibility(View.VISIBLE);
             binding.progressBar.setVisibility(View.GONE);
-            //for the online view
-            conversations.sort((obj1, obj2) -> obj2.dateObject.compareTo(obj1.dateObject));
+            //active status
             statusAdapter.notifyDataSetChanged();
             binding.usersActiveRecycleView.smoothScrollToPosition(0);
             binding.usersActiveRecycleView.setVisibility(View.VISIBLE);
@@ -191,6 +242,33 @@ public class conversationMainActivity extends BaseActivity implements Conversion
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
+    private void listenAvailabilityOfReceiver()
+    {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection(Constants.KEY_COLLECTION_USERS)
+                .document(receiverUserID)
+                .addSnapshotListener(conversationMainActivity.this, (value, error) -> {
+            if (error != null)
+            {
+                return;
+            }
+            if (value != null)
+            {
+                if (value.getLong(Constants.KEY_AVAILABILITY) != null)
+                {
+                    int availability = Objects.requireNonNull(
+                            value.getLong(Constants.KEY_AVAILABILITY)
+                    ).intValue();
+                    isReceiverAvailable = availability == 1;
+                }
+                else
+                {
+                    isReceiverAvailable = false;
+                }
+            }
+        });
+    }
+
     @Override
     public void onConversionClicked(User user)
     {
@@ -198,4 +276,5 @@ public class conversationMainActivity extends BaseActivity implements Conversion
         intent.putExtra(Constants.KEY_USER, user);
         startActivity(intent);
     }
+
 }

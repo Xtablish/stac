@@ -48,7 +48,7 @@
     <string name="cont_des_country_image">image view for country card</string>
     <string name="text_type_a_message_hint">Type a message</string>
     <string name="text_select_user">Select Contact</string>
-    <string name="text_recent">Recent</string>
+    <string name="text_recent">Conversations</string>
     <string name="text_discover">Discover</string>
     <string name="text_stac_about_message">Simultaneous Translation \n And Communication</string>
     <string name="messages">Chats</string>
@@ -74,4 +74,10 @@
     <string name="personal_information">Personal Information</string>
     <string name="language">Language</string>
     <string name="delete_account">Delete Account</string>
+    <string name="text_source">Source</string>
+    <string name="text_result">Result</string>
+    <string name="translate_fab">Translate FAB</string>
+    <string name="text_log_in">Log In</string>
+    <string name="text_enter_pin">Enter Pin</string>
+    <string name="image_preview_text">Image Preview</string>
 </resources>

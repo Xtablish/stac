@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
@@ -30,6 +31,7 @@ android {
     viewBinding{
         enabled = true
     }
+
 }
 
 dependencies {
@@ -38,6 +40,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation "androidx.coordinatorlayout:coordinatorlayout:1.2.0"
+    implementation 'androidx.core:core-ktx:1.10.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -52,7 +55,9 @@ dependencies {
     //Import Firebase into the app
     implementation 'com.google.firebase:firebase-core:21.1.1'
     implementation 'com.google.firebase:firebase-messaging:23.1.2'
-    implementation 'com.google.firebase:firebase-firestore:24.4.4'
+    implementation 'com.google.firebase:firebase-firestore:24.4.5'
+
+    //ml kit implementation
     implementation 'com.google.mlkit:translate:17.0.1'
     implementation 'com.google.mlkit:language-id:17.0.4'
 
@@ -62,5 +67,14 @@ dependencies {
 
     //MultiDex
     implementation 'androidx.multidex:multidex:2.0.1'
+
+    //google play services
+    implementation 'com.google.android.gms:play-services-vision:20.1.3'
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
+
+    //firebase natural language
+    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:18.0.2'
+    implementation 'com.google.mlkit:language-id:17.0.4'
+    implementation 'com.google.mlkit:translate:17.0.1'
 
 }
