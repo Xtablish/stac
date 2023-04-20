@@ -5,9 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,9 +26,6 @@ public class signInActivity extends AppCompatActivity
 {
     //making instances of local classes
     private ActivitySignInBinding binding;
-    ImageButton cancelButton;
-    ProgressBar progressBar;
-    ImageView stateCheck;
     private PreferenceManager preferenceManager;
     //default onCreate method that's called when this activity is created
     @SuppressLint("MissingInflatedId")
@@ -75,7 +69,7 @@ public class signInActivity extends AppCompatActivity
             if (task.isSuccessful())
             {
                 AggregateQuerySnapshot snapshot = task.getResult();
-                if (snapshot.getCount() < 12 || snapshot.getCount() < 15)
+                if (snapshot.getCount() < 12 || snapshot.getCount() < 17)
                 {
                     updateUser(userID);
                 }
@@ -92,6 +86,7 @@ public class signInActivity extends AppCompatActivity
         data.put(Constants.KEY_PRIVATE_ACCOUNT, "Enabled");
         data.put(Constants.KEY_NOTIFICATION, "Enabled");
         data.put(Constants.KEY_LANGUAGE_CODE, "EN");
+        data.put(Constants.KEY_TYPING, "false");
 
         db.collection(Constants.KEY_COLLECTION_USERS)
                 .document(userID)

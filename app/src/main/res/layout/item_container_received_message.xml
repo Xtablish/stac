@@ -4,13 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/_8sdp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="@dimen/_4sdp">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/textDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/_8ssp"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/imageProfile"
-        android:layout_width="@dimen/_25sdp"
-        android:layout_height="@dimen/_25sdp"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
         android:background="@drawable/background_image"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@id/textMessage"
@@ -21,8 +32,10 @@
     <TextView
         android:id="@+id/textMessage"
         android:layout_width="0dp"
+        android:maxWidth="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_4sdp"
+        android:layout_marginTop="6dp"
         android:background="@drawable/background_received_message"
         android:paddingStart="@dimen/_12sdp"
         android:paddingTop="@dimen/_8sdp"
@@ -32,14 +45,14 @@
         android:textColor="@color/primary_text"
         android:textSize="@dimen/_13ssp"
         app:layout_constraintStart_toEndOf="@id/imageProfile"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textDate"
         app:layout_constraintWidth_percent="0.75"/>
 
     <TextView
-        android:id="@+id/textDateTime"
+        android:id="@+id/textTime"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginTop="2dp"
         android:textColor="@color/secondary_text"
         android:textSize="@dimen/_8ssp"
         app:layout_constraintStart_toStartOf="@id/textMessage"

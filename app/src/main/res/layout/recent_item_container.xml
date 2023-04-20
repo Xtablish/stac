@@ -49,9 +49,34 @@
         android:layout_marginEnd="@dimen/_8sdp"
         android:textColor="@color/secondary_text"
         android:textSize="@dimen/_12ssp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/readReceiverImage"
         app:layout_constraintStart_toEndOf="@id/imageProfile"
-        app:layout_constraintTop_toBottomOf="@id/viewSupport"
-        />
+        app:layout_constraintTop_toBottomOf="@id/viewSupport"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/typingStatus"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        app:lottie_rawRes="@raw/typing_status"
+        app:lottie_repeatCount="15"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/imageProfile"
+        app:layout_constraintStart_toStartOf="@id/textName"
+        app:layout_constraintTop_toBottomOf="@id/textName"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/readReceiverImage"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:background="@drawable/background_image"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="@id/textName"
+        app:layout_constraintBottom_toBottomOf="@id/textRecentMessage"
+        app:riv_oval="true"
+        android:visibility="gone"
+        app:tint="@color/icon_red"
+        tools:ignore="ImageContrastCheck"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

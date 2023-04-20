@@ -83,6 +83,7 @@ public class signUpActivity extends AppCompatActivity
         user.put(Constants.KEY_PRIVATE_ACCOUNT, "Enabled");
         user.put(Constants.KEY_NOTIFICATION, "Enabled");
         user.put(Constants.KEY_LANGUAGE_CODE, "EN");
+        user.put(Constants.KEY_TYPING, "false");
 
         db.collection(Constants.KEY_COLLECTION_USERS)
                 .add(user)

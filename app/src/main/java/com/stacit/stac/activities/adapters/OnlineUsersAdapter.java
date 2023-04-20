@@ -55,19 +55,22 @@ public class OnlineUsersAdapter extends RecyclerView.Adapter<OnlineUsersAdapter.
         ConversionViewHolder(ItemOnlineContainerBinding itemOnlineContainerBinding)
         {
             super(itemOnlineContainerBinding.getRoot());
+            //binding the view to the recycler
             binding = itemOnlineContainerBinding;
         }
 
         void SetData(ChatMessage chatMessage)
         {
-            binding.imageOnlineStatus.setVisibility(View.VISIBLE);
-            binding.imageProfile.setImageBitmap(getConversionImage(chatMessage.conversionImage));
+            //putting the content on the view
             binding.textUsername.setText(chatMessage.conversionName);
+            binding.imageProfile.setImageBitmap(getConversionImage(chatMessage.conversionImage));
+            binding.imageOnlineStatus.setVisibility(View.VISIBLE);
         }
     }
 
     private Bitmap getConversionImage(String encodedImage)
     {
+        //converts the encoded string image to Bitmap to be displayed
         byte [] bytes = Base64.decode(encodedImage, Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
     }

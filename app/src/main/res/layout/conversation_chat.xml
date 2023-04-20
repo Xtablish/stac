@@ -15,6 +15,15 @@
         app:layout_constraintBottom_toTopOf="@id/viewSupportBottom"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <ImageView
+        android:id="@+id/imageIVPreview"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/text_result"
+        android:layout_alignParentTop="true"
+        android:visibility="gone"/>
+
 
 
     <View
@@ -36,6 +45,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:riv_oval="true"
+        app:tint="@color/icon_red"
         tools:ignore="ImageContrastCheck" />
 
     <com.makeramen.roundedimageview.RoundedImageView
@@ -107,9 +117,9 @@
             android:textColor="@color/primary_text"
             android:textSize="@dimen/_14ssp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/imageProfile"
             app:layout_constraintEnd_toStartOf="@id/imagePhoneCall"
             app:layout_constraintStart_toEndOf="@id/imageProfile"
+            app:layout_constraintBottom_toBottomOf="@id/imageProfile"
             app:layout_constraintTop_toTopOf="@id/imageProfile"/>
 
 
@@ -129,7 +139,10 @@
         android:orientation="vertical"
         app:stackFromEnd="true"
         android:overScrollMode="never"
-        android:padding="@dimen/_20sdp"
+        android:paddingStart="15dp"
+        android:paddingBottom="@dimen/_20sdp"
+        android:paddingEnd="15dp"
+        android:paddingTop="@dimen/_20sdp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@id/viewBackground"
         app:layout_constraintTop_toBottomOf="@id/viewSupport"
@@ -265,11 +278,55 @@
         android:layout_marginEnd="@dimen/_5sdp"
         android:padding="@dimen/_4sdp"
         android:background="@drawable/background_image"
+        android:src="@drawable/ic_add"
+        app:tint="@color/send_message_bg"
+        app:layout_constraintEnd_toEndOf="@id/inputMessage"
+        app:layout_constraintTop_toTopOf="@id/inputMessage"
+        app:layout_constraintBottom_toBottomOf="@id/inputMessage"
+        tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/typingStatus"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        app:lottie_rawRes="@raw/typing_status"
+        app:lottie_repeatCount="15"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/inputMessage"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/readReceiverImage"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:background="@drawable/background_image"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/inputMessage"
+        app:riv_oval="true"
+        app:tint="@color/icon_red"
+        tools:ignore="ImageContrastCheck" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/layoutSendReady"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:paddingStart="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:padding="@dimen/_4sdp"
+        android:background="@drawable/send_button_ready_state"
         android:src="@drawable/ic_up_arrow_send"
         app:tint="@color/send_message_bg"
         app:layout_constraintEnd_toEndOf="@id/inputMessage"
         app:layout_constraintTop_toTopOf="@id/inputMessage"
         app:layout_constraintBottom_toBottomOf="@id/inputMessage"
+        android:visibility="invisible"
         tools:ignore="RtlHardcoded,RtlSymmetry" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

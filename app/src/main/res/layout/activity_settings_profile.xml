@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/input_background"
+    tools:context=".activities.settings.SettingsProfile">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageBackBtn"
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:src="@drawable/ic_back"
+                app:tint="@color/primary"
+                android:contentDescription="@string/text_image_view"
+                android:padding="@dimen/_14sdp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_text_profile_profile"
+                android:textStyle="bold"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/_14ssp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/imageProfileMain"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:contentDescription="@string/text_image_view"
+            android:scaleType="centerCrop"
+            app:riv_oval="true"
+            android:background="@drawable/background_image"
+            android:backgroundTint="@color/white"
+            tools:ignore="ImageContrastCheck" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/textEditProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:paddingStart="@dimen/_20sdp"
+            android:layout_gravity="center"
+            android:text="@string/settings_text_profile_edit_photo"
+            android:textColor="@color/primary_text"
+            android:background="@drawable/settings_round_bg_secondary_100"
+            android:paddingEnd="@dimen/_20sdp"/>
+
+        <LinearLayout
+            android:background="@drawable/settings_round_back_white10_20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:orientation="vertical"
+            android:padding="@dimen/_15sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/settingsProfileUser"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:src="@drawable/ic_settings_profile_user"
+                    app:tint="@color/primary"
+                    android:contentDescription="@string/text_image_view"
+                    android:background="@color/white"
+                    android:padding="@dimen/_12sdp"/>
+
+                <TextView
+                    android:id="@id/textUsername"
+                    android:layout_marginStart="@dimen/_24sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/primary_text"
+                    android:textStyle="bold"
+                    android:layout_toEndOf="@id/settingsProfileUser"
+                    tools:ignore="RelativeOverlap" />
+
+                <ImageView
+                    android:id="@+id/settingsProfileIcon"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    app:tint="@color/primary"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@string/text_image_view"
+                    android:src="@drawable/ic_right_back"
+                    android:background="@color/white"
+                    android:padding="@dimen/_12sdp"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp">
+
+                <ImageView
+                    android:id="@+id/settingsProfileEdit"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:background="@color/white"
+                    android:contentDescription="@string/text_image_view"
+                    android:padding="@dimen/_12sdp"
+                    android:src="@drawable/ic_settings_profile_edit"
+                    app:tint="@color/primary"
+                    tools:ignore="ImageContrastCheck" />
+
+                <TextView
+                    android:layout_marginStart="@dimen/_24sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/primary_text"
+                    android:textStyle="bold"
+                    android:layout_toEndOf="@id/settingsProfileEdit"
+                    android:text="@string/settings_text_about"
+                    tools:ignore="RelativeOverlap" />
+
+                <ImageView
+                    android:id="@+id/settingsProfileAbout"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    app:tint="@color/primary"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@string/text_image_view"
+                    android:src="@drawable/ic_right_back"
+                    android:background="@color/white"
+                    android:padding="@dimen/_12sdp"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="355dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:gravity="center"
+            android:text="@string/settings_profile_text_description"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_10ssp"
+            android:textStyle="bold"
+            tools:ignore="TextSizeCheck,VisualLintBounds" />
+    </LinearLayout>
+
+</LinearLayout>

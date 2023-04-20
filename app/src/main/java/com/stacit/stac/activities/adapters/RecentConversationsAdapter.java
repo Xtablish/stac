@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -59,14 +60,24 @@ public class RecentConversationsAdapter extends RecyclerView.Adapter<RecentConve
         ConversionViewHolder(RecentItemContainerBinding recentItemContainerBinding)
         {
             super(recentItemContainerBinding.getRoot());
+            //binding the view to the recycler
             binding = recentItemContainerBinding;
         }
 
         void SetData(ChatMessage chatMessage)
         {
+            //if the last sender was the user, concatenate the message with you at the start
+            if (!chatMessage.lastMessageSender.equals(chatMessage.sender))
+            {
+                binding.textRecentMessage.setText(chatMessage.message);
+            }
+            else
+            {
+                String textHolder = "You: "+chatMessage.message;
+                binding.textRecentMessage.setText(textHolder);
+            }
             binding.imageProfile.setImageBitmap(getConversionImage(chatMessage.conversionImage));
             binding.textName.setText(chatMessage.conversionName);
-            binding.textRecentMessage.setText(chatMessage.message);
             binding.getRoot().setOnClickListener(view -> {
                 User user = new User();
                 user.id = chatMessage.conversionId;
@@ -74,11 +85,25 @@ public class RecentConversationsAdapter extends RecyclerView.Adapter<RecentConve
                 user.image = chatMessage.conversionImage;
                 conversionListener.onConversionClicked(user);
             });
+
+            if (chatMessage.typing != null && chatMessage.typing.equals(true))
+            {
+                //show the typing status and hide the last message
+                binding.typingStatus.setVisibility(View.VISIBLE);
+                binding.textRecentMessage.setVisibility(View.INVISIBLE);
+            }
+            else
+            {
+                //hide the typingStatus and show the last message
+                binding.typingStatus.setVisibility(View.INVISIBLE);
+                binding.textRecentMessage.setVisibility(View.VISIBLE);
+            }
         }
     }
 
     private Bitmap getConversionImage(String encodedImage)
     {
+        //converts the encoded string image to a Bitmap image to be displayed
         byte [] bytes = Base64.decode(encodedImage, Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
     }

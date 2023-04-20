@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/input_background"
+    tools:context=".activities.settings.SettingsProfileEditPhoto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_5sdp">
+
+        <ImageView
+            android:id="@+id/imageCancelBtn"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:src="@drawable/ic_settings_profile_cancel"
+            app:tint="@color/primary"
+            android:contentDescription="@string/text_image_view"
+            android:padding="@dimen/_14sdp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_text_profile_edit_photo"
+            android:textStyle="bold"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_14ssp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/imageChangeBtn"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_settings_profile_complete"
+            app:tint="@color/primary"
+            android:visibility="gone"
+            android:contentDescription="@string/text_image_view"
+            android:padding="@dimen/_14sdp"/>
+
+    </RelativeLayout>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/imageProfileMain"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:contentDescription="@string/text_image_view"
+        android:scaleType="centerCrop"
+        app:riv_oval="true"
+        android:background="@drawable/background_image"
+        android:backgroundTint="@color/white"
+        tools:ignore="ImageContrastCheck" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/imageCameraBtn"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:src="@drawable/ic_settings_profile_camera"
+            app:tint="@color/primary"
+            android:textAlignment="center"
+            android:background="@drawable/settings_profile_edit_photo_bg"
+            android:contentDescription="@string/text_image_view"
+            android:padding="@dimen/_14sdp"
+            android:layout_marginStart="45dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/imageGalleryBtn"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_text_profile_camera"
+            android:textStyle="bold"
+            android:padding="4dp"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@color/primary_text"
+            app:layout_constraintBottom_toBottomOf="@id/imageCameraBtn"
+            app:layout_constraintStart_toStartOf="@id/imageCameraBtn"
+            app:layout_constraintEnd_toEndOf="@id/imageCameraBtn"/>
+
+        <ImageView
+            android:id="@+id/imageGalleryBtn"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:src="@drawable/ic_settings_profile_photo_gallery"
+            app:tint="@color/primary"
+            android:textAlignment="center"
+            android:background="@drawable/settings_profile_edit_photo_bg"
+            android:contentDescription="@string/text_image_view"
+            android:padding="@dimen/_14sdp"
+            app:layout_constraintStart_toEndOf="@id/imageCameraBtn"
+            app:layout_constraintEnd_toStartOf="@id/imageTextBtn"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_text_profile_gallery"
+            android:textStyle="bold"
+            android:padding="4dp"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@color/primary_text"
+            app:layout_constraintBottom_toBottomOf="@id/imageGalleryBtn"
+            app:layout_constraintStart_toStartOf="@id/imageGalleryBtn"
+            app:layout_constraintEnd_toEndOf="@id/imageGalleryBtn"/>
+
+        <ImageView
+            android:id="@+id/imageTextBtn"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:src="@drawable/ic_settings_profile_photo_gallery"
+            app:tint="@color/primary"
+            android:textAlignment="center"
+            android:background="@drawable/settings_profile_edit_photo_bg"
+            android:contentDescription="@string/text_image_view"
+            android:padding="@dimen/_14sdp"
+            app:layout_constraintStart_toEndOf="@id/imageGalleryBtn"
+            android:layout_marginEnd="45dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_text_profile_text"
+            android:textStyle="bold"
+            android:padding="4dp"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@color/primary_text"
+            app:layout_constraintBottom_toBottomOf="@id/imageTextBtn"
+            app:layout_constraintStart_toStartOf="@id/imageTextBtn"
+            app:layout_constraintEnd_toEndOf="@id/imageTextBtn"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="18dp"
+        android:text="@string/settings_text_profile_select_avatar"
+        android:textStyle="bold"
+        android:textSize="@dimen/_14ssp"
+        android:textColor="@color/primary_text"/>
+
+    <LinearLayout
+        android:background="@drawable/settings_round_back_white10_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:orientation="vertical"
+        android:padding="@dimen/_8sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"
+            android:gravity="fill_horizontal">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/profileAvatar1"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="10dp"
+                android:layout_alignParentStart="true"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/profileAvatar2"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="75dp"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/profileAvatar3"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="140dp"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/profileAvatar4"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="205dp"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/profileAvatar5"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="270dp"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"
+            android:gravity="fill_horizontal"
+            android:layout_marginTop="@dimen/_8sdp">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/profileAvatar6"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="10dp"
+                android:layout_alignParentStart="true"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/profileAvatar7"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="75dp"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/profileAvatar8"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="140dp"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/profileAvatar9"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="205dp"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/profileAvatar10"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="270dp"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="355dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:gravity="center"
+        android:text="@string/settings_text_profile_edit_photo_description"
+        android:textColor="@color/primary_text"
+        android:textSize="@dimen/_10ssp"
+        android:textStyle="bold"
+        tools:ignore="TextSizeCheck,VisualLintBounds" />
+
+</LinearLayout>

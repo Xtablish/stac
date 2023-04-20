@@ -2,15 +2,28 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/_8sdp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="@dimen/_4sdp">
+    android:layout_marginTop="@dimen/_6sdp"
+    android:layout_marginBottom="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <TextView
+        android:id="@+id/textDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/_8ssp"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
     <TextView
         android:id="@+id/textMessage"
         android:layout_width="0dp"
+        android:maxWidth="200dp"
         android:layout_height="wrap_content"
         android:background="@drawable/background_send_message"
+        android:layout_marginTop="6dp"
         android:paddingStart="@dimen/_12sdp"
         android:paddingTop="@dimen/_8sdp"
         android:paddingEnd="@dimen/_12sdp"
@@ -19,18 +32,19 @@
         android:textColor="@color/white"
         android:textSize="@dimen/_13ssp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.8"/>
+        app:layout_constraintTop_toBottomOf="@id/textDate"
+        app:layout_constraintWidth_percent="0.8">
+    </TextView>
 
     <TextView
-        android:id="@+id/textDateTime"
+        android:id="@+id/textTime"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginTop="2dp"
         android:textColor="@color/secondary_text"
         android:textSize="@dimen/_8ssp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textMessage"
-        />
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="@id/textMessage"
+        app:layout_constraintTop_toBottomOf="@id/textMessage"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

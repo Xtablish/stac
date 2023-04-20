@@ -2,6 +2,7 @@ package com.stacit.stac.activities.adapters;
 
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import com.stacit.stac.activities.models.ChatMessage;
 import com.stacit.stac.databinding.ItemContainerReceivedMessageBinding;
 import com.stacit.stac.databinding.ItemContainerSentMessageBinding;
 
+import java.util.Date;
 import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
@@ -96,7 +98,10 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         void setUserData(ChatMessage chatMessage)
         {
-            binding.textDateTime.setText(chatMessage.dateTime);
+            binding.textDate.setText(chatMessage.date);
+            binding.textDate.setVisibility(View.VISIBLE);
+
+            binding.textTime.setText(chatMessage.time);
             binding.textMessage.setText(chatMessage.message);
         }
     }
@@ -114,8 +119,12 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         void setUserData(ChatMessage chatMessage, Bitmap receivedProfileImage)
         {
             binding.textMessage.setText(chatMessage.message);
-            binding.textDateTime.setText(chatMessage.dateTime);
+            binding.textDate.setText(chatMessage.date);
+            binding.textTime.setText(chatMessage.time);
             binding.imageProfile.setImageBitmap(receivedProfileImage);
+
+            binding.textDate.setText(chatMessage.date);
+            binding.textDate.setVisibility(View.VISIBLE);
         }
     }
 }

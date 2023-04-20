@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -16,7 +15,6 @@ import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.stacit.stac.activities.adapters.OnlineUsersAdapter;
@@ -34,16 +32,13 @@ import java.util.Objects;
 
 public class conversationMainActivity extends BaseActivity implements ConversionListener
 {
-
-
     private ConversationMainBinding binding;
     private PreferenceManager preferenceManager;
     private List<ChatMessage> conversations;
-    private Boolean isReceiverAvailable;
-    private String receiverUserID;
     private RecentConversationsAdapter conversationsAdapter;
     private OnlineUsersAdapter statusAdapter;
     private FirebaseFirestore database;
+    private Boolean isReceiverAvailable;
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -65,61 +60,75 @@ public class conversationMainActivity extends BaseActivity implements Conversion
         //call to the getUserToken function to update the KEY_FCM_TOKEN variable
         getUserToken();
         //call to the signOutListener to sign the current user out
-        signOutListener();
+        eventClickListeners();
         //call to the listenerConversations function to update the view
         listenerConversations();
     }
 
+    //initialize data members for this activity
     private void init()
     {
         conversations = new ArrayList<>();
-        conversationsAdapter = new RecentConversationsAdapter(conversations, this);
-        statusAdapter = new OnlineUsersAdapter(conversations);
+        conversationsAdapter = new RecentConversationsAdapter(conversations,this);
+        statusAdapter = new OnlineUsersAdapter(getActiveUsers(conversations));
         binding.conversationRecycleView.setAdapter(conversationsAdapter);
         binding.usersActiveRecycleView.setAdapter(statusAdapter);
         database = FirebaseFirestore.getInstance();
     }
 
-    private List<ChatMessage> getActiveUsers()
+    private Boolean listenAvailabilityOfReceiver(String receiverId)
     {
-        List<ChatMessage> chatMessageList = new ArrayList<>();
-        ChatMessage chatMessage = new ChatMessage();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection(Constants.KEY_COLLECTION_CONVERSATIONS)
-                .whereEqualTo(Constants.KEY_RECEIVER_ID, true)
-                .whereEqualTo(Constants.KEY_SENDER_ID, true)
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful())
-                    {
-                        for (QueryDocumentSnapshot documentSnapshot : task.getResult())
-                        {
-                            receiverUserID = documentSnapshot.getString(Constants.KEY_RECEIVER_ID);
-                            listenAvailabilityOfReceiver();
-                            if(isReceiverAvailable)
-                            {
-                                chatMessage.conversionName = documentSnapshot.getString(Constants.KEY_RECEIVER_NAME);
-                                chatMessage.conversionImage = documentSnapshot.getString(Constants.KEY_RECEIVER_IMAGE);
-                                chatMessageList.add(chatMessage);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        Log.d("TAG", "Error getting documents: ", task.getException());
-                    }
-                });
-        return chatMessageList;
+       if (receiverId != null)
+       {
+           database.collection(Constants.KEY_COLLECTION_USERS).document(
+                   receiverId
+           ).addSnapshotListener(conversationMainActivity.this, (value, error) -> {
+               if (error != null)
+               {
+                   return;
+               }
+               if (value != null)
+               {
+                   if (value.getLong(Constants.KEY_AVAILABILITY) != null)
+                   {
+                       int availability = Objects.requireNonNull(
+                               value.getLong(Constants.KEY_AVAILABILITY)
+                       ).intValue();
+                       isReceiverAvailable = availability == 1;
+                   }
+               }
+           });
+       }
+       return isReceiverAvailable;
     }
 
+    private List<ChatMessage> getActiveUsers(List<ChatMessage> chatMessages)
+    {
+        List<ChatMessage> messages = new ArrayList<>();
+        for (int i = 0; i < chatMessages.size(); i++)
+        {
+            if (chatMessages.get(i).receiverID != null)
+            {
+                if (listenAvailabilityOfReceiver(chatMessages.get(i).receiverID))
+                {
+                    messages.add(chatMessages.get(i));
+                }
+            }
+        }
+        return messages;
+    }
 
-    private void signOutListener()
+    //listen to view for onClick events
+    private void eventClickListeners()
     {
         //listens for an onClick event, if there is, a call will be made to the userSignOut function
         binding.imageOpenCamera.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), OCRActivity.class)));
         binding.imageAddNewAccounts.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), UsersActivity.class)));
+        binding.imageProfile.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), settingsProfileActivity.class)));
     }
 
+    //updates the view with current user information
+    @SuppressLint("SetTextI18n")
     private void getUserInfo()
     {
         //binding the username from the local Constants class to the textView
@@ -130,6 +139,7 @@ public class conversationMainActivity extends BaseActivity implements Conversion
         binding.imageProfile.setImageBitmap(bitmap);
     }
 
+    //listens for changes in the database
     private void listenerConversations()
     {
         //this function listens for new messages and then updates the database
@@ -167,15 +177,20 @@ public class conversationMainActivity extends BaseActivity implements Conversion
                         chatMessage.conversionImage = documentChange.getDocument().getString(Constants.KEY_RECEIVER_IMAGE);
                         chatMessage.conversionName = documentChange.getDocument().getString(Constants.KEY_RECEIVER_NAME);
                         chatMessage.conversionId = documentChange.getDocument().getString(Constants.KEY_RECEIVER_ID);
+
                     }
                     else
                     {
                         chatMessage.conversionImage = documentChange.getDocument().getString(Constants.KEY_SENDER_IMAGE);
                         chatMessage.conversionName = documentChange.getDocument().getString(Constants.KEY_SENDER_NAME);
                         chatMessage.conversionId = documentChange.getDocument().getString(Constants.KEY_SENDER_ID);
+                        chatMessage.typing = documentChange.getDocument().getBoolean(Constants.KEY_RECEIVER_TYPING);
+                        chatMessage.online = documentChange.getDocument().getBoolean(Constants.KEY_AVAILABILITY);
 
                     }
                     chatMessage.message = documentChange.getDocument().getString(Constants.KEY_LAST_MESSAGE);
+                    chatMessage.sender = preferenceManager.getString(Constants.KEY_USER_ID);
+                    chatMessage.lastMessageSender = documentChange.getDocument().getString(Constants.KEY_LAST_MESSAGE_SENDER);
                     chatMessage.dateObject = documentChange.getDocument().getDate(Constants.KEY_TIMESTAMP);
                     conversations.add(chatMessage);
                 }
@@ -189,6 +204,7 @@ public class conversationMainActivity extends BaseActivity implements Conversion
                         if (conversations.get(i).senderID.equals(senderID) && conversations.get(i).receiverID.equals(receiverID))
                         {
                             conversations.get(i).message = documentChange.getDocument().getString(Constants.KEY_LAST_MESSAGE);
+                            conversations.get(i).lastMessageSender = documentChange.getDocument().getString(Constants.KEY_LAST_MESSAGE_SENDER);
                             conversations.get(i).dateObject = documentChange.getDocument().getDate(Constants.KEY_TIMESTAMP);
                             break;
                         }
@@ -232,33 +248,6 @@ public class conversationMainActivity extends BaseActivity implements Conversion
     {
         //displays a toast message to the view
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-    }
-
-    private void listenAvailabilityOfReceiver()
-    {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection(Constants.KEY_COLLECTION_USERS)
-                .document(receiverUserID)
-                .addSnapshotListener(conversationMainActivity.this, (value, error) -> {
-            if (error != null)
-            {
-                return;
-            }
-            if (value != null)
-            {
-                if (value.getLong(Constants.KEY_AVAILABILITY) != null)
-                {
-                    int availability = Objects.requireNonNull(
-                            value.getLong(Constants.KEY_AVAILABILITY)
-                    ).intValue();
-                    isReceiverAvailable = availability == 1;
-                }
-                else
-                {
-                    isReceiverAvailable = false;
-                }
-            }
-        });
     }
 
     @Override

@@ -22,7 +22,9 @@ public class Constants {
     public static final String KEY_RECEIVER_ID = "receiverID";
     public static final String KEY_MESSAGE = "message";
     public static final String KEY_TIMESTAMP = "timestamp";
+    public static final String KEY_LAST_MESSAGE_SENDER = "lastMessageSender";
     public static final String KEY_TYPING = "typing";
+    public static final String KEY_RECEIVER_TYPING= "receiverTyping";
     public static final String KEY_COLLECTION_CONVERSATIONS = "conversations";
     public static final String KEY_SENDER_NAME = "senderName";
     public static final String KEY_RECEIVER_NAME = "receiverName";
@@ -30,6 +32,7 @@ public class Constants {
     public static final String KEY_RECEIVER_IMAGE = "receiverImage";
     public static final String KEY_LAST_MESSAGE = "lastMessage";
     public static final String KEY_AVAILABILITY = "availability";
+    public static final String KEY_RECEIVER_ONLINE = "availability";
     public static final String KEY_NOTIFICATION = "notifications";
     public static final String KEY_NIGHT_MODE = "night_mode";
     public static final String KEY_LANGUAGE_CODE = "language_code";

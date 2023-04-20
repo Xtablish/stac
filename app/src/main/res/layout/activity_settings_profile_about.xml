@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/input_background"
+    tools:context=".activities.settings.SettingsProfileAbout">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_20sdp">
+
+        <ImageView
+            android:id="@+id/imageCancelBtn"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:src="@drawable/ic_settings_profile_cancel"
+            app:tint="@color/primary"
+            android:contentDescription="@string/text_image_view"
+            android:padding="@dimen/_14sdp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_text_about"
+            android:textStyle="bold"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_14ssp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/imageChangeBtn"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_settings_profile_complete"
+            app:tint="@color/primary"
+            android:visibility="gone"
+            android:contentDescription="@string/text_image_view"
+            android:padding="@dimen/_14sdp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:background="@drawable/settings_round_back_white10_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:orientation="vertical"
+        android:padding="@dimen/_8sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent">
+            <ImageView
+                android:id="@+id/settingsProfileEditAbout"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@color/white"
+                android:contentDescription="@string/text_image_view"
+                android:padding="@dimen/_12sdp"
+                android:src="@drawable/ic_settings_profile_edit"
+                app:tint="@color/primary"
+                tools:ignore="ImageContrastCheck" />
+
+            <EditText
+                android:id="@+id/inputFirstName"
+                android:layout_marginStart="50dp"
+                android:layout_width="280dp"
+                android:layout_height="@dimen/_40sdp"
+                android:autofillHints=""
+                android:maxLines="4"
+                android:background="@drawable/background_input"
+                android:backgroundTint="@color/white"
+                android:hint="@string/settings_text_profile_about_tell_people_about_you"
+                android:imeOptions="actionDone"
+                android:inputType="textPersonName"
+                android:paddingStart="@dimen/_16sdp"
+                android:paddingEnd="@dimen/_16sdp"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/_12ssp"
+                tools:ignore="VisualLintTextFieldSize" />
+
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:background="@drawable/settings_round_back_white10_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:orientation="vertical"
+        android:padding="@dimen/_8sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/settingsProfileAboutSpeakFreely"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:src="@drawable/ic_settings_profile_speak_freely"
+                app:tint="@color/primary"
+                android:contentDescription="@string/text_image_view"
+                android:background="@color/white"
+                android:padding="@dimen/_12sdp"/>
+
+            <TextView
+                android:id="@+id/textSpeakFreely"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/primary_text"
+                android:textStyle="bold"
+                android:text="@string/settings_text_profile_speak_freely"
+                android:layout_toEndOf="@id/settingsProfileAboutSpeakFreely"
+                tools:ignore="RelativeOverlap" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp">
+
+            <ImageView
+                android:id="@+id/settingsProfileAboutDoNotDisturb"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@color/white"
+                android:contentDescription="@string/text_image_view"
+                android:padding="@dimen/_12sdp"
+                android:src="@drawable/ic_settings_profile_do_not_disturb"
+                app:tint="@color/primary"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/primary_text"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/settingsProfileAboutDoNotDisturb"
+                android:text="@string/settings_text_profile_taking_a_break"
+                tools:ignore="RelativeOverlap" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp">
+
+            <ImageView
+                android:id="@+id/settingsProfileEdit"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@color/white"
+                android:contentDescription="@string/text_image_view"
+                android:padding="@dimen/_12sdp"
+                android:src="@drawable/ic_settings_profile_free_to_chat"
+                app:tint="@color/primary"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/textFreeToChat"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/primary_text"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/settingsProfileEdit"
+                android:text="@string/settings_text_profile_free_to_chat"
+                tools:ignore="RelativeOverlap" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp">
+
+            <ImageView
+                android:id="@+id/settingsProfileAboutFriendly"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@color/white"
+                android:contentDescription="@string/text_image_view"
+                android:padding="@dimen/_12sdp"
+                android:src="@drawable/ic_settings_profile_friendly"
+                app:tint="@color/primary"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/textVeryFriendly"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/primary_text"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/settingsProfileAboutFriendly"
+                android:text="@string/settings_text_profile_about_very_friendly"
+                tools:ignore="RelativeOverlap" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp">
+
+            <ImageView
+                android:id="@+id/settingsProfileAboutInnovative"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@color/white"
+                android:contentDescription="@string/text_image_view"
+                android:padding="@dimen/_12sdp"
+                android:src="@drawable/ic_settings_profile_working_on_something"
+                app:tint="@color/primary"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/textInnovative"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/primary_text"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/settingsProfileAboutInnovative"
+                android:text="@string/settings_text_profile_about_innovative"
+                tools:ignore="RelativeOverlap" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp">
+
+            <ImageView
+                android:id="@+id/settingsProfileAboutGoodListener"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@color/white"
+                android:contentDescription="@string/text_image_view"
+                android:padding="@dimen/_12sdp"
+                android:src="@drawable/ic_settings_profile_good_listener"
+                app:tint="@color/primary"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/textGoodListener"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/primary_text"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/settingsProfileAboutGoodListener"
+                android:text="@string/settings_text_profile_about_good_listener"
+                tools:ignore="RelativeOverlap" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="355dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:gravity="center"
+        android:text="@string/settings_text_profile_about_description"
+        android:textColor="@color/primary_text"
+        android:textSize="@dimen/_10ssp"
+        android:textStyle="bold"
+        tools:ignore="TextSizeCheck,VisualLintBounds" />
+
+</LinearLayout>
