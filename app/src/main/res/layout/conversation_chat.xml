@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    tools:context=".activities.conversationChatActivity">
+    android:background="@color/white"
+    tools:context=".activities.Control.conversationChatActivity">
 
     <View
         android:id="@+id/viewBackground"
@@ -25,12 +26,10 @@
         android:visibility="gone"/>
 
 
-
     <View
         android:id="@+id/headerBackground"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/white"
         app:layout_constraintBottom_toTopOf="@id/viewSupport"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -127,7 +126,6 @@
         android:id="@+id/viewSupport"
         android:layout_width="match_parent"
         android:layout_height="0.8dp"
-        android:background="@color/white"
         android:layout_marginTop="@dimen/_12sdp"
         app:layout_constraintTop_toBottomOf="@id/imageBackBtn"/>
 
@@ -156,14 +154,13 @@
         app:layout_constraintEnd_toEndOf="@id/viewBackground"
         app:layout_constraintStart_toStartOf="@id/viewBackground"
         app:layout_constraintTop_toTopOf="@id/viewBackground"
-        android:indeterminateTint="@color/primary"
-        android:visibility="invisible"/>
+        android:indeterminateTint="@color/send_message_bg"
+        android:visibility="visible"/>
 
     <View
         android:id="@+id/viewSupportBottom"
         android:layout_width="match_parent"
         android:layout_height="0.8dp"
-        android:background="@color/white"
         android:layout_marginBottom="@dimen/_8sdp"
         app:layout_constraintBottom_toTopOf="@id/layoutSend"/>
 
@@ -267,7 +264,7 @@
         app:layout_constraintStart_toStartOf="@id/inputMessage"
         app:layout_constraintEnd_toEndOf="@id/inputMessage"
         android:indeterminateTint="@color/light_grey"
-        android:visibility="invisible"/>
+        android:visibility="gone"/>
 
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -287,11 +284,10 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/typingStatus"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginStart="5dp"
-        app:lottie_rawRes="@raw/typing_status"
-        app:lottie_repeatCount="15"
+        app:lottie_rawRes="@raw/typing_lottie_bubble"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         android:visibility="gone"

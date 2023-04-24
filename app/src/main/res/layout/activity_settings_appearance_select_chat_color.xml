@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/input_background"
+    tools:context=".activities.settings.SettingsAppearanceSelectChatColor">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_20sdp">
+
+        <ImageView
+            android:id="@+id/imageCancelBtn"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:src="@drawable/ic_back"
+            app:tint="@color/primary"
+            android:contentDescription="@string/text_image_view"
+            android:padding="@dimen/_14sdp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_text_appearance_chat_color"
+            android:textStyle="bold"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_14ssp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:background="@drawable/settings_round_back_white10_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:orientation="vertical"
+        android:padding="@dimen/_15sdp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_text_appearance_today"
+            android:gravity="center"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/textReceivedMessage"
+            android:layout_width="wrap_content"
+            android:maxWidth="200dp"
+            android:text="@string/settings_text_appearance_chat_color_preview"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/background_received_message"
+            android:paddingStart="@dimen/_12sdp"
+            android:paddingTop="@dimen/_8sdp"
+            android:paddingEnd="@dimen/_12sdp"
+            android:paddingBottom="@dimen/_8sdp"
+            app:layout_constraintWidth_max="wrap"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_13ssp"/>
+
+        <TextView
+            android:id="@+id/textReceivedTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="6dp"
+            android:text="@string/settings_text_appearance_2_10_pm"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/_8ssp"
+            android:textAlignment="textStart"
+            app:layout_constraintEnd_toEndOf="@id/textMessage"
+            app:layout_constraintTop_toBottomOf="@id/textMessage"/>
+
+        <TextView
+            android:id="@+id/textSentMessage"
+            android:layout_width="wrap_content"
+            android:maxWidth="200dp"
+            android:layout_gravity="end"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_send_message"
+            android:layout_marginTop="6dp"
+            android:text="@string/settings_text_appearance_chat_color_preview"
+            android:paddingStart="@dimen/_12sdp"
+            android:paddingTop="@dimen/_8sdp"
+            android:paddingEnd="@dimen/_12sdp"
+            android:paddingBottom="@dimen/_8sdp"
+            app:layout_constraintWidth_max="wrap"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13ssp"/>
+
+        <TextView
+            android:id="@+id/textSentTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="@string/settings_text_appearance_2_20_pm"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/_8ssp"
+            android:textAlignment="textEnd"
+            app:layout_constraintEnd_toEndOf="@id/textMessage"
+            app:layout_constraintTop_toBottomOf="@id/textMessage"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/settings_text_appearance_select_chat_color"
+        android:textStyle="bold"
+        android:textSize="@dimen/_14ssp"
+        android:textColor="@color/primary_text"
+        tools:ignore="VisualLintBounds" />
+
+    <LinearLayout
+        android:background="@drawable/settings_round_back_white10_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:orientation="vertical"
+        android:padding="@dimen/_8sdp"
+        tools:ignore="VisualLintBounds">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"
+            android:gravity="fill_horizontal"
+            tools:ignore="VisualLintBounds">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/chatColor1"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_alignParentStart="true"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:src="@color/send_message_bg"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/chatColor2"/>
+
+            <ImageView
+                android:id="@+id/chatColor1Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/chatColor1"
+                app:layout_constraintBottom_toBottomOf="@id/chatColor1"
+                app:layout_constraintEnd_toEndOf="@id/chatColor1"
+                app:layout_constraintTop_toTopOf="@id/chatColor1"
+                app:tint="@color/white"
+                android:visibility="visible"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription,VisualLintBounds" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/chatColor2"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintStart_toEndOf="@id/chatColor1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/chatColor3"/>
+
+            <ImageView
+                android:id="@+id/chatColor2Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/chatColor2"
+                app:layout_constraintBottom_toBottomOf="@id/chatColor2"
+                app:layout_constraintEnd_toEndOf="@id/chatColor2"
+                app:layout_constraintTop_toTopOf="@id/chatColor2"
+                android:visibility="gone"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/chatColor3"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintStart_toEndOf="@id/chatColor2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/chatColor4"/>
+
+            <ImageView
+                android:id="@+id/chatColor3Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/chatColor3"
+                app:layout_constraintBottom_toBottomOf="@id/chatColor3"
+                app:layout_constraintEnd_toEndOf="@id/chatColor3"
+                app:layout_constraintTop_toTopOf="@id/chatColor3"
+                android:visibility="gone"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/chatColor4"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/chatColor3"
+                app:layout_constraintEnd_toStartOf="@id/chatColor5"/>
+
+            <ImageView
+                android:id="@+id/chatColor4Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/chatColor4"
+                app:layout_constraintBottom_toBottomOf="@id/chatColor4"
+                app:layout_constraintEnd_toEndOf="@id/chatColor4"
+                app:layout_constraintTop_toTopOf="@id/chatColor4"
+                android:visibility="gone"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/chatColor5"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/chatColor4"/>
+
+            <ImageView
+                android:id="@+id/chatColor5Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/chatColor5"
+                app:layout_constraintBottom_toBottomOf="@id/chatColor5"
+                app:layout_constraintEnd_toEndOf="@id/chatColor5"
+                app:layout_constraintTop_toTopOf="@id/chatColor5"
+                android:visibility="gone"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"
+            android:gravity="fill_horizontal"
+            android:layout_marginTop="@dimen/_8sdp"
+            tools:ignore="VisualLintBounds">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/chatColor6"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_alignParentStart="true"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/chatColor7"/>
+
+            <ImageView
+                android:id="@+id/chatColor6Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/chatColor6"
+                app:layout_constraintBottom_toBottomOf="@id/chatColor6"
+                app:layout_constraintEnd_toEndOf="@id/chatColor6"
+                app:layout_constraintTop_toTopOf="@id/chatColor6"
+                android:visibility="gone"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/chatColor7"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/chatColor8"
+                app:layout_constraintStart_toEndOf="@id/chatColor6"/>
+
+            <ImageView
+                android:id="@+id/chatColor7Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/chatColor7"
+                app:layout_constraintBottom_toBottomOf="@id/chatColor7"
+                app:layout_constraintEnd_toEndOf="@id/chatColor7"
+                app:layout_constraintTop_toTopOf="@id/chatColor7"
+                android:visibility="gone"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/chatColor8"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/chatColor9"
+                app:layout_constraintStart_toEndOf="@id/chatColor7"/>
+
+            <ImageView
+                android:id="@+id/chatColor8Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/chatColor8"
+                app:layout_constraintBottom_toBottomOf="@id/chatColor8"
+                app:layout_constraintEnd_toEndOf="@id/chatColor8"
+                app:layout_constraintTop_toTopOf="@id/chatColor8"
+                android:visibility="gone"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/chatColor9"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintStart_toEndOf="@id/chatColor8"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/chatColor10"/>
+
+            <ImageView
+                android:id="@+id/chatColor9Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/chatColor9"
+                app:layout_constraintBottom_toBottomOf="@id/chatColor9"
+                app:layout_constraintEnd_toEndOf="@id/chatColor9"
+                app:layout_constraintTop_toTopOf="@id/chatColor9"
+                android:visibility="gone"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/chatColor10"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:background="@drawable/background_image"
+                android:backgroundTint="@color/input_background"
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintStart_toEndOf="@id/chatColor9"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <ImageView
+                android:id="@+id/chatColor10Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/chatColor10"
+                app:layout_constraintBottom_toBottomOf="@id/chatColor10"
+                app:layout_constraintEnd_toEndOf="@id/chatColor10"
+                app:layout_constraintTop_toTopOf="@id/chatColor10"
+                android:visibility="gone"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="355dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:gravity="center"
+        android:text="@string/settings_text_appearance_chat_color_description"
+        android:textColor="@color/primary_text"
+        android:textSize="@dimen/_10ssp"
+        android:textStyle="bold"
+        tools:ignore="TextSizeCheck,VisualLintBounds" />
+
+</LinearLayout>

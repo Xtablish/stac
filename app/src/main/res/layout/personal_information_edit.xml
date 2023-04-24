@@ -7,7 +7,7 @@
     android:clipToPadding="false"
     android:fillViewport="true"
     android:animateLayoutChanges="true"
-    tools:context=".activities.personalInformationActivity">
+    tools:context=".activities.Control.personalInformationActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

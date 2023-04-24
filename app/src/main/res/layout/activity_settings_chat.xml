@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/input_background"
+    tools:context=".activities.settings.SettingsChat">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_20sdp">
+
+        <ImageView
+            android:id="@+id/imageCancelBtn"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:src="@drawable/ic_back"
+            app:tint="@color/primary"
+            android:contentDescription="@string/text_image_view"
+            android:padding="@dimen/_14sdp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_text_chats"
+            android:textStyle="bold"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_14ssp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:background="@drawable/settings_round_back_white10_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:orientation="vertical"
+        android:padding="@dimen/_8sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent">
+
+            <ImageView
+                android:id="@+id/settingsNightModeImage"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:src="@drawable/ic_settings_chat_language"
+                android:contentDescription="@string/text_image_view"
+                android:background="@color/white"
+                android:padding="@dimen/_12sdp"/>
+
+            <TextView
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/primary_text"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/settingsNightModeImage"
+                android:text="@string/settings_text_chat_native_language"
+                tools:ignore="RelativeOverlap" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="355dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/settings_text_chat_native_language_description"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/_10ssp"
+        android:textStyle="bold"
+        tools:ignore="TextSizeCheck,VisualLintBounds,TextContrastCheck" />
+    <LinearLayout
+        android:background="@drawable/settings_round_back_white10_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:orientation="vertical"
+        android:padding="@dimen/_8sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent">
+
+            <ImageView
+                android:id="@+id/settingsChatAI"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:src="@drawable/ic_settings_chats"
+                android:contentDescription="@string/text_image_view"
+                android:background="@color/white"
+                android:padding="@dimen/_12sdp"/>
+
+            <TextView
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/primary_text"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/settingsChatAI"
+                android:text="@string/settings_text_chat_stac_ai"
+                tools:ignore="RelativeOverlap" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/settingsChatAIEnable"
+                android:layout_marginEnd="@dimen/_10ssp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:switchMinWidth="@dimen/_30sdp"
+                tools:ignore="DuplicateSpeakableTextCheck" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="355dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/settings_text_chat_stac_ai_description"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/_10ssp"
+        android:textStyle="bold"
+        tools:ignore="TextSizeCheck,VisualLintBounds,TextContrastCheck" />
+    <LinearLayout
+        android:background="@drawable/settings_round_back_white10_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:orientation="vertical"
+        android:padding="@dimen/_8sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent">
+
+            <ImageView
+                android:id="@+id/settingsChatTranslation"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:src="@drawable/ic_settings_chat_translate"
+                android:contentDescription="@string/text_image_view"
+                android:background="@color/white"
+                android:padding="@dimen/_12sdp"/>
+
+            <TextView
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/primary_text"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/settingsChatTranslation"
+                android:text="@string/settings_text_chat_smart_translation"
+                tools:ignore="RelativeOverlap" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/settingsChatTranslationEnable"
+                android:layout_marginEnd="@dimen/_10ssp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:switchMinWidth="@dimen/_30sdp"
+                tools:ignore="DuplicateSpeakableTextCheck" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="355dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/settings_text_chat_smart_translation_description"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/_10ssp"
+        android:textStyle="bold"
+        tools:ignore="TextSizeCheck,VisualLintBounds,TextContrastCheck" />
+    <LinearLayout
+        android:background="@drawable/settings_round_back_white10_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:orientation="vertical"
+        android:padding="@dimen/_8sdp"
+        tools:ignore="VisualLintBounds">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent,VisualLintBounds">
+
+            <ImageView
+                android:id="@+id/settingsChatDeleteIcon"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                app:tint="@color/error"
+                android:src="@drawable/ic_settings_chat_clear_chat_history"
+                android:contentDescription="@string/text_image_view"
+                android:background="@color/white"
+                android:padding="@dimen/_12sdp"/>
+
+            <TextView
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/error"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/settingsChatDeleteIcon"
+                android:text="@string/settings_text_chat_clear_chat_history"
+                tools:ignore="RelativeOverlap" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

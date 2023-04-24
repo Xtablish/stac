@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    tools:context=".activities.loadingActivity">
+    tools:context=".activities.Control.loadingActivity">
 
     <FrameLayout
         android:id="@+id/imageIconFrame"
@@ -20,7 +20,7 @@
         <com.makeramen.roundedimageview.RoundedImageView
             android:layout_width="178dp"
             android:layout_height="132dp"
-            android:background="@drawable/stac_logo_small"
+            android:background="@drawable/ic_settings_chats"
             android:scaleType="centerCrop"
             app:riv_oval="true"
             tools:layout_editor_absoluteX="116dp"
@@ -62,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_70sdp"
-        android:text="@string/from_stac_it"
+        android:text="@string/loading_text_xtablish_ai"
         android:textColor="@color/secondary_text"
         android:textSize="@dimen/_14ssp"
         android:textStyle="bold"

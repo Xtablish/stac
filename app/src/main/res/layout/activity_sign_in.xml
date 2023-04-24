@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/_24sdp"
     android:fillViewport="true"
     android:animateLayoutChanges="true"
-    tools:context=".activities.signInActivity">
+    tools:context=".activities.Control.signInActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
             android:layout_width="196dp"
             android:layout_height="144dp"
             android:layout_marginTop="@dimen/_60sdp"
-            android:background="@drawable/stac_logo_small"
+            android:background="@drawable/ic_settings_chats"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +64,7 @@
             android:layout_height="@dimen/_45sdp"
             android:layout_marginTop="@dimen/_35sdp"
             android:background="@drawable/background_input"
+            android:backgroundTint="@color/white"
             android:hint="@string/email"
             android:drawableEnd="@drawable/round_email"
             android:imeOptions="actionNext"
@@ -84,6 +85,7 @@
             android:layout_height="@dimen/_45sdp"
             android:layout_marginTop="@dimen/_6sdp"
             android:background="@drawable/background_input"
+            android:backgroundTint="@color/white"
             android:hint="@string/password"
             android:drawableEnd="@drawable/round_password"
             android:imeOptions="actionDone"

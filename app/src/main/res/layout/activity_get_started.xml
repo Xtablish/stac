@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:background="@color/white"
-    tools:context=".activities.getStartedActivity">
+    tools:context=".activities.Control.getStartedActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineVertical1"

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/input_background"
+    tools:context=".activities.settings.SettingsStoriesAccess">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_20sdp">
+
+        <ImageView
+            android:id="@+id/imageCancelBtn"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:src="@drawable/ic_back"
+            app:tint="@color/primary"
+            android:contentDescription="@string/text_image_view"
+            android:padding="@dimen/_14sdp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_text_stories_my_story"
+            android:textStyle="bold"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_14ssp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/settings_text_stories_who_can_view_your_story"
+        android:textStyle="bold"
+        android:textSize="@dimen/_12ssp"
+        android:textColor="@color/primary_text"
+        tools:ignore="VisualLintBounds" />
+
+    <LinearLayout
+        android:background="@drawable/settings_round_back_white10_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:orientation="vertical"
+        android:padding="@dimen/_8sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/settingsStoriesAccessEverySelect"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:background="@drawable/selector_background_circle"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:layout_marginStart="@dimen/_40sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/primary_text"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/settingsStoriesAccessEverySelect"
+                android:text="@string/settings_text_stories_access_public"
+                tools:ignore="RelativeOverlap" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/settingsStoriesAccessFriendsSelect"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:background="@drawable/selector_background_circle"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:layout_marginStart="@dimen/_40sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/primary_text"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/settingsStoriesAccessFriendsSelect"
+                android:text="@string/settings_text_stories_access_friends"
+                tools:ignore="RelativeOverlap" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/settingsStoriesAccessPrivateSelect"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:background="@drawable/selector_background_circle"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/text_image_view"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:layout_marginStart="@dimen/_40sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/primary_text"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/settingsStoriesAccessPrivateSelect"
+                android:text="@string/settings_text_stories_access_private"
+                tools:ignore="RelativeOverlap" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="355dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/settings_text_stories_my_story_access_description"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/_10ssp"
+        android:textStyle="bold"
+        tools:ignore="TextSizeCheck,VisualLintBounds,TextContrastCheck" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="@dimen/_10ssp"
+        android:text="@string/settings_text_stories_quick_reply"
+        android:textStyle="bold"
+        android:textSize="@dimen/_12ssp"
+        android:textColor="@color/primary_text"
+        tools:ignore="VisualLintBounds" />
+
+    <LinearLayout
+        android:background="@drawable/settings_round_back_white10_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:orientation="vertical"
+        android:padding="@dimen/_8sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent">
+
+            <ImageView
+                android:id="@+id/settingsChatTranslation"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:src="@drawable/ic_settings_stories_quick_reply"
+                android:contentDescription="@string/text_image_view"
+                android:background="@color/white"
+                android:padding="@dimen/_12sdp"/>
+
+            <TextView
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/primary_text"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/settingsChatTranslation"
+                android:text="@string/settings_text_stories_allow_quick_reply"
+                tools:ignore="RelativeOverlap" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/settingsStoriesQuickReplyEnable"
+                android:layout_marginEnd="@dimen/_10ssp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:switchMinWidth="@dimen/_30sdp"
+                tools:ignore="DuplicateSpeakableTextCheck,VisualLintBounds" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="355dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/settings_text_stories_quick_reply_description"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/_10ssp"
+        android:textStyle="bold"
+        tools:ignore="TextSizeCheck,VisualLintBounds,TextContrastCheck" />
+
+
+</LinearLayout>

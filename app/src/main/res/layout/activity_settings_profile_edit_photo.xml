@@ -45,18 +45,33 @@
 
     </RelativeLayout>
 
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/imageProfileMain"
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_100sdp"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:contentDescription="@string/text_image_view"
-        android:scaleType="centerCrop"
-        app:riv_oval="true"
-        android:background="@drawable/background_image"
-        android:backgroundTint="@color/white"
-        tools:ignore="ImageContrastCheck" />
+   <FrameLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_gravity="center"
+       android:layout_marginTop="@dimen/_20sdp">
+
+       <com.makeramen.roundedimageview.RoundedImageView
+           android:id="@+id/imageProfile"
+           android:layout_width="@dimen/_100sdp"
+           android:layout_height="@dimen/_100sdp"
+           android:layout_gravity="center"
+           android:contentDescription="@string/text_image_view"
+           android:scaleType="centerCrop"
+           app:riv_oval="true"
+           android:background="@drawable/background_image"
+           android:backgroundTint="@color/white"
+           tools:ignore="ImageContrastCheck" />
+
+       <TextView
+           android:id="@+id/textUsernameInitials"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/_30ssp"
+           android:layout_gravity="center"
+           android:visibility="gone"/>
+
+   </FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -167,7 +182,7 @@
         android:orientation="vertical"
         android:padding="@dimen/_8sdp">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="fill_horizontal"
@@ -177,65 +192,141 @@
                 android:id="@+id/profileAvatar1"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
-                android:layout_marginStart="10dp"
                 android:layout_alignParentStart="true"
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
+                android:src="@color/send_message_bg"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
-                tools:ignore="ImageContrastCheck" />
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/profileAvatar2"/>
+
+            <ImageView
+                android:id="@+id/profileAvatar1Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/profileAvatar1"
+                app:layout_constraintBottom_toBottomOf="@id/profileAvatar1"
+                app:layout_constraintEnd_toEndOf="@id/profileAvatar1"
+                app:layout_constraintTop_toTopOf="@id/profileAvatar1"
+                android:visibility="visible"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription,VisualLintBounds" />
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/profileAvatar2"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
-                android:layout_marginStart="75dp"
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
-                tools:ignore="ImageContrastCheck" />
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintStart_toEndOf="@id/profileAvatar1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/profileAvatar3"/>
+
+            <ImageView
+                android:id="@+id/profileAvatar2Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/profileAvatar2"
+                app:layout_constraintBottom_toBottomOf="@id/profileAvatar2"
+                app:layout_constraintEnd_toEndOf="@id/profileAvatar2"
+                app:layout_constraintTop_toTopOf="@id/profileAvatar2"
+                android:visibility="gone"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription" />
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/profileAvatar3"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
-                android:layout_marginStart="140dp"
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
-                tools:ignore="ImageContrastCheck" />
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintStart_toEndOf="@id/profileAvatar2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/profileAvatar4"/>
+
+            <ImageView
+                android:id="@+id/profileAvatar3Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/profileAvatar3"
+                app:layout_constraintBottom_toBottomOf="@id/profileAvatar3"
+                app:layout_constraintEnd_toEndOf="@id/profileAvatar3"
+                app:layout_constraintTop_toTopOf="@id/profileAvatar3"
+                android:visibility="gone"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription" />
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/profileAvatar4"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
-                android:layout_marginStart="205dp"
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
-                tools:ignore="ImageContrastCheck" />
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/profileAvatar3"
+                app:layout_constraintEnd_toStartOf="@id/profileAvatar5"/>
+
+            <ImageView
+                android:id="@+id/profileAvatar4Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/profileAvatar4"
+                app:layout_constraintBottom_toBottomOf="@id/profileAvatar4"
+                app:layout_constraintEnd_toEndOf="@id/profileAvatar4"
+                app:layout_constraintTop_toTopOf="@id/profileAvatar4"
+                android:visibility="gone"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription" />
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/profileAvatar5"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
-                android:layout_marginStart="270dp"
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
-                tools:ignore="ImageContrastCheck" />
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/profileAvatar4"/>
 
-        </RelativeLayout>
-        <RelativeLayout
+            <ImageView
+                android:id="@+id/profileAvatar5Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/profileAvatar5"
+                app:layout_constraintBottom_toBottomOf="@id/profileAvatar5"
+                app:layout_constraintEnd_toEndOf="@id/profileAvatar5"
+                app:layout_constraintTop_toTopOf="@id/profileAvatar5"
+                android:visibility="gone"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="fill_horizontal"
@@ -246,63 +337,138 @@
                 android:id="@+id/profileAvatar6"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
-                android:layout_marginStart="10dp"
                 android:layout_alignParentStart="true"
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
-                tools:ignore="ImageContrastCheck" />
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/profileAvatar7"/>
+
+            <ImageView
+                android:id="@+id/profileAvatar6Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/profileAvatar6"
+                app:layout_constraintBottom_toBottomOf="@id/profileAvatar6"
+                app:layout_constraintEnd_toEndOf="@id/profileAvatar6"
+                app:layout_constraintTop_toTopOf="@id/profileAvatar6"
+                android:visibility="gone"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription" />
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/profileAvatar7"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
-                android:layout_marginStart="75dp"
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
-                tools:ignore="ImageContrastCheck" />
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/profileAvatar8"
+                app:layout_constraintStart_toEndOf="@id/profileAvatar6"/>
+
+            <ImageView
+                android:id="@+id/profileAvatar7Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/profileAvatar7"
+                app:layout_constraintBottom_toBottomOf="@id/profileAvatar7"
+                app:layout_constraintEnd_toEndOf="@id/profileAvatar7"
+                app:layout_constraintTop_toTopOf="@id/profileAvatar7"
+                android:visibility="gone"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription" />
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/profileAvatar8"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
-                android:layout_marginStart="140dp"
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
-                tools:ignore="ImageContrastCheck" />
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/profileAvatar9"
+                app:layout_constraintStart_toEndOf="@id/profileAvatar7"/>
+
+            <ImageView
+                android:id="@+id/profileAvatar8Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/profileAvatar8"
+                app:layout_constraintBottom_toBottomOf="@id/profileAvatar8"
+                app:layout_constraintEnd_toEndOf="@id/profileAvatar8"
+                app:layout_constraintTop_toTopOf="@id/profileAvatar8"
+                android:visibility="gone"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription" />
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/profileAvatar9"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
-                android:layout_marginStart="205dp"
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
-                tools:ignore="ImageContrastCheck" />
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintStart_toEndOf="@id/profileAvatar8"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/profileAvatar10"/>
+
+            <ImageView
+                android:id="@+id/profileAvatar9Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/profileAvatar9"
+                app:layout_constraintBottom_toBottomOf="@id/profileAvatar9"
+                app:layout_constraintEnd_toEndOf="@id/profileAvatar9"
+                app:layout_constraintTop_toTopOf="@id/profileAvatar9"
+                android:visibility="gone"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription" />
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/profileAvatar10"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
-                android:layout_marginStart="270dp"
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
-                tools:ignore="ImageContrastCheck" />
-        </RelativeLayout>
+                tools:ignore="ImageContrastCheck,VisualLintBounds"
+                app:layout_constraintStart_toEndOf="@id/profileAvatar9"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <ImageView
+                android:id="@+id/profileAvatar10Select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/profileAvatar10"
+                app:layout_constraintBottom_toBottomOf="@id/profileAvatar10"
+                app:layout_constraintEnd_toEndOf="@id/profileAvatar10"
+                app:layout_constraintTop_toTopOf="@id/profileAvatar10"
+                android:visibility="gone"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings_check_mark"
+                tools:ignore="ContentDescription" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
     <TextView

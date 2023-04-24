@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    tools:context=".activities.OCRActivity">
+    tools:context=".activities.Control.OCRActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/resultCardView"

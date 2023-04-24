@@ -7,7 +7,7 @@
     android:clipToPadding="false"
     android:fillViewport="true"
     android:animateLayoutChanges="true"
-    tools:context=".activities.signUpActivity">
+    tools:context=".activities.Control.signUpActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -58,7 +58,8 @@
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="@dimen/_100sdp"
                 android:background="@drawable/background_image"
-                android:src="@drawable/stac_logo_small"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/ic_settings_chats"
                 android:scaleType="centerCrop"
                 app:riv_corner_radius="@dimen/_12sdp"/>
 
@@ -80,6 +81,7 @@
             android:layout_height="@dimen/_45sdp"
             android:layout_marginTop="@dimen/_35sdp"
             android:background="@drawable/background_input"
+            android:backgroundTint="@color/white"
             android:hint="@string/full_name"
             android:imeOptions="actionNext"
             android:inputType="text"
@@ -101,6 +103,7 @@
             android:layout_height="@dimen/_45sdp"
             android:layout_marginTop="@dimen/_6sdp"
             android:background="@drawable/background_input"
+            android:backgroundTint="@color/white"
             android:hint="@string/email"
             android:imeOptions="actionNext"
             android:inputType="textEmailAddress"
@@ -122,6 +125,7 @@
             android:layout_height="@dimen/_45sdp"
             android:layout_marginTop="@dimen/_6sdp"
             android:background="@drawable/background_input"
+            android:backgroundTint="@color/white"
             android:hint="@string/password"
             android:imeOptions="actionNext"
             android:inputType="textPassword"
@@ -143,6 +147,7 @@
             android:layout_height="@dimen/_45sdp"
             android:layout_marginTop="@dimen/_6sdp"
             android:background="@drawable/background_input"
+            android:backgroundTint="@color/white"
             android:hint="@string/confirm_password"
             android:imeOptions="actionDone"
             android:inputType="textPassword"

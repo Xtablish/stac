@@ -30,67 +30,94 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".SettingsAppearanceThemeSelection"
+            android:name=".activities.settings.SettingsAbout"
             android:exported="false" />
         <activity
-            android:name=".SettingsAppearance"
+            android:name=".activities.settings.SettingsPrivacy"
             android:exported="false" />
         <activity
-            android:name=".SettingsAccount"
+            android:name=".activities.settings.SettingsNotifications"
             android:exported="false" />
         <activity
-            android:name=".SettingsProfileEditPhoto"
+            android:name=".activities.settings.SettingsStoriesAccess"
             android:exported="false" />
         <activity
-            android:name=".SettingsProfileAbout"
+            android:name=".activities.settings.SettingsStories"
             android:exported="false" />
         <activity
-            android:name=".SettingsProfileEditName"
+            android:name=".activities.settings.SettingsChat"
             android:exported="false" />
         <activity
-            android:name=".SettingsProfile"
+            android:name=".activities.settings.SettingsAppearanceSelectWallpaper"
             android:exported="false" />
         <activity
-            android:name=".SettingsMain"
+            android:name=".activities.settings.SettingsAppearanceSelectChatColor"
             android:exported="false" />
         <activity
-            android:name=".activities.OCRActivity"
+            android:name=".activities.settings.SettingsAppearanceChat"
             android:exported="false" />
         <activity
-            android:name=".activities.mainCameraActivity"
+            android:name=".activities.settings.SettingsAppearanceThemeSelection"
             android:exported="false" />
         <activity
-            android:name=".activities.cameraActivity"
+            android:name=".activities.settings.SettingsAppearance"
             android:exported="false" />
         <activity
-            android:name=".activities.personalInformationActivity"
+            android:name=".activities.settings.SettingsAccount"
+            android:exported="false" />
+        <activity
+            android:name=".activities.settings.SettingsProfileEditPhoto"
+            android:exported="false" />
+        <activity
+            android:name=".activities.settings.SettingsProfileAbout"
+            android:exported="false" />
+        <activity
+            android:name=".activities.settings.SettingsProfileEditName"
+            android:exported="false" />
+        <activity
+            android:name=".activities.settings.SettingsProfile"
+            android:exported="false" />
+        <activity
+            android:name=".activities.settings.SettingsMain"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Control.OCRActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Control.mainCameraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Control.cameraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Control.personalInformationActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".activities.settingsProfileActivity"
+            android:name=".activities.Control.settingsProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.conversationChatActivity"
+            android:name=".activities.Control.conversationChatActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".activities.UsersActivity"
+            android:name=".activities.Control.UsersActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".activities.conversationMainActivity"
+            android:name=".activities.Control.conversationMainActivity"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".activities.editProfileActivity"
+            android:name=".activities.Control.editProfileActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".activities.getStartedActivity"
+            android:name=".activities.Control.getStartedActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".activities.signInActivity"
+            android:name=".activities.Control.signInActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".activities.signUpActivity"
+            android:name=".activities.Control.signUpActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".activities.loadingActivity"
+            android:name=".activities.Control.loadingActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>

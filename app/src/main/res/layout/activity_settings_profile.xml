@@ -40,7 +40,7 @@
         </RelativeLayout>
 
         <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/imageProfileMain"
+            android:id="@+id/imageProfile"
             android:layout_width="@dimen/_80sdp"
             android:layout_height="@dimen/_80sdp"
             android:layout_gravity="center"
@@ -53,7 +53,7 @@
             tools:ignore="ImageContrastCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/textEditProfile"
+            android:id="@+id/textEditProfileImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_20sdp"
@@ -100,7 +100,7 @@
                     tools:ignore="RelativeOverlap" />
 
                 <ImageView
-                    android:id="@+id/settingsProfileIcon"
+                    android:id="@+id/settingsProfileNameIcon"
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="@dimen/_40sdp"
                     app:tint="@color/primary"
@@ -139,7 +139,7 @@
                     tools:ignore="RelativeOverlap" />
 
                 <ImageView
-                    android:id="@+id/settingsProfileAbout"
+                    android:id="@+id/settingsProfileAboutIcon"
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="@dimen/_40sdp"
                     app:tint="@color/primary"
