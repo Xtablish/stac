@@ -2,6 +2,7 @@ package com.stacit.stac.activities.utilities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.view.View;
 
 public class PreferenceManager {
 

@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/input_background"
+    android:focusable="false"
+    android:focusableInTouchMode="true"
     tools:context=".activities.settings.SettingsAccount">
 
     <RelativeLayout
@@ -25,7 +27,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/settings_text_about"
+            android:text="@string/settings_text_account"
             android:textStyle="bold"
             android:textColor="@color/primary_text"
             android:textSize="@dimen/_14ssp"
@@ -105,6 +107,35 @@
                 android:textSize="@dimen/_12ssp"
                 tools:ignore="VisualLintTextFieldSize" />
 
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <ImageView
+                android:id="@+id/settingsAboutSignOutAccount"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@color/white"
+                android:contentDescription="@string/text_image_view"
+                android:padding="@dimen/_12sdp"
+                android:src="@drawable/ic_settings_account_sign_out"
+                app:tint="@color/send_message_bg"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/textSignOutAccount"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/send_message_bg"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/settingsAboutSignOutAccount"
+                android:text="@string/sign_out"
+                tools:ignore="RelativeOverlap" />
 
         </RelativeLayout>
         <RelativeLayout

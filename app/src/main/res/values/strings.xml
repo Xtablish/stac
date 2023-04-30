@@ -169,5 +169,7 @@
     <string name="settings_text_about_developer_name">Franklin Roberts</string>
     <string name="settings_text_about_build_version">Build Version</string>
     <string name="settings_text_about_version">Version 1.0.0</string>
+    <string name="chat_text_encryption_active_description">This conversation is protected using End-to-End Encryption. Messages are encrypted both in transit and at rest.</string>
+    <string name="sign_up_text_select_profile_image">Select Profile Image</string>
 
 </resources>

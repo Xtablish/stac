@@ -30,4 +30,18 @@
     <color name="private_account">#E6A326</color>
     <color name="security">#D95F69</color>
     <color name="foreground">#99FFFFFF</color>
+
+
+    <color name="chat_color_ten">#a2d2ff</color>
+    <color name="chat_color_two">#bde0fe</color>
+    <color name="chat_color_three">#8ecae6</color>
+    <color name="chat_color_four">#a8dadc</color>
+    <color name="chat_color_five">#48cae4</color>
+    <color name="chat_color_six">#f3e1dd</color>
+    <color name="chat_color_seven">#e5e5e5</color>
+    <color name="chat_color_eight">#dad7cd</color>
+    <color name="chat_color_nine">#faedcd</color>
+    <color name="chat_color_one">#ffffff</color>
+    <color name="chat_bubble_default">#006AFF</color>
+
 </resources>

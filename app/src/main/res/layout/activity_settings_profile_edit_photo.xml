@@ -196,7 +196,7 @@
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
-                android:src="@color/send_message_bg"
+                android:src="@drawable/profile_one"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
                 tools:ignore="ImageContrastCheck,VisualLintBounds"
@@ -208,14 +208,14 @@
                 android:id="@+id/profileAvatar1Select"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/profileAvatar1"
+                android:src="@drawable/ic_settings_check_mark"
+                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="@id/profileAvatar1"
                 app:layout_constraintEnd_toEndOf="@id/profileAvatar1"
+                app:layout_constraintStart_toStartOf="@id/profileAvatar1"
                 app:layout_constraintTop_toTopOf="@id/profileAvatar1"
-                android:visibility="visible"
-                app:tint="@color/white"
-                android:src="@drawable/ic_settings_check_mark"
-                tools:ignore="ContentDescription,VisualLintBounds" />
+                app:tint="@color/error"
+                tools:ignore="ContentDescription,VisualLintBounds,ImageContrastCheck" />
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/profileAvatar2"
@@ -224,6 +224,7 @@
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
+                android:src="@drawable/profile_two"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
                 tools:ignore="ImageContrastCheck,VisualLintBounds"
@@ -240,7 +241,7 @@
                 app:layout_constraintEnd_toEndOf="@id/profileAvatar2"
                 app:layout_constraintTop_toTopOf="@id/profileAvatar2"
                 android:visibility="gone"
-                app:tint="@color/white"
+                app:tint="@color/error"
                 android:src="@drawable/ic_settings_check_mark"
                 tools:ignore="ContentDescription" />
 
@@ -251,6 +252,7 @@
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
+                android:src="@drawable/profile_three"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
                 tools:ignore="ImageContrastCheck,VisualLintBounds"
@@ -267,7 +269,7 @@
                 app:layout_constraintEnd_toEndOf="@id/profileAvatar3"
                 app:layout_constraintTop_toTopOf="@id/profileAvatar3"
                 android:visibility="gone"
-                app:tint="@color/white"
+                app:tint="@color/error"
                 android:src="@drawable/ic_settings_check_mark"
                 tools:ignore="ContentDescription" />
 
@@ -278,6 +280,7 @@
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
+                android:src="@drawable/profile_four"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
                 tools:ignore="ImageContrastCheck,VisualLintBounds"
@@ -294,7 +297,7 @@
                 app:layout_constraintEnd_toEndOf="@id/profileAvatar4"
                 app:layout_constraintTop_toTopOf="@id/profileAvatar4"
                 android:visibility="gone"
-                app:tint="@color/white"
+                app:tint="@color/error"
                 android:src="@drawable/ic_settings_check_mark"
                 tools:ignore="ContentDescription" />
 
@@ -305,6 +308,7 @@
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
+                android:src="@drawable/profile_five"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
                 tools:ignore="ImageContrastCheck,VisualLintBounds"
@@ -321,7 +325,7 @@
                 app:layout_constraintEnd_toEndOf="@id/profileAvatar5"
                 app:layout_constraintTop_toTopOf="@id/profileAvatar5"
                 android:visibility="gone"
-                app:tint="@color/white"
+                app:tint="@color/error"
                 android:src="@drawable/ic_settings_check_mark"
                 tools:ignore="ContentDescription" />
 
@@ -341,6 +345,7 @@
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
+                android:src="@drawable/profile_six"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
                 tools:ignore="ImageContrastCheck,VisualLintBounds"
@@ -357,7 +362,7 @@
                 app:layout_constraintEnd_toEndOf="@id/profileAvatar6"
                 app:layout_constraintTop_toTopOf="@id/profileAvatar6"
                 android:visibility="gone"
-                app:tint="@color/white"
+                app:tint="@color/error"
                 android:src="@drawable/ic_settings_check_mark"
                 tools:ignore="ContentDescription" />
 
@@ -368,6 +373,7 @@
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
+                android:src="@drawable/profile_seven"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
                 tools:ignore="ImageContrastCheck,VisualLintBounds"
@@ -384,7 +390,7 @@
                 app:layout_constraintEnd_toEndOf="@id/profileAvatar7"
                 app:layout_constraintTop_toTopOf="@id/profileAvatar7"
                 android:visibility="gone"
-                app:tint="@color/white"
+                app:tint="@color/error"
                 android:src="@drawable/ic_settings_check_mark"
                 tools:ignore="ContentDescription" />
 
@@ -395,6 +401,7 @@
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
+                android:src="@drawable/profile_eight"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
                 tools:ignore="ImageContrastCheck,VisualLintBounds"
@@ -411,7 +418,7 @@
                 app:layout_constraintEnd_toEndOf="@id/profileAvatar8"
                 app:layout_constraintTop_toTopOf="@id/profileAvatar8"
                 android:visibility="gone"
-                app:tint="@color/white"
+                app:tint="@color/error"
                 android:src="@drawable/ic_settings_check_mark"
                 tools:ignore="ContentDescription" />
 
@@ -422,6 +429,7 @@
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
+                android:src="@drawable/profile_nine"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
                 tools:ignore="ImageContrastCheck,VisualLintBounds"
@@ -438,7 +446,7 @@
                 app:layout_constraintEnd_toEndOf="@id/profileAvatar9"
                 app:layout_constraintTop_toTopOf="@id/profileAvatar9"
                 android:visibility="gone"
-                app:tint="@color/white"
+                app:tint="@color/error"
                 android:src="@drawable/ic_settings_check_mark"
                 tools:ignore="ContentDescription" />
 
@@ -449,6 +457,7 @@
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
+                android:src="@drawable/profile_ten"
                 android:background="@drawable/background_image"
                 android:backgroundTint="@color/input_background"
                 tools:ignore="ImageContrastCheck,VisualLintBounds"
@@ -465,7 +474,7 @@
                 app:layout_constraintEnd_toEndOf="@id/profileAvatar10"
                 app:layout_constraintTop_toTopOf="@id/profileAvatar10"
                 android:visibility="gone"
-                app:tint="@color/white"
+                app:tint="@color/error"
                 android:src="@drawable/ic_settings_check_mark"
                 tools:ignore="ContentDescription" />
         </androidx.constraintlayout.widget.ConstraintLayout>

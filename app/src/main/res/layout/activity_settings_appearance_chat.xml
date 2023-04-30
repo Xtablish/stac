@@ -50,8 +50,10 @@
             android:id="@+id/viewBackground"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="@drawable/background_input"
+            android:backgroundTint="@color/white"
             app:layout_constraintBottom_toTopOf="@id/viewSupportBottom"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="@id/viewSupport"/>
 
         <ImageView
             android:id="@+id/imageIVPreview"
@@ -140,6 +142,7 @@
             android:maxLines="1"
             android:textColor="@color/primary_text"
             android:textSize="@dimen/_14ssp"
+            android:text="@string/stac"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@id/imagePhoneCall"
             app:layout_constraintStart_toEndOf="@id/imageProfile"
@@ -332,6 +335,8 @@
             android:textColor="@color/primary_text"
             android:textColorHint="@color/secondary_text"
             android:textSize="12sp"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/layoutMic"
@@ -354,19 +359,6 @@
             app:layout_constraintTop_toTopOf="@id/inputMessage"
             app:layout_constraintBottom_toBottomOf="@id/inputMessage"
             tools:ignore="RtlHardcoded,RtlSymmetry" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/typingStatus"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="5dp"
-            app:lottie_rawRes="@raw/typing_status"
-            app:lottie_repeatCount="15"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/inputMessage"/>
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/readReceiverImage"
@@ -433,9 +425,8 @@
                 android:contentDescription="@string/text_image_view"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"
-                android:src="@color/send_message_bg"
                 android:background="@drawable/background_image"
-                android:backgroundTint="@color/input_background"
+                android:backgroundTint="@color/send_message_bg"
                 android:layout_toStartOf="@id/settingsAppearanceSelectChatColor"
                 tools:ignore="ImageContrastCheck,VisualLintBounds"/>
 
@@ -468,7 +459,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/settingsAppearanceChatWallpaper"
+                android:id="@+id/settingsAppearanceChatBubbleColorReset"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
                 android:background="@color/white"
@@ -479,13 +470,14 @@
                 tools:ignore="ImageContrastCheck" />
 
             <TextView
+                android:id="@+id/textAppearanceResetChatBubbleColor"
                 android:layout_marginStart="@dimen/_24sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:textColor="@color/primary_text"
                 android:textStyle="bold"
-                android:layout_toEndOf="@id/settingsAppearanceChatWallpaper"
+                android:layout_toEndOf="@id/settingsAppearanceChatBubbleColorReset"
                 android:text="@string/settings_text_appearance_reset_chat_color"
                 tools:ignore="RelativeOverlap" />
 
@@ -560,6 +552,7 @@
                 tools:ignore="ImageContrastCheck" />
 
             <TextView
+                android:id="@+id/textAppearanceResetChatWallpaper"
                 android:layout_marginStart="@dimen/_24sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

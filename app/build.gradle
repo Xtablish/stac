@@ -16,6 +16,7 @@ android {
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -55,7 +56,7 @@ dependencies {
     //Import Firebase into the app
     implementation 'com.google.firebase:firebase-core:21.1.1'
     implementation 'com.google.firebase:firebase-messaging:23.1.2'
-    implementation 'com.google.firebase:firebase-firestore:24.4.5'
+    implementation 'com.google.firebase:firebase-firestore:24.5.0'
 
     //ml kit implementation
     implementation 'com.google.mlkit:translate:17.0.1'

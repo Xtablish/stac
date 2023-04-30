@@ -3,6 +3,7 @@ package com.stacit.stac.activities.utilities;
 public class Constants {
     public static final String KEY_COLLECTION_USERS = "users";
     public static final String KEY_NAME = "name";
+    public static final String KEY_PROFILE_HOLDER = "profile_image";
     public static final String KEY_EMAIL = "email";
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_PREFERENCE_NAME = "stacPreference";
@@ -38,4 +39,10 @@ public class Constants {
     public static final String KEY_LANGUAGE_CODE = "language_code";
     public static final String KEY_PRIVATE_ACCOUNT = "private_account";
     public static final String KEY_SECURITY_PRIVACY = "security_privacy";
+    public static final String KEY_WALLPAPER = "wallpaper";
+    public static final String KEY_CHAT_BUBBLE_COLOR = "chat_bubble_color";
+    public static final String KEY_USER_AVATAR = "user_avatar";
+    public static final String KEY_CHAT_COLOR_SELECTION = "chat_color_selection";
+    public static final String KEY_WALLPAPER_SELECTION = "wallpaper_selection";
+    public static final String KEY_THEME_SELECTED = "theme_selected";
 }

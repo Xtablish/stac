@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.firebase.firestore.AggregateQuery;
 import com.google.firebase.firestore.AggregateQuerySnapshot;
@@ -16,6 +17,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.SetOptions;
+import com.stacit.stac.R;
 import com.stacit.stac.activities.utilities.Constants;
 import com.stacit.stac.activities.utilities.PreferenceManager;
 import com.stacit.stac.databinding.ActivitySignInBinding;
@@ -113,18 +115,20 @@ public class signInActivity extends AppCompatActivity
                         preferenceManager.putString(Constants.KEY_USER_ID, documentSnapshot.getId());
                         preferenceManager.putString(Constants.KEY_NAME, documentSnapshot.getString(Constants.KEY_NAME));
                         preferenceManager.putString(Constants.KEY_IMAGE, documentSnapshot.getString(Constants.KEY_IMAGE));
-                        preferenceManager.putString(Constants.KEY_FACE_ID, documentSnapshot.getString(Constants.KEY_FACE_ID));
+                        preferenceManager.putString(Constants.KEY_PROFILE_HOLDER, documentSnapshot.getString(Constants.KEY_IMAGE));
                         preferenceManager.putString(Constants.KEY_LANGUAGE, documentSnapshot.getString(Constants.KEY_LANGUAGE));
-                        preferenceManager.putString(Constants.KEY_LISTEN, documentSnapshot.getString(Constants.KEY_LISTEN));
-                        preferenceManager.putString(Constants.KEY_VOICE, documentSnapshot.getString(Constants.KEY_VOICE));
-                        preferenceManager.putString(Constants.KEY_AI, documentSnapshot.getString(Constants.KEY_AI));
                         preferenceManager.putString(Constants.KEY_EMAIL, documentSnapshot.getString(Constants.KEY_EMAIL));
                         preferenceManager.putString(Constants.KEY_PASSWORD, documentSnapshot.getString(Constants.KEY_PASSWORD));
-                        preferenceManager.putString(Constants.KEY_COUNTRY, documentSnapshot.getString(Constants.KEY_COUNTRY));
-                        preferenceManager.putString(Constants.KEY_NIGHT_MODE, documentSnapshot.getString(Constants.KEY_NIGHT_MODE));
                         preferenceManager.putString(Constants.KEY_SECURITY_PRIVACY, documentSnapshot.getString(Constants.KEY_SECURITY_PRIVACY));
-                        preferenceManager.putString(Constants.KEY_PRIVATE_ACCOUNT, documentSnapshot.getString(Constants.KEY_PRIVATE_ACCOUNT));
-                        preferenceManager.putString(Constants.KEY_NOTIFICATION, documentSnapshot.getString(Constants.KEY_NOTIFICATION));
+                        preferenceManager.putString(Constants.KEY_THEME_SELECTED, "System");
+
+                        int chatBubbleColor = ContextCompat.getColor(getApplicationContext(), R.color.chat_bubble_default);
+                        preferenceManager.putString(Constants.KEY_CHAT_COLOR_SELECTION, "chat_default_color");
+                        preferenceManager.putString(Constants.KEY_CHAT_BUBBLE_COLOR, Integer.toString(chatBubbleColor));
+
+                        int backgroundWallpaper = ContextCompat.getColor(getApplicationContext(), R.color.chat_color_one);
+                        preferenceManager.putString(Constants.KEY_WALLPAPER_SELECTION, "chatColor1");
+                        preferenceManager.putString(Constants.KEY_WALLPAPER, Integer.toString(backgroundWallpaper));
 
                         //starting a new intent for the conversation tab if the user has an account
                         Intent intent = new Intent(getApplicationContext(), conversationMainActivity.class);

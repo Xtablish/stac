@@ -52,6 +52,19 @@ public class conversationMainActivity extends BaseActivity implements Conversion
         LinearLayoutManager linearLayoutManager =new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         binding.usersActiveRecycleView.setLayoutManager(linearLayoutManager);
+
+        //check to editText for focus
+        binding.contactSearchView.setOnFocusChangeListener((view, hasFocus) -> {
+            if (hasFocus) {
+                //hide other messaging tools if using is typing
+                binding.conversationRecycleView.setVisibility(View.INVISIBLE);
+            } else {
+                //changes the send button state
+                binding.conversationRecycleView.setVisibility(View.VISIBLE);
+
+            }
+        });
+
         //call the initialization function
         init();
         //creating an instance of the preferenceManager class
@@ -259,4 +272,16 @@ public class conversationMainActivity extends BaseActivity implements Conversion
         startActivity(intent);
     }
 
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        binding.contactSearchView.clearFocus();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        binding.contactSearchView.clearFocus();
+    }
 }

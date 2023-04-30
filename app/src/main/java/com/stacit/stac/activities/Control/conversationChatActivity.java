@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -27,6 +28,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.vision.Frame;
@@ -136,10 +138,14 @@ public class conversationChatActivity extends BaseActivity
         chatAdapter = new ChatAdapter(
                 chatMessages,
                 getBitmapFromEncodedString(receiverUser.image),
-                preferenceManager.getString(Constants.KEY_USER_ID)
+                preferenceManager.getString(Constants.KEY_USER_ID),
+                receiverUser.name,
+                this
         );
         binding.chatRecycle.setAdapter(chatAdapter);
         database = FirebaseFirestore.getInstance();
+        //set chat wallpaper
+        setWallpaper();
     }
 
     //takes the text from the EditText input and pushes it to the database
@@ -404,6 +410,38 @@ public class conversationChatActivity extends BaseActivity
         db.collection(Constants.KEY_COLLECTION_USERS)
                 .document(preferenceManager.getString(Constants.KEY_USER_ID))
                 .set(data, SetOptions.merge());
+    }
+
+    private void setWallpaper()
+    {
+        if (preferenceManager.getString(Constants.KEY_WALLPAPER) != null)
+        {
+            //bottom view background update
+            Drawable previewDrawable = binding.viewBackground.getBackground();
+            previewDrawable = DrawableCompat.wrap(previewDrawable);
+            //the color is a direct color int and not a color resource
+            DrawableCompat.setTint(previewDrawable, Integer.parseInt(preferenceManager.getString(Constants.KEY_WALLPAPER)));
+            binding.viewBackground.setBackground(previewDrawable);
+
+            //phone icon background update
+            Drawable phoneCallDrawable = binding.imagePhoneCall.getBackground();
+            phoneCallDrawable = DrawableCompat.wrap(phoneCallDrawable);
+            //the color is a direct color int and not a color resource
+            DrawableCompat.setTint(phoneCallDrawable, Integer.parseInt(preferenceManager.getString(Constants.KEY_WALLPAPER)));
+            binding.imagePhoneCall.setBackground(phoneCallDrawable);
+
+            //video icon background update
+            Drawable videoCallDrawable = binding.imageVideoCall.getBackground();
+            videoCallDrawable = DrawableCompat.wrap(videoCallDrawable);
+            //the color is a direct color int and not a color resource
+            DrawableCompat.setTint(videoCallDrawable, Integer.parseInt(preferenceManager.getString(Constants.KEY_WALLPAPER)));
+            binding.imageVideoCall.setBackground(videoCallDrawable);
+
+            binding.chatActivityMain.setBackgroundColor(Integer.parseInt(preferenceManager.getString(Constants.KEY_WALLPAPER)));
+            binding.cameraRecognitionBtn.setBackgroundColor(Integer.parseInt(preferenceManager.getString(Constants.KEY_WALLPAPER)));
+            binding.galleryPhotoSelection.setBackgroundColor(Integer.parseInt(preferenceManager.getString(Constants.KEY_WALLPAPER)));
+            binding.speechRecognitionBtn.setBackgroundColor(Integer.parseInt(preferenceManager.getString(Constants.KEY_WALLPAPER)));
+        }
     }
 
     //this function updates the database for the recent conversations feed

@@ -5,12 +5,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.stacit.stac.R;
+import com.stacit.stac.databinding.ActivitySettingsProfileAboutBinding;
 
-public class SettingsProfileAbout extends AppCompatActivity {
+public class SettingsProfileAbout extends AppCompatActivity
+{
 
+    private ActivitySettingsProfileAboutBinding binding;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings_profile_about);
+        binding = ActivitySettingsProfileAboutBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        if (binding.inputUserDescription.getText().toString().isEmpty())
+        {
+            binding.imageCancelBtn.setOnClickListener(view -> onBackPressed());
+        }
     }
 }
