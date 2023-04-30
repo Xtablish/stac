@@ -40,6 +40,7 @@ public class SettingsAccount extends AppCompatActivity {
         {
             binding.imageCancelBtn.setOnClickListener(view -> onBackPressed());
         }
+        binding.settingsAboutDeleteAccount.setOnClickListener(view -> deleteAccount());
     }
 
     private void userSignOut()
@@ -62,6 +63,11 @@ public class SettingsAccount extends AppCompatActivity {
                     finish();
                 })
                 .addOnFailureListener(e -> showToast("Something went wrong"));
+    }
+
+    private void deleteAccount()
+    {
+
     }
 
     private void showToast(String message)

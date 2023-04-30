@@ -83,7 +83,7 @@
             android:layout_height="@dimen/_45sdp"
             android:layout_marginTop="@dimen/_35sdp"
             android:background="@drawable/background_input"
-            android:hint="@string/full_name"
+            android:hint="@string/name"
             android:imeOptions="actionNext"
             android:inputType="text"
             android:paddingStart="@dimen/_16sdp"

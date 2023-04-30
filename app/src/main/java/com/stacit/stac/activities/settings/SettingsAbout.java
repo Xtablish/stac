@@ -1,16 +1,20 @@
 package com.stacit.stac.activities.settings;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-import com.stacit.stac.R;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class SettingsAbout extends AppCompatActivity {
+import com.stacit.stac.databinding.ActivitySettingsAboutBinding;
+
+public class SettingsAbout extends AppCompatActivity
+{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings_about);
+        com.stacit.stac.databinding.ActivitySettingsAboutBinding binding = ActivitySettingsAboutBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        binding.imageCancelBtn.setOnClickListener(view -> onBackPressed());
     }
 }

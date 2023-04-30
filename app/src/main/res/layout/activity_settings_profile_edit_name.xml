@@ -82,6 +82,8 @@
                 android:inputType="textPersonName"
                 android:paddingStart="@dimen/_16sdp"
                 android:paddingEnd="@dimen/_16sdp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/_12ssp"
                 tools:ignore="VisualLintTextFieldSize" />
@@ -116,6 +118,8 @@
                 android:inputType="textPersonName"
                 android:paddingStart="@dimen/_16sdp"
                 android:paddingEnd="@dimen/_16sdp"
+                android:focusableInTouchMode="false"
+                android:focusable="false"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/_12ssp"
                 tools:ignore="VisualLintTextFieldSize" />
