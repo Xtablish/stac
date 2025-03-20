@@ -20,11 +20,5 @@ Security without functionality is pointless, because you can't protect something
 ## Version
 Version 1.0.0 
 
-## [Team](docs/CONTRIBUTING.md)
-STAC-IT
-
-## Access
-Restricted ATM
-
 ## Status
 In Development
